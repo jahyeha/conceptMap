@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/ConceptMap.iml" filepath="$PROJECT_DIR$/.idea/ConceptMap.iml" />
       <module fileurl="file://C:\Users\ox444\PycharmProjects\ConceptMap\.idea\TestConcept.iml" filepath="C:\Users\ox444\PycharmProjects\ConceptMap\.idea\TestConcept.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/ConceptMap.iml" filepath="$PROJECT_DIR$/.idea/ConceptMap.iml" />
     </modules>
   </component>
 </project>
