@@ -12,11 +12,17 @@ main page
     <h1 class="ui header">
       Draw video concept map
     </h1>
+    <h2>
+      input URL( https://www.youtube.com/watch?v=bxe2T-V8XRs )
+    </h2>
     <br />
-    <div class="ui huge fluid action input">
-      <input type="text" placeholder="Search...">
-      <a class="ui button" href="/videos/id.html">Search</a>
-    </div>
+    <form class="ui form" action="/video/" method="get">
+      <div class="ui huge fluid action input">
+        <input name="v" type="text" placeholder="https://www.youtube.com/watch?v=bxe2T-V8XRs">
+        <button type="submit" class="ui red button">Search</button>
+      </div>
+    </form>
+
   </div>
 
 {% endblock %}

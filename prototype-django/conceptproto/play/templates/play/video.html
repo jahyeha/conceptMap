@@ -7,6 +7,7 @@ play page
 
 {% block content %}
 
+{% if video %}
 <div class="ui center aligned container">
 
   <div class="ui stackable centered grid"><!-- START video and conceptmap  -->
@@ -14,11 +15,14 @@ play page
     <div class="ten wide column">
       <div class="ui segment" id="video_section">
         <div class="row"><!-- START video title -->
-          <h1>title</h1>
+          <h1>{{ video.title }}</h1>
+          <a href="https://www.youtube.com/watch?v={{ video.vid }}">
+            https://www.youtube.com/watch?v={{ video.vid }}
+          </a>
         </div><!-- END video title -->
 
         <div class="row video_wrapper"><!-- START video iframe tag -->
-          <iframe id="video" src="//www.youtube.com/embed/bxe2T-V8XRs?enablejsapi=1&html5=1&controls=0&showinfo=0&autohide=1" frameborder="0" allowfullscreen></iframe>
+          <iframe id="video" src="//www.youtube.com/embed/{{ video.vid }}?enablejsapi=1&html5=1&controls=0&showinfo=0&autohide=1" frameborder="0" allowfullscreen></iframe>
         </div><!-- END video iframe tag -->
 
         <div class="row"><!-- START video button -->
@@ -47,7 +51,7 @@ play page
             // 엣지가 들어있는 데이터셋
             var edges = new vis.DataSet();
 
-            $.getJSON("{% static 'play/data/bxe2T-V8XRs.json' %}", function(json) {
+            $.getJSON('{% static "" %}play/data/{{video.vid}}.json', function(json) {
               // add nodes
               for(var i = 0; i < json.nodes.length; i++){
                 nodes.add({
@@ -90,5 +94,6 @@ play page
 
 
 </div>
+{% endif %}
 
 {% endblock %}
