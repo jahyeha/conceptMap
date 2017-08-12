@@ -9,6 +9,9 @@ from nltk.corpus import stopwords
 from nltk.tokenize import RegexpTokenizer
 import pandas as pd
 
+'''
+2017-08-12 16:00 Jahye
+'''
 
 class Preprocessor:
     def __init__(self, playlist_url):
@@ -141,11 +144,13 @@ class ComputeTfIdf:
 
 
 def main():
-    playlist_url = 'https://www.youtube.com/playlist?list=PL8dPuuaLjXtN0ge7yDk_UA0ldZJdhwkoV'
+    playlist_url = input('playlist url>').strip()
+    #test url : https://www.youtube.com/playlist?list=PL8dPuuaLjXtN0ge7yDk_UA0ldZJdhwkoV
     pre = Preprocessor(playlist_url)
     preResult = pre.get_result()
-    TFIDF = ComputeTfIdf(preResult)
-    print(TFIDF.RunTfIdf())
+    TfIdf = ComputeTfIdf(preResult)
+    Run_TfIdf = TfIdf.RunTfIdf()
+    print(pd.DataFrame(Run_TfIdf))
 
 
 if __name__ == "__main__":
