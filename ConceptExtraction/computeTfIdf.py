@@ -9,9 +9,6 @@ from nltk.corpus import stopwords
 from nltk.tokenize import RegexpTokenizer
 import pandas as pd
 
-'''
-2017-08-12 16:00 Jahye
-'''
 
 class Preprocessor:
     def __init__(self, playlist_url):
@@ -83,64 +80,64 @@ class ComputeTfIdf:
     def __init__(self, bow_set):
         self.bowSet = bow_set
 
-    def RunTfIdf(self):
-        DictSet = self.CreateDictSet()
-        TF = self.ComputeTF(DictSet, self.bowSet)
-        IDF = self.Compute_IDF(DictSet)
-        result = self.Compute_TF_IDF(TF, IDF)
+    def run_TfIdf(self):
+        dict_set = self.create_dictSet()
+        tf = self.compute_TF(dict_set, self.bowSet)
+        idf = self.compute_IDF(dict_set)
+        result = self.computeTF_IDF(tf, idf)
         return result
 
-    def CreateDictSet(self):
+    def create_dictSet(self):
         all_words = []
         for bow in self.bowSet:
             all_words += bow
-        wordSet = set(all_words)
+        word_set = set(all_words)
 
         dictSet = []
         for i in range(len(self.bowSet)):
-            wordDict = dict.fromkeys(wordSet, 0)
+            word_dict = dict.fromkeys(word_set, 0)
 
             for bow in self.bowSet[i]:
-                if bow in wordDict:
-                    wordDict[bow] += 1
+                if bow in word_dict:
+                    word_dict[bow] += 1
 
-            dictSet.append(wordDict)
+            dictSet.append(word_dict)
         return dictSet
 
-    def ComputeTF(self, dictSet, bowSet):
-        tfDictSet = []
+    def compute_TF(self, dictSet, bowSet):
+        tf_dictSet = []
         for i in range(len(dictSet)):
-            tfDict = {}
-            bowCount = len(bowSet[i])
+            tf_dict = {}
+            bow_count = len(bowSet[i])
 
             for word, count in dictSet[i].items():
-                tfDict[word] = count / float(bowCount)
-            tfDictSet.append(tfDict)
-        return tfDictSet
+                tf_dict[word] = count / float(bow_count)
+            tf_dictSet.append(tf_dict)
+        return tf_dictSet
 
-    def Compute_IDF(self, dictSet):
-        idfDict = {}
+    def compute_IDF(self, dictSet):
+        idf_dict = {}
         N = len(dictSet)
-        idfDict = dict.fromkeys(dictSet[0].keys(), 0)
+        idf_dict = dict.fromkeys(dictSet[0].keys(), 0)
 
         #Compute DF
         for wordDict in dictSet:
             for word, val in wordDict.items():
                 if val > 0:
-                    idfDict[word] += 1
+                    idf_dict[word] += 1
         #Compute IDF
-        for word, val in idfDict.items():
-            idfDict[word] = math.log(N / float(val))
-        return idfDict
+        for word, val in idf_dict.items():
+            idf_dict[word] = math.log(N / float(val))
+        return idf_dict
 
-    def Compute_TF_IDF(self, tfBowSet, idfs):
-        tfidfSet = []
+    def computeTF_IDF(self, tfBowSet, idfs):
+        tfidf_set = []
         for tfBow in tfBowSet:
             tfidf = {}
             for word, val in tfBow.items():
                 tfidf[word] = val * idfs[word]
-            tfidfSet.append(tfidf)
-        return tfidfSet
+            tfidf_set.append(tfidf)
+        return tfidf_set
 
 
 def main():
@@ -149,7 +146,7 @@ def main():
     pre = Preprocessor(playlist_url)
     preResult = pre.get_result()
     TfIdf = ComputeTfIdf(preResult)
-    Run_TfIdf = TfIdf.RunTfIdf()
+    Run_TfIdf = TfIdf.run_TfIdf()
     print(pd.DataFrame(Run_TfIdf))
 
 
