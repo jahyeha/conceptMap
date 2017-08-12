@@ -1,0 +1,28 @@
+{% extends "play/layout.html" %}
+
+{% block title %}
+main page
+{% endblock %}
+
+
+{% block content %}
+
+  <div class="ui center aligned text container">
+    <br />
+    <h1 class="ui header">
+      Draw video concept map
+    </h1>
+    <h2>
+      input URL( https://www.youtube.com/watch?v=bxe2T-V8XRs )
+    </h2>
+    <br />
+    <form class="ui form" action="/video/" method="get">
+      <div class="ui huge fluid action input">
+        <input name="v" type="text" placeholder="https://www.youtube.com/watch?v=bxe2T-V8XRs">
+        <button type="submit" class="ui red button">Search</button>
+      </div>
+    </form>
+
+  </div>
+
+{% endblock %}

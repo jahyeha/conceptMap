@@ -1,0 +1,50 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>
+    {% block title %}{% endblock %}
+  </title>
+
+
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+
+  <!-- semantic and jquery -->
+  <link rel="stylesheet" type="text/css" href="{% static 'play/semantic/semantic.css' %}">
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+  <script src="{% static 'play/semantic/semantic.js' %}"></script>
+
+  <!-- vis -->
+  <script type="text/javascript" src="{% static 'play/vis/vis.min.js' %}"></script>
+  <link href="{% static 'play/vis/vis.min.css' %}" rel="stylesheet" type="text/css" />
+
+
+
+  <link rel="stylesheet" type="text/css" href="{% static 'play/style.css' %}">
+  <script src="{% static 'play/script.js' %}"></script>
+
+  <style>
+  body {padding-top: 4em;}
+  </style>
+
+</head>
+<body>
+
+  <div class="ui top fixed menu">
+    <div class="item">
+      <!-- <img src="/images/logo.png"> -->
+      <a href="/">ConceptMap</a>
+    </div>
+    <a class="item">Features</a>
+    <a class="item">Testimonials</a>
+    <a class="item" href="/admin/">Sign-in</a>
+  </div>
+
+  {% block content %}{% endblock %}
+
+
+
+
+</body>
+</html>
