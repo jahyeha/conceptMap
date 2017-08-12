@@ -28,10 +28,8 @@ class Preprocessor:
                 candidate = text[left:right]
                 URLs.append('https://www.youtube.com' + candidate)
             else:
-                break
-            
+                break  
         return URLs
-
 
     def get_videoIDs(self, URLs):
         video_IDs = []
@@ -39,10 +37,8 @@ class Preprocessor:
         for url in URLs:
             url_data = urlparse(url)
             query = urllib.parse.parse_qs(url_data.query)
-            video_IDs.append(query["v"][0])
-            
+            video_IDs.append(query["v"][0])     
         return video_IDs
-    
 
     def tokenize(self, video_IDs):
         doc_set = []
@@ -69,5 +65,4 @@ class Preprocessor:
             # p_stemmer = PorterStemmer
             # stemmed_tokens = [p_stemmer.stem(i) for i in stopped_tokens]
             bow_set.append(stopped_tokens)
-            
         return bow_set
