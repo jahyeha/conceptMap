@@ -5,12 +5,20 @@ import requests
 
 import re
 import math
+import nltk
 from nltk.corpus import stopwords
 from nltk.tokenize import RegexpTokenizer
 import pandas as pd
 
 
 class Preprocessor:
+    """
+    @Document preprocessing for computing TF-IDF
+        1. Get all video URLs& IDs from an Education YouTube Channel(for Physics).
+        2. Crawl and parse all video subtitles(documents).
+        3. Clean up the documents by tokenizing, stemming& removing stop words.
+    """
+
     def __init__(self, playlist_url):
         self.playlist_url = playlist_url
 
@@ -63,20 +71,40 @@ class Preprocessor:
         tokenizer = RegexpTokenizer(r'\w+')
         bow_set = []
 
-        #Tokenizing & stopwords
+        #Tokenizing, Stemming & Removing stopwords
         for doc in doc_set:
             tokenizer.tokenize(doc)
             tokens = tokenizer.tokenize(doc)
             stop = set(stopwords.words('english'))
 
             stopped_tokens = [i for i in tokens if not i in stop and len(i) > 1]
-            # p_stemmer = PorterStemmer
-            # stemmed_tokens = [p_stemmer.stem(i) for i in stopped_tokens]
+
+        ''' stemming/ lemmatizing -- output is inaccurate!
+            1. stemmer
+            #p_stemmer = nltk.PorterStemmer()
+            #stemmed = [p_stemmer.stem(token) for token in stopped_tokens]
+            #bow_set.append(stemmed)
+
+            2. lemmatizer
+            #lemma = nltk.WordNetLemmatizer()
+            #lemmatized = [lemma.lemmatize(token) for token in stopped_tokens]
+            #bow_set.append(lemmatized)'''
+
             bow_set.append(stopped_tokens)
         return bow_set
 
 
 class ComputeTfIdf:
+    """
+    @Computing TF-IDF
+        1. Get ready to compute tf-idf
+            . Convert tokenized(&cleaned) BOWs into numbers by creating vectors of all possible words, and for each document how many times each word appears.
+
+        2. Compute tf-idf
+            . Compute tf(w) = (Number of times the word appears in a document) / (Total number of words in the document)
+            . Compute idf(w) = log(Number of documents / Number of documents that contain word w)
+    """
+
     def __init__(self, bow_set):
         self.bowSet = bow_set
 
@@ -106,6 +134,7 @@ class ComputeTfIdf:
 
     def compute_TF(self, dictSet, bowSet):
         tf_dictSet = []
+
         for i in range(len(dictSet)):
             tf_dict = {}
             bow_count = len(bowSet[i])
@@ -120,12 +149,13 @@ class ComputeTfIdf:
         N = len(dictSet)
         idf_dict = dict.fromkeys(dictSet[0].keys(), 0)
 
-        #Compute DF
+        #Computing df
         for wordDict in dictSet:
             for word, val in wordDict.items():
                 if val > 0:
                     idf_dict[word] += 1
-        #Compute IDF
+
+        #Computing idf
         for word, val in idf_dict.items():
             idf_dict[word] = math.log(N / float(val))
         return idf_dict
@@ -141,14 +171,13 @@ class ComputeTfIdf:
 
 
 def main():
-    playlist_url = input('playlist url>').strip()
-    #test url : https://www.youtube.com/playlist?list=PL8dPuuaLjXtN0ge7yDk_UA0ldZJdhwkoV
+    playlist_url = input('playlist URL>').strip()
+    #test URL : https://www.youtube.com/playlist?list=PL8dPuuaLjXtN0ge7yDk_UA0ldZJdhwkoV
     pre = Preprocessor(playlist_url)
     preResult = pre.get_result()
     TfIdf = ComputeTfIdf(preResult)
     Run_TfIdf = TfIdf.run_TfIdf()
     print(pd.DataFrame(Run_TfIdf))
-
 
 if __name__ == "__main__":
     main()
