@@ -1,13 +1,21 @@
-# prototype-django
+# Web
 
-기존에 만든 프로토타입을 python 웹 프레임워크인 django로 옮겼습니다.
+
+
+conceptproto : 기존에 만든 프로토타입을 python 웹 프레임워크인 django로 옮겼습니다. 폴더를 다운받은 후 아래 실행방법에 따라 장고를 설치하고 실행할 수 있습니다.
+
+graph-test : 그래프 테스트때문에 프로토타입(conceptproto)의 장고 `runserver` 하기 번거로워서 그래프 만드는 부분만 페이지 하나로 따로 뺐습니다. 그래프 샘플 데이터는 이 폴더의 `data.json`에 있습니다. 이 페이지로 그래프 그리는 것을 테스트할 수 있습니다.
+
+prototype-plainweb : HTML, js, 부트스트랩으만 만든 첫 번째 만든 프로토타입입니다.
 
 
 
 ## 실행 방법
 
+0. `conceptproto`폴더 다운로드.
+
 1. `pip install django` 명령어로 장고를 설치합니다.
-2. `prototype-django/conceptproto/` 디렉토리로 이동한 후 `python manage.py runserver` 명령어로 서버 실행
+2. `conceptproto` 디렉토리로 이동한 후 `python manage.py runserver` 명령어로 서버 실행
 3. 브라우저에서  `127.0.0.1:8000` 주소로 가면 볼 수 있습니다.
 
 
@@ -18,7 +26,7 @@
 - [x] alchemy.js 말고 vis.js 쓰기
 
 
-- [ ] 비디오 아이디에 따라서 웹페이지 만들도록 수정
+- [x] 비디오 아이디에 따라서 웹페이지 만들도록 수정
 - [ ] 그래프 계층적으로 표현
 - [ ] 자막 시각화
 - [ ] 클릭 이동 구현
@@ -27,7 +35,7 @@
 
 ## 데이터 설명
 
-우선 그래프 시각화에 필요한 데이터는 `prototype-django/conceptproto/play/static/play/data` 디렉토리에 있는 아래와 같은 형태의  `비디오아이디.json` 파일을 불러오고 있습니다.
+우선 그래프 시각화에 필요한 데이터는 `conceptproto/play/static/play/data` 디렉토리에 있는 아래와 같은 형태의  `비디오아이디.json` 파일을 불러오고 있습니다.
 
 ```json
 {
