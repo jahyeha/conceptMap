@@ -1,3 +1,7 @@
+import requests
+from urllib.request import urlopen
+from bs4 import BeautifulSoup
+import html
 import wikipedia
 
 def mapping_first_page(concept):
@@ -5,13 +9,37 @@ def mapping_first_page(concept):
     # in : concept
     # out : url, title
 
-    candidate = wikipedia.search(concept, results=1)
-    base_url = "https://en.wikipedia.org/wiki/"
-    if len(candidate) == 0:
-        return 0
+    api_base_url = 'http://en.wikipedia.org/w/api.php'
+    wiki_attr = {
+        'action': 'query',
+        'prop': 'info',
+        'format': 'json',
+        'titles': concept
+    }
+
+    json_page = requests.get(api_base_url, params=wiki_attr)
+    data = json_page.json()
+
+    wiki_id = list(data['query']['pages'].keys())[0] # wiki page id ex) 1556539
+    # you can use wiki_id like this "https://en.wikipedia.org/?curid=1556539"
+    wiki_title = data['query']['pages'][wiki_id]['title']  # concept's wiki title ex) Newton's first law
+
+
+    if wiki_id == "-1": # page does not exist
+        if len(wikipedia.search(wiki_title)) == 0:
+            return 0
+        else:
+            new_title = wikipedia.search(wiki_title)[0]
+            base_url = "https://en.wikipedia.org/wiki/"
+            return new_title, base_url + new_title
     else:
-        mapped_page = wikipedia.page(candidate[0])
-        return mapped_page.title, mapped_page.url
+        base_url = "https://en.wikipedia.org/wiki/"
+        url = base_url + wiki_title
+        html_page = urlopen(url)
+        bs_obj = BeautifulSoup(html_page, "html.parser")
+        new_title = bs_obj.select("h1#firstHeading")[0].get_text()
+        url = base_url + new_title
+        return new_title, url
 
 def get_urls_from_concepts(concepts):
     # 첫번째 검색결과랑 매핑
