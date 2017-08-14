@@ -1,0 +1,65 @@
+Last time, we did a bunch of calculus to find the rate of change of our cost, J,
+with respect to our parameters, W.
+Although each calculus step was pretty straight forward, it¡¯s still relatively easy to make mistakes.
+What¡¯s worse, is that our network doesn¡¯t have a good way to tell us that it¡¯s broken
+? code with incorrectly implemented gradients may appear to be functioning just fine.
+This is the most nefarious kind of error when building complex systems.
+Big, in-your-face errors suck initially
+but it¡¯s clear that you must fix this error for your work to succeed.
+More subtle errors can be more troublesome because they hide in your code and steal hours of your time,
+slowly degrading performance, while you wonder what the problem is.
+A good solution here is to test the gradient computation part of our code,
+just as developer would unit test new portions of their code.
+We¡¯ll combine a simple understanding of the derivative with some mild cleverness to perform numerical gradient checking.
+If our code passes this test,
+we can be quite confident that we have computed and coded up our gradients correctly.
+To get started, let¡¯s quickly review derivatives.
+Derivatives tell us the slope, or how steep a function is.
+Once you¡¯re familiar with calculus,
+it¡¯s easy to take for granted the inner workings of the derivative
+we just accept that the derivative of x^2 is 2x by the power rule.
+However, depending on how mean your calculus teacher was,
+you may have spent months not being taught the power rule, and instead required to compute derivatives using the definition.
+Taking derivatives this way is a bit tedious,
+but still important
+it provides us a deeper understanding of what a derivative is,
+and it¡¯s going to help us solve our current problem.
+The definition of the derivative is really a glorified slope formula.
+The numerator gives us the change in y values,
+while the denominator is convenient way to express the change in x values.
+By including the limit, we are applying the slope formula across an infinitely small region
+it¡¯s like zooming in on our function, until it becomes linear.
+The definition tells us to zoom in until our x distance is infinitely small,
+but computers can¡¯t really handle infinitely small numbers,
+especially when they¡¯re in the bottom parts of fractions
+if we try to plug in something too small,
+we will quickly lose precision.
+The good news here is that if we plug in something reasonable small,
+we can still get surprisingly good numerical estimates of the derivative.
+We¡¯ll modify our approach slightly by picking a point in the middle of the interval we would like to test,
+and call the distance we move in each direction epsilon.
+Let¡¯s test our method with a simple function, x squared.
+We¡¯ll choose a reasonable small value for epsilon,
+and compute the slope of x^2 at a given point by finding the function value just above and just below our test point.
+We can then compare our result to our symbolic derivative 2x,
+at the test point
+If the numbers match, we¡¯re in business!
+We can use the same approach to numerically evaluate the gradient of our neural network.
+It¡¯s a little more complicated this time, since we have 9 gradient values,
+and we¡¯re interested in the gradient of our cost function.
+We¡¯ll make things simpler by testing one gradient at a time.
+We¡¯ll ¡°perturb¡± each weight
+adding epsilon to the current value and computing the cost function,
+subtracting epsilon from the current value and computing the cost function,
+and then computing the slope between these two values.
+We¡¯ll repeat this process across all our weights,
+and when we¡¯re done we¡¯ll have a numerical gradient vector,
+with the same number of values as we have weights.
+It¡¯s this vector we would like to compare to our official gradient calculation.
+We see that our vectors appear very similar,
+which is a good sign, but we need to quantify just how similar they are.
+A nice way to do this is to divide the norm of the difference
+by the norm of the sum of the vectors we would like to compare.
+Typical results should be on the order of 10^-8 or less if you¡¯ve computed your gradient correctly.
+And that¡¯s it, we can now check our computations and eliminate gradient errors before they become a problem.
+Next time we¡¯ll train our Neural Network.

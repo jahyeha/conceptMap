@@ -1,0 +1,82 @@
+Last time we built a neural network in python that made really bad predictions of your score on a test
+Based on how many hours you slept and how many hours you studied the night before?
+This time we'll focus on the theory of making those predictions better
+we can initialize the network we built last time and pass in our normalized Data x
+Using our forward method and have a look at our estimate of y y hat
+Right now our predictions are pretty inaccurate to improve our model
+we first need to quantify exactly how wrong our predictions are well do this with a cost function a
+Cost function allows us to Express exactly how wrong or costly our model is given our examples
+One way to compute an overall cost is to take each error value square it and add these values together
+Multiplying by one half will make things simpler down the road
+now that we have a cost our job is to minimize it and
+someone says they're training a network what they really mean is that they're minimizing a cost function
+Our cost is a function of two things
+Our examples, and the weights on our synapses
+We don't have much control over our data. So will minimize our cost by changing the weights
+Conceptually this is a pretty simple concept, we have a collection of nine individual weights.
+And we're saying that there is some combination of w's that will make our cost, j, as small as possible.
+When I first saw this problem in Machine learning
+I thought I'll just try all the weights until I find the best one after all I have a computer
+enter the curse of dimensionality
+Here's the problem let's pretend for a second that we only have one weight instead of nine
+To find the ideal value for our weight that will minimize our cost
+We need to try a bunch of values for w let's say we test a thousand values
+That doesn't seem so bad; After all, my computer is pretty fast
+It takes about point zero four seconds to check a thousand different weight values for our neural Network
+Since we've competed the cost for a wide range of values of w we can just pick the one with the smallest cost
+Let that be our weight, and now we've trained our network
+So you may be thinking that point zero four seconds the trainer network is not so bad
+And we haven't even optimized anything yet. Plus, there are other way faster languages than python out there
+Before we optimize though, let's consider the full complexity of the problem
+Remember the point zero four seconds required is only for one weight, and we have nine total
+Let's next consider two weights for a moment, to maintain the same precision
+We now need to check 1,000 times a thousand or a million values. This is a lot of work even for a fast computer.
+After our million evaluations we found our solution
+But it took an agonizing 40 seconds the real curse of dimensionality kicks in as we continue to add dimensions
+Searching through three weights would take a billion evaluations or 11 hours searching through all nine weights
+We need for our simple Neural Network would take one quadrillion
+268 Trillion 391 billion
+679 million three hundred and fifty thousand five hundred and eighty three and a half years
+For that reason that just try everything or brute Force optimization method is clearly not going to work
+Let's return to the one-dimensional case and see if we can be more clever
+Let's evaluate our cost function for a specific value of w if w is 1.1 for example
+We can run our cost function and see that J is 2.8
+We haven't learned much yet, but let's try to add a little more information to what we [already] know
+What if we could figure out which way was downhill if we could we would know whether to make w smaller or larger to?
+Decrease the cost
+We could test the cost function immediately to the left and to the right of our test point and see which is smaller
+This is called numerical estimation and is sometimes a good approach but for us there is a better way
+Let's look at our equation so far
+we have five equations, but we could really think of them as one big approach and
+since we have one big equation that uniquely Determines our cost J from x y w1 and W2
+We can [use] our good friend calculus to find exactly what looking for
+We want to know which way is downhill that is what is the rate of change of J with respect to w?
+Also known as the derivative and in this case since we're just considering one weight at a time. This is a partial derivative
+We can derive an expression for DJ 2w
+That will give us the rate of change of J with respect to w for any value of w if DJ
+Dw is positive then the cost function is going uphill if Dj. Dw is negative and the cost function is going Downhill now
+We can really speed things up since we [know] in which direction the cost decreases
+We can save all the time that we would have spent searching in the wrong direction
+We can save you even more computational time by iteratively taking steps downhill and stopping when the cost stopped getting smaller
+This method is known as gradient descent and although it may not seem so impressive in one dimension
+it is capable of incredible speed ups in higher dimensions in
+Fact in our final video will show that what would have taken 10 to the 27th function evaluations with our brute Force method
+Will take less than a hundred evaluations with gradient descent?
+Gradient descent allows us to find needles in very very very large haystacks
+Now before we celebrate too much here. There is a restriction
+What if our cost function doesn't always go in the same direction? What if it goes up and then back down?
+The mathematical name for this is non convex
+And it could really throw off our gradient descent algorithm by getting it stuck in a local minimum instead of our ideal Global Minima
+One of the reasons we chose our cost function to be the sum of squared errors was to exploit [the] convex Nature of quadratic equations
+We know that the graph of y equals x squared is a nice convex parabola and it turns out that higher dimensional versions are to
+another piece of the puzzle
+here is that depending on how we use our data it might not matter if our function is convex or not if
+We use our examples one at a time instead of all at once
+Sometimes it won't matter our function is convex. We will still find a good solution
+this is called stochastic gradient descent
+So maybe we shouldn't be afraid of non convex loss functions as neural Network Wizard Iyanla Kuhn says in his excellent
+Talk who is afraid of non convex Loss functions?
+The details of gradient descent are a deep topic for another day for now
+We're going to do our gradient descent batch style
+Where we use all our examples at once and the way we've set up our cost function will keep things nice and convex
+Next time we'll compute and code up our gradients
