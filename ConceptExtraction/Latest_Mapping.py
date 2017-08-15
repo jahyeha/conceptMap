@@ -1,6 +1,20 @@
 from bs4 import BeautifulSoup
 import requests
 
+"""
+NOTE
+17-08-15 17:50
+
+1. 컨셉추출할 때, 딕셔너리 사용할 예정입니다.
+    : 위키피디아에 존재하지 않는 단어(컨셉)는 버림
+
+(해결할 것)    
+2. URL에서 path부분에 '_'가 존재하는 것은 제대로 연결이 안됨
+    (URL이 끊겨져서 저장되어 있음) -> 오늘 해결 예정
+3. 딕셔너리에 저장되어있는 단어 list를 뽑아보면, 2개 단어의 합성어가 꽤 많이 존재
+    -> 해결예정(빼버릴 것인지, split해서 어떻게 해볼 것인지.)
+"""
+
 
 class Mapping:
     """
@@ -21,7 +35,7 @@ class Mapping:
         return combined_dict
 
     
-    def read_base_info(self):  #4
+    def read_base_info(self):
         ## Read a text file that contains Wikipedia pages which have information(list of Concepts) about Physics.
          # e.g. url_set = [url1, url2, url3], startEnd_set = [[start1, end1], [start2, end2], [start3, end3]]
          
@@ -116,6 +130,7 @@ class Mapping:
 def main():
     mapping = Mapping()
     dictionary = mapping.make_compelteDict()
+    #print(list(dictionary.keys())
     concept_name = input('Concept Name>')
     print(mapping.maping_Concept2Wiki(dictionary, concept_name))
 
