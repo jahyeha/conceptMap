@@ -16,7 +16,7 @@ hope..
 
 
 ## Reference
-- 
+- Agrawal, Rakesh, Behzad Golshan, and Evangelos Papalexakis. "Toward Data-Driven Design of Educational Courses: A Feasibility Study." JEDM-Journal of Educational Data Mining 8.1 (2016): 1-21. 
 - Lee, Ga-hee, and Han-joon Kim. "Automated development of rank-based concept hierarchical structures using Wikipedia links." Journal of Society for e-Business Studies 20.4 (2016). 
 - Indegree : https://en.wikipedia.org/wiki/Special:WhatLinksHere/
 
