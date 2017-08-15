@@ -5,7 +5,8 @@ import requests
 
 import re
 import nltk
-nltk.download('all')
+
+#nltk.download()
 from nltk.corpus import stopwords
 from nltk.tokenize import RegexpTokenizer
 
@@ -22,21 +23,20 @@ class ExtractConcept:
 
     def Test(self, playlist_url):
         playlist_url = 'https://www.youtube.com/playlist?list=PL8dPuuaLjXtN0ge7yDk_UA0ldZJdhwkoV'
-        URLs = self.get_all_URLs(playlist_url)
-        video_IDs = self.get_videoIDs(URLs)
+        URLs = self._get_all_URLs(playlist_url)
+        video_IDs = self._get_videoIDs(URLs)
         print(self.LDA(video_IDs, 7, 10))
 
     def getConcept(self, playlist_url):
         playlist_url = 'https://www.youtube.com/playlist?list=' + playlist_url
-        URLs = self.get_all_URLs(playlist_url)
-        video_IDs = self.get_videoIDs(URLs)
-        ret = self.LDA(video_IDs, 7, 10)
+        URLs = self._get_all_URLs(playlist_url)
+        video_IDs = self._get_videoIDs(URLs)
+        ret = self._LDA(video_IDs, 7, 10)
         print(ret)
         return ret
 
-
     ### Get all videoIDs from URLs -extracted from a youtube channel ###
-    def get_videoIDs(self, URLs):
+    def _get_videoIDs(self, URLs):
         video_IDs = []
 
         for url in URLs:
@@ -47,7 +47,7 @@ class ExtractConcept:
         return video_IDs
 
     ### Get all URLs from a YouTube channel ###
-    def get_all_URLs(self,playlist_url):
+    def _get_all_URLs(self,playlist_url):
         # playlist_url = 'https://www.youtube.com/playlist?list=PL8dPuuaLjXtN0ge7yDk_UA0ldZJdhwkoV'
         page = requests.get(playlist_url)
         text = str(BeautifulSoup(page.content, 'html.parser'))
@@ -67,7 +67,7 @@ class ExtractConcept:
 
         return URLs
 
-    def LDA(self,video_IDs, number_of_topics, number_of_words):
+    def _LDA(self,video_IDs, number_of_topics, number_of_words):
         doc_set = []
         # Import & clean my documents
         for ID in video_IDs:

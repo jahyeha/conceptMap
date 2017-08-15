@@ -1,0 +1,8 @@
+gradients
+derivatives
+slope
+denominator
+cost function
+epsilon
+vector
+Neural Network
