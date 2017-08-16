@@ -27,7 +27,7 @@ NOTE - progress
 @ In progress/ 아이디어 및 계획
     1. Word2Vec/Clustering/ LSA(유튜브강의 추천) 시도
     2. 시각화
-    3. 각 강의 별 컨셉맵+ "전체 컨셉맵"?
+    3. 각 강의별 컨셉맵+ "전체 컨셉맵"?
 """
 
 class Mapping:
