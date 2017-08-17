@@ -1,10 +1,6 @@
-from bs4 import BeautifulSoup
-import requests
-
 """
 NOTE - progress
 17-08-16 23:30
-
 @ 구현한 것/ 문제해결된 것 (08/15~)
     #08/15 
     1. URL path에 '_'부분을 error로 인식 : 문제 없음.
@@ -13,27 +9,21 @@ NOTE - progress
         - 우리가 만드는 컨셉맵의 모든 정보는 위키피디아 기반이기 때문에,
           위키피디아에 컨셉에 대한 정보가 없거나 Physics의 Concept list(주요 개념)에 속하지 않는 단어는 무의미하다고 간주하고 제외함.
         - 3개의 페이지를 크롤링하여 각 페이지에 대한 딕셔너리를 생성 후 -> 하나의 딕셔너리로 통합함.
-
     2-1) 결과: 총 568개의 컨셉과 각 컨셉에 매핑되는 위키피디아 URL을 포함한 딕셔너리 생성
                 e.g. dictionary== {'inertia':'https://en.wikipedia.org/wiki/Inertia', ..}
-
     #08/16
     3. 위키피디아기반 Physics의 컨셉들(컨셉리스트)에 존재하는 합성어(e.g. newton's laws of motion) 처리:
        문서별 추출된 컨셉(k개)에 대하여, 위키피디아 정보(or 유튜브 강의) 추천할 때 사용
        (위 컨셉리스트에 존재하는 개념들은 모두 위키피디아 URL 정보를 가지고 있으므로)
-    4. Mapping 클래스의 결과물인 딕셔너리를 Concept Extraction 파트에서 활용-> Tokenzie() in conceptExtracton.py
-    
+    4. Mapping 클래스의 결과물인 딕셔너리를 Concept Extraction 파트에서 활용-> Tokenzie() in conceptExtracton.py"""
+#############################################################################################################################
 
-@ In progress/ 아이디어 및 계획
-    1. Word2Vec/Clustering/ LSA(유튜브강의 추천) 시도
-    2. 시각화
-    3. 각 강의 별 컨셉맵+ "전체 컨셉맵"?
-"""
+from bs4 import BeautifulSoup
+import requests
 
 class Mapping:
     """
-    @ Mapping each concept to its Wikipedia URL
-        + Updating...
+    @ linking each concept to its Wikipedia URL
     """
     def __init__(self):
         self.result = []
@@ -134,12 +124,15 @@ class Mapping:
 
 
 def main():
+    print('Running..')
     mapping = Mapping()
     dictionary = mapping.make_compelteDict()
-    print(list(dictionary.keys()))
-    #print(list(dictionary.values()))
+    #print(list(dictionary.keys()))
+
+    ################TEST################
     concept_name = input('Concept Name>')
     print(mapping.maping_Concept2Wiki(dictionary, concept_name))
+    ####################################
 
 if __name__ == "__main__":
     main()
