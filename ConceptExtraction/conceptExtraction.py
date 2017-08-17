@@ -221,7 +221,22 @@ def main():
     ## 2. Result of applying TF-IDF
     Tfidf_dicSet = Tfidf.run_TfIdf()
     Tfidf_result = extract_Concept(Tfidf_dicSet, num_topic)
-    ###############################################
+    #print(Tfidf_result)
+    #[[('concept1 of first doc', weight),('concept2', weight)..,[('concept1 of second doc', weight)..],..]
+
+
+
+    ################### TEST ###################
+    """
+    num_doc = len(Tfidf_result)
+    
+    print("###The Result of Concept to Wikipedia Mapping###")
+    for i in range(num_doc):
+        print("\nDocument {}".format(i+1))
+        for concept in Tfidf_result[i]:
+            url = physicsDict[concept[0]]
+            print('\t',concept[0],'>', url)
+    """
 
     """
     print('###The Result of Topic Extraction###')
@@ -229,6 +244,7 @@ def main():
         print(' {}번 째 문서'.format(i+1))
         print('\tBOW   >', BOW_result[i])
         print('\tTF-IDF>', Tfidf_result[i],'\n')
+        
     """
 
 if __name__ == "__main__":

@@ -1,190 +1,328 @@
--------------NOTE-------------
-  2017-08-16 23:00
-  @ Class Mapping의 딕셔너리 적용(Glossary of Physics, etc.)
-  @ The number of Documents: 46, Topics(Concepts): 5
-------------------------------
-  
-###The Result of Topic Extraction###
- 1번 째 문서
-	BOW   > [('acceleration', 30), ('velocity', 28), ('time', 27), ('displacement', 10), ('physics', 8)]
-	TF-IDF> [('acceleration', 0.2855), ('velocity', 0.15526), ('displacement', 0.15062), ('motion', 0.0354), ('light', 0.03002)] 
+------------TEST------------
+  2017-08-17 12:35
+  The Result of Mapping(linking) the Extracted Concepts to their Wikipedia page(URL) 
+  The Number of Documents and Topics: 46 and 5 respectively
+----------------------------
 
- 2번 째 문서
-	BOW   > [('derivative', 24), ('velocity', 17), ('acceleration', 9), ('time', 9), ('power', 8)]
-	TF-IDF> [('derivative', 0.54908), ('velocity', 0.12148), ('calculus', 0.11439), ('acceleration', 0.11037), ('power', 0.05717)] 
 
- 3번 째 문서
-	BOW   > [('integral', 24), ('acceleration', 21), ('velocity', 18), ('derivative', 13), ('time', 12)]
-	TF-IDF> [('integral', 0.41838), ('derivative', 0.26713), ('acceleration', 0.23131), ('velocity', 0.11552), ('displacement', 0.0523)] 
+Document 1
+	 acceleration > https://en.wikipedia.org/wiki/Acceleration
+	 velocity > https://en.wikipedia.org/wiki/Velocity
+	 displacement > https://en.wikipedia.org/wiki/Displacement_(vector)
+	 motion > https://en.wikipedia.org/wiki/Motion_(physics)
+	 light > https://en.wikipedia.org/wiki/Light
 
- 4번 째 문서
-	BOW   > [('vector', 22), ('velocity', 17), ('motion', 11), ('time', 8), ('machine', 7)]
-	TF-IDF> [('vector', 0.58311), ('machine', 0.18554), ('velocity', 0.1144), ('dimension', 0.09133), ('motion', 0.07877)] 
+Document 2
+	 derivative > https://en.wikipedia.org/wiki/Derivative
+	 velocity > https://en.wikipedia.org/wiki/Velocity
+	 calculus > https://en.wikipedia.org/wiki/Calculus
+	 acceleration > https://en.wikipedia.org/wiki/Acceleration
+	 power > https://en.wikipedia.org/wiki/Power_(physics)
 
- 5번 째 문서
-	BOW   > [('force', 59), ('mass', 14), ('acceleration', 13), ('gravity', 13), ('ground', 7)]
-	TF-IDF> [('force', 0.2213), ('gravity', 0.13356), ('acceleration', 0.12573), ('mass', 0.1202), ('inertia', 0.08878)] 
+Document 3
+	 integral > https://en.wikipedia.org/wiki/Integral
+	 derivative > https://en.wikipedia.org/wiki/Derivative
+	 acceleration > https://en.wikipedia.org/wiki/Acceleration
+	 velocity > https://en.wikipedia.org/wiki/Velocity
+	 displacement > https://en.wikipedia.org/wiki/Displacement_(vector)
 
- 6번 째 문서
-	BOW   > [('force', 44), ('acceleration', 5), ('gravity', 5), ('physics', 4), ('sound', 2)]
-	TF-IDF> [('force', 0.27431), ('gravity', 0.08538), ('acceleration', 0.08038), ('trigonometry', 0.05998), ('sound', 0.05088)] 
+Document 4
+	 vector > https://en.wikipedia.org/wiki/Vector_(mathematics_and_physics)
+	 machine > https://en.wikipedia.org/wiki/Machine
+	 velocity > https://en.wikipedia.org/wiki/Velocity
+	 dimension > https://en.wikipedia.org/wiki/Dimension
+	 motion > https://en.wikipedia.org/wiki/Motion_(physics)
 
- 7번 째 문서
-	BOW   > [('acceleration', 26), ('circle', 23), ('motion', 15), ('velocity', 13), ('force', 13)]
-	TF-IDF> [('circle', 0.33704), ('acceleration', 0.22251), ('motion', 0.0796), ('speed', 0.0675), ('velocity', 0.06483)] 
+Document 5
+	 force > https://en.wikipedia.org/wiki/Force
+	 gravity > https://en.wikipedia.org/wiki/Gravity
+	 acceleration > https://en.wikipedia.org/wiki/Acceleration
+	 mass > https://en.wikipedia.org/wiki/Mass
+	 inertia > https://en.wikipedia.org/wiki/Inertia
 
- 8번 째 문서
-	BOW   > [('force', 16), ('acceleration', 13), ('gravity', 12), ('mass', 12), ('ground', 5)]
-	TF-IDF> [('acceleration', 0.1841), ('gravity', 0.18053), ('mass', 0.15086), ('force', 0.08788), ('ground', 0.0667)] 
+Document 6
+	 force > https://en.wikipedia.org/wiki/Force
+	 gravity > https://en.wikipedia.org/wiki/Gravity
+	 acceleration > https://en.wikipedia.org/wiki/Acceleration
+	 trigonometry > https://en.wikipedia.org/wiki/Trigonometry
+	 sound > https://en.wikipedia.org/wiki/Sound
 
- 9번 째 문서
-	BOW   > [('energy', 51), ('work', 35), ('force', 29), ('distance', 14), ('power', 11)]
-	TF-IDF> [('energy', 0.18606), ('pendulum', 0.08251), ('work', 0.07874), ('force', 0.07042), ('distance', 0.04794)] 
+Document 7
+	 circle > https://en.wikipedia.org/wiki/Circle
+	 acceleration > https://en.wikipedia.org/wiki/Acceleration
+	 motion > https://en.wikipedia.org/wiki/Motion_(physics)
+	 speed > https://en.wikipedia.org/wiki/Speed#Average_speed
+	 velocity > https://en.wikipedia.org/wiki/Velocity
 
- 10번 째 문서
-	BOW   > [('mass', 39), ('momentum', 22), ('velocity', 12), ('energy', 10), ('time', 6)]
-	TF-IDF> [('momentum', 0.3447), ('mass', 0.31682), ('pendulum', 0.09648), ('velocity', 0.06398), ('energy', 0.05332)] 
+Document 8
+	 acceleration > https://en.wikipedia.org/wiki/Acceleration
+	 gravity > https://en.wikipedia.org/wiki/Gravity
+	 mass > https://en.wikipedia.org/wiki/Mass
+	 force > https://en.wikipedia.org/wiki/Force
+	 ground > https://en.wikipedia.org/wiki/Ground_(electricity)
 
- 11번 째 문서
-	BOW   > [('velocity', 43), ('motion', 25), ('acceleration', 13), ('point', 11), ('time', 8)]
-	TF-IDF> [('velocity', 0.22078), ('motion', 0.13659), ('circle', 0.1207), ('acceleration', 0.11455), ('frequency', 0.05299)] 
+Document 9
+	 energy > https://en.wikipedia.org/wiki/Energy
+	 pendulum > https://en.wikipedia.org/wiki/Pendulum
+	 work > https://en.wikipedia.org/wiki/Work_(thermodynamics)
+	 force > https://en.wikipedia.org/wiki/Force
+	 distance > https://en.wikipedia.org/wiki/Distance
 
- 12번 째 문서
-	BOW   > [('energy', 22), ('inertia', 20), ('torque', 18), ('motion', 17), ('mass', 16)]
-	TF-IDF> [('inertia', 0.36159), ('torque', 0.32543), ('mass', 0.1119), ('energy', 0.10099), ('momentum', 0.09442)] 
+Document 10
+	 momentum > https://en.wikipedia.org/wiki/Momentum#Conservation
+	 mass > https://en.wikipedia.org/wiki/Mass
+	 pendulum > https://en.wikipedia.org/wiki/Pendulum
+	 velocity > https://en.wikipedia.org/wiki/Velocity
+	 energy > https://en.wikipedia.org/wiki/Energy
 
- 13번 째 문서
-	BOW   > [('force', 35), ('stress', 13), ('torque', 9), ('length', 8), ('pressure', 5)]
-	TF-IDF> [('stress', 0.41173), ('torque', 0.24818), ('force', 0.1631), ('statics', 0.09501), ('length', 0.09055)] 
+Document 11
+	 velocity > https://en.wikipedia.org/wiki/Velocity
+	 motion > https://en.wikipedia.org/wiki/Motion_(physics)
+	 circle > https://en.wikipedia.org/wiki/Circle
+	 acceleration > https://en.wikipedia.org/wiki/Acceleration
+	 frequency > https://en.wikipedia.org/wiki/Frequency
 
- 14번 째 문서
-	BOW   > [('pressure', 41), ('force', 26), ('fluid', 20), ('density', 11), ('volume', 8)]
-	TF-IDF> [('pressure', 0.48881), ('fluid', 0.31826), ('density', 0.1618), ('volume', 0.10196), ('force', 0.09371)] 
+Document 12
+	 inertia > https://en.wikipedia.org/wiki/Inertia
+	 torque > https://en.wikipedia.org/wiki/Torque
+	 mass > https://en.wikipedia.org/wiki/Mass
+	 energy > https://en.wikipedia.org/wiki/Energy
+	 momentum > https://en.wikipedia.org/wiki/Momentum#Conservation
 
- 15번 째 문서
-	BOW   > [('fluid', 31), ('energy', 20), ('velocity', 19), ('pressure', 14), ('mass', 13)]
-	TF-IDF> [('fluid', 0.36289), ('density', 0.14066), ('pressure', 0.12279), ('viscosity', 0.11002), ('volume', 0.08438)] 
+Document 13
+	 stress > https://en.wikipedia.org/wiki/Stress_(mechanics)
+	 torque > https://en.wikipedia.org/wiki/Torque
+	 force > https://en.wikipedia.org/wiki/Force
+	 statics > https://en.wikipedia.org/wiki/Statics
+	 length > https://en.wikipedia.org/wiki/Length
 
- 16번 째 문서
-	BOW   > [('motion', 28), ('energy', 19), ('velocity', 14), ('amplitude', 13), ('time', 8)]
-	TF-IDF> [('amplitude', 0.21184), ('motion', 0.16522), ('energy', 0.10536), ('frequency', 0.08012), ('velocity', 0.07763)] 
+Document 14
+	 pressure > https://en.wikipedia.org/wiki/Pressure
+	 fluid > https://en.wikipedia.org/wiki/Fluid
+	 density > https://en.wikipedia.org/wiki/Density
+	 volume > https://en.wikipedia.org/wiki/Volume_(thermodynamics)
+	 force > https://en.wikipedia.org/wiki/Force
 
- 17번 째 문서
-	BOW   > [('wave', 31), ('energy', 13), ('amplitude', 10), ('pulse', 8), ('sound', 7)]
-	TF-IDF> [('wave', 0.37272), ('pulse', 0.21079), ('amplitude', 0.17117), ('crest', 0.11471), ('sound', 0.11075)] 
+Document 15
+	 fluid > https://en.wikipedia.org/wiki/Fluid
+	 density > https://en.wikipedia.org/wiki/Density
+	 pressure > https://en.wikipedia.org/wiki/Pressure
+	 viscosity > https://en.wikipedia.org/wiki/Viscosity
+	 volume > https://en.wikipedia.org/wiki/Volume_(thermodynamics)
 
- 18번 째 문서
-	BOW   > [('sound', 49), ('wave', 23), ('pressure', 8), ('time', 4), ('watt', 4)]
-	TF-IDF> [('sound', 0.78849), ('wave', 0.28126), ('watt', 0.1072), ('pressure', 0.10435), ('decibel', 0.09817)] 
+Document 16
+	 amplitude > https://en.wikipedia.org/wiki/Amplitude
+	 motion > https://en.wikipedia.org/wiki/Motion_(physics)
+	 energy > https://en.wikipedia.org/wiki/Energy
+	 frequency > https://en.wikipedia.org/wiki/Frequency
+	 velocity > https://en.wikipedia.org/wiki/Velocity
 
- 19번 째 문서
-	BOW   > [('wave', 52), ('frequency', 21), ('wavelength', 19), ('length', 9), ('sound', 7)]
-	TF-IDF> [('wave', 0.55939), ('wavelength', 0.24989), ('frequency', 0.22591), ('sound', 0.09909), ('length', 0.07583)] 
+Document 17
+	 wave > https://en.wikipedia.org/wiki/Wave
+	 pulse > https://en.wikipedia.org/wiki/Pulse_(physics)
+	 amplitude > https://en.wikipedia.org/wiki/Amplitude
+	 crest > https://en.wikipedia.org/wiki/Crest_(physics)
+	 sound > https://en.wikipedia.org/wiki/Sound
 
- 20번 째 문서
-	BOW   > [('temperature', 29), ('volume', 25), ('pressure', 15), ('length', 8), ('energy', 5)]
-	TF-IDF> [('temperature', 0.49188), ('volume', 0.36744), ('pressure', 0.20622), ('kelvin', 0.11002), ('length', 0.08076)] 
+Document 18
+	 sound > https://en.wikipedia.org/wiki/Sound
+	 wave > https://en.wikipedia.org/wiki/Wave
+	 watt > https://en.wikipedia.org/wiki/Watt
+	 pressure > https://en.wikipedia.org/wiki/Pressure
+	 decibel > https://en.wikipedia.org/wiki/Decibel
 
- 21번 째 문서
-	BOW   > [('temperature', 28), ('point', 23), ('pressure', 20), ('liquid', 17), ('energy', 12)]
-	TF-IDF> [('temperature', 0.33577), ('liquid', 0.22055), ('pressure', 0.1944), ('kelvin', 0.09334), ('speed', 0.07171)] 
+Document 19
+	 wave > https://en.wikipedia.org/wiki/Wave
+	 wavelength > https://en.wikipedia.org/wiki/Wavelength
+	 frequency > https://en.wikipedia.org/wiki/Frequency
+	 sound > https://en.wikipedia.org/wiki/Sound
+	 length > https://en.wikipedia.org/wiki/Length
 
- 22번 째 문서
-	BOW   > [('heat', 74), ('temperature', 27), ('energy', 20), ('time', 12), ('convection', 8)]
-	TF-IDF> [('heat', 0.46069), ('temperature', 0.28241), ('convection', 0.17016), ('phase', 0.09863), ('radiation', 0.0863)] 
+Document 20
+	 temperature > https://en.wikipedia.org/wiki/Temperature
+	 volume > https://en.wikipedia.org/wiki/Volume_(thermodynamics)
+	 pressure > https://en.wikipedia.org/wiki/Pressure
+	 kelvin > https://en.wikipedia.org/wiki/Kelvin
+	 length > https://en.wikipedia.org/wiki/Length
 
- 23번 째 문서
-	BOW   > [('heat', 37), ('work', 27), ('entropy', 22), ('energy', 17), ('thermodynamics', 14)]
-	TF-IDF> [('entropy', 0.42975), ('heat', 0.21154), ('thermodynamics', 0.15851), ('volume', 0.09988), ('temperature', 0.09606)] 
+Document 21
+	 temperature > https://en.wikipedia.org/wiki/Temperature
+	 liquid > https://en.wikipedia.org/wiki/Liquid
+	 pressure > https://en.wikipedia.org/wiki/Pressure
+	 kelvin > https://en.wikipedia.org/wiki/Kelvin
+	 speed > https://en.wikipedia.org/wiki/Speed#Average_speed
 
- 24번 째 문서
-	BOW   > [('heat', 64), ('engine', 51), ('temperature', 29), ('work', 20), ('energy', 7)]
-	TF-IDF> [('engine', 0.97145), ('heat', 0.35681), ('temperature', 0.27164), ('work', 0.04253), ('volume', 0.04058)] 
+Document 22
+	 heat > https://en.wikipedia.org/wiki/Heat
+	 temperature > https://en.wikipedia.org/wiki/Temperature
+	 convection > https://en.wikipedia.org/wiki/Convection
+	 phase > https://en.wikipedia.org/wiki/Phase_(waves)
+	 radiation > https://en.wikipedia.org/wiki/Radiation
 
- 25번 째 문서
-	BOW   > [('force', 12), ('coulomb', 7), ('distance', 5), ('electricity', 4), ('ground', 4)]
-	TF-IDF> [('coulomb', 0.34891), ('electron', 0.14953), ('atom', 0.13587), ('force', 0.11298), ('ground', 0.09148)] 
+Document 23
+	 entropy > https://en.wikipedia.org/wiki/Entropy
+	 heat > https://en.wikipedia.org/wiki/Heat
+	 thermodynamics > https://en.wikipedia.org/wiki/Thermodynamics
+	 volume > https://en.wikipedia.org/wiki/Volume_(thermodynamics)
+	 temperature > https://en.wikipedia.org/wiki/Temperature
 
- 26번 째 문서
-	BOW   > [('force', 13), ('point', 9), ('coulomb', 7), ('time', 2), ('physics', 2)]
-	TF-IDF> [('coulomb', 0.34193), ('force', 0.11995), ('density', 0.07531), ('point', 0.04919), ('capacitor', 0.04438)] 
+Document 24
+	 engine > https://en.wikipedia.org/wiki/Engine
+	 heat > https://en.wikipedia.org/wiki/Heat
+	 temperature > https://en.wikipedia.org/wiki/Temperature
+	 work > https://en.wikipedia.org/wiki/Work_(thermodynamics)
+	 volume > https://en.wikipedia.org/wiki/Volume_(thermodynamics)
 
- 27번 째 문서
-	BOW   > [('energy', 37), ('capacitor', 28), ('voltage', 19), ('point', 16), ('capacitance', 13)]
-	TF-IDF> [('capacitor', 0.36987), ('capacitance', 0.24263), ('voltage', 0.19783), ('energy', 0.15266), ('dielectric', 0.09116)] 
+Document 25
+	 coulomb > https://en.wikipedia.org/wiki/Coulomb
+	 electron > https://en.wikipedia.org/wiki/Electron
+	 atom > https://en.wikipedia.org/wiki/Atom
+	 force > https://en.wikipedia.org/wiki/Force
+	 electricity > https://en.wikipedia.org/wiki/Electricity
 
- 28번 째 문서
-	BOW   > [('voltage', 19), ('power', 13), ('energy', 11), ('light', 9), ('battery', 9)]
-	TF-IDF> [('voltage', 0.32583), ('ohm', 0.16761), ('battery', 0.16612), ('power', 0.08834), ('light', 0.08279)] 
+Document 26
+	 coulomb > https://en.wikipedia.org/wiki/Coulomb
+	 force > https://en.wikipedia.org/wiki/Force
+	 density > https://en.wikipedia.org/wiki/Density
+	 point > https://en.wikipedia.org/wiki/Point_(geometry)
+	 electromagnetism > https://en.wikipedia.org/wiki/Electromagnetism
 
- 29번 째 문서
-	BOW   > [('voltage', 36), ('battery', 21), ('energy', 10), ('light', 10), ('power', 8)]
-	TF-IDF> [('voltage', 0.56731), ('battery', 0.35619), ('ohm', 0.15402), ('resistor', 0.09996), ('light', 0.08453)] 
+Document 27
+	 capacitor > https://en.wikipedia.org/wiki/Capacitor
+	 capacitance > https://en.wikipedia.org/wiki/Capacitance
+	 voltage > https://en.wikipedia.org/wiki/Voltage
+	 energy > https://en.wikipedia.org/wiki/Energy
+	 dielectric > https://en.wikipedia.org/wiki/Dielectric
 
- 30번 째 문서
-	BOW   > [('resistor', 43), ('ohm', 39), ('voltage', 35), ('voltmeter', 6), ('light', 4)]
-	TF-IDF> [('resistor', 0.64915), ('ohm', 0.64797), ('voltage', 0.41648), ('voltmeter', 0.15627), ('ammeter', 0.07814)] 
+Document 28
+	 voltage > https://en.wikipedia.org/wiki/Voltage
+	 ohm > https://en.wikipedia.org/wiki/Ohm
+	 battery > https://en.wikipedia.org/wiki/Battery_(electricity)
+	 power > https://en.wikipedia.org/wiki/Power_(physics)
+	 light > https://en.wikipedia.org/wiki/Light
 
- 31번 째 문서
-	BOW   > [('voltage', 27), ('capacitor', 20), ('battery', 14), ('resistor', 11), ('capacitance', 11)]
-	TF-IDF> [('voltage', 0.41795), ('capacitor', 0.39278), ('capacitance', 0.30523), ('battery', 0.23326), ('resistor', 0.21603)] 
+Document 29
+	 voltage > https://en.wikipedia.org/wiki/Voltage
+	 battery > https://en.wikipedia.org/wiki/Battery_(electricity)
+	 ohm > https://en.wikipedia.org/wiki/Ohm
+	 resistor > https://en.wikipedia.org/wiki/Resistor
+	 light > https://en.wikipedia.org/wiki/Light
 
- 32번 째 문서
-	BOW   > [('force', 33), ('point', 8), ('time', 5), ('velocity', 5), ('length', 4)]
-	TF-IDF> [('force', 0.19772), ('radiation', 0.11528), ('vector', 0.10636), ('magnetism', 0.10581), ('tesla', 0.08144)] 
+Document 30
+	 resistor > https://en.wikipedia.org/wiki/Resistor
+	 ohm > https://en.wikipedia.org/wiki/Ohm
+	 voltage > https://en.wikipedia.org/wiki/Voltage
+	 voltmeter > https://en.wikipedia.org/wiki/Voltmeter
+	 ammeter > https://en.wikipedia.org/wiki/Ammeter
 
- 33번 째 문서
-	BOW   > [('circle', 16), ('point', 11), ('integral', 9), ('force', 9), ('ampere', 3)]
-	TF-IDF> [('circle', 0.45902), ('integral', 0.23866), ('ampere', 0.09377), ('torque', 0.0769), ('force', 0.05848)] 
+Document 31
+	 voltage > https://en.wikipedia.org/wiki/Voltage
+	 capacitor > https://en.wikipedia.org/wiki/Capacitor
+	 capacitance > https://en.wikipedia.org/wiki/Capacitance
+	 battery > https://en.wikipedia.org/wiki/Battery_(electricity)
+	 resistor > https://en.wikipedia.org/wiki/Resistor
 
- 34번 째 문서
-	BOW   > [('flux', 27), ('time', 12), ('point', 5), ('length', 3), ('velocity', 2)]
-	TF-IDF> [('flux', 1.13695), ('electromagnet', 0.06601), ('length', 0.05796), ('drag', 0.05406), ('magnetism', 0.03512)] 
+Document 32
+	 force > https://en.wikipedia.org/wiki/Force
+	 radiation > https://en.wikipedia.org/wiki/Radiation
+	 vector > https://en.wikipedia.org/wiki/Vector_(mathematics_and_physics)
+	 magnetism > https://en.wikipedia.org/wiki/Magnetism
+	 tesla > https://en.wikipedia.org/wiki/Tesla_(unit)
 
- 35번 째 문서
-	BOW   > [('voltage', 23), ('power', 16), ('electricity', 12), ('time', 10), ('velocity', 7)]
-	TF-IDF> [('voltage', 0.40232), ('transformer', 0.15315), ('electricity', 0.13447), ('inductance', 0.12542), ('flux', 0.12212)] 
+Document 33
+	 circle > https://en.wikipedia.org/wiki/Circle
+	 integral > https://en.wikipedia.org/wiki/Integral
+	 ampere > https://en.wikipedia.org/wiki/Ampere
+	 torque > https://en.wikipedia.org/wiki/Torque
+	 force > https://en.wikipedia.org/wiki/Force
 
- 36번 째 문서
-	BOW   > [('voltage', 48), ('time', 18), ('inductor', 14), ('power', 8), ('inductance', 7)]
-	TF-IDF> [('voltage', 0.57508), ('inductor', 0.36713), ('inductance', 0.15033), ('flux', 0.10037), ('battery', 0.07737)] 
+Document 34
+	 flux > https://en.wikipedia.org/wiki/Flux
+	 electromagnet > https://en.wikipedia.org/wiki/Electromagnet
+	 length > https://en.wikipedia.org/wiki/Length
+	 drag > https://en.wikipedia.org/wiki/Drag_(physics)
+	 magnetism > https://en.wikipedia.org/wiki/Magnetism
 
- 37번 째 문서
-	BOW   > [('energy', 19), ('wave', 17), ('flux', 13), ('space', 11), ('speed', 9)]
-	TF-IDF> [('flux', 0.22203), ('wave', 0.17009), ('permittivity', 0.13156), ('density', 0.10533), ('energy', 0.0921)] 
+Document 35
+	 voltage > https://en.wikipedia.org/wiki/Voltage
+	 transformer > https://en.wikipedia.org/wiki/Transformer
+	 electricity > https://en.wikipedia.org/wiki/Electricity
+	 inductance > https://en.wikipedia.org/wiki/Inductance
+	 flux > https://en.wikipedia.org/wiki/Flux
 
- 38번 째 문서
-	BOW   > [('light', 34), ('point', 17), ('refraction', 17), ('distance', 12), ('length', 8)]
-	TF-IDF> [('refraction', 0.52258), ('light', 0.31276), ('reflection', 0.11972), ('length', 0.08789), ('distance', 0.07654)] 
+Document 36
+	 voltage > https://en.wikipedia.org/wiki/Voltage
+	 inductor > https://en.wikipedia.org/wiki/Inductor
+	 inductance > https://en.wikipedia.org/wiki/Inductance
+	 flux > https://en.wikipedia.org/wiki/Flux
+	 battery > https://en.wikipedia.org/wiki/Battery_(electricity)
 
- 39번 째 문서
-	BOW   > [('light', 43), ('wave', 32), ('diffraction', 12), ('wavelength', 12), ('interference', 9)]
-	TF-IDF> [('wave', 0.31359), ('light', 0.27634), ('diffraction', 0.20074), ('interference', 0.15056), ('wavelength', 0.14377)] 
+Document 37
+	 flux > https://en.wikipedia.org/wiki/Flux
+	 wave > https://en.wikipedia.org/wiki/Wave
+	 permittivity > https://en.wikipedia.org/wiki/Permittivity
+	 density > https://en.wikipedia.org/wiki/Density
+	 energy > https://en.wikipedia.org/wiki/Energy
 
- 40번 째 문서
-	BOW   > [('light', 62), ('wave', 14), ('interference', 13), ('diffraction', 7), ('wavelength', 5)]
-	TF-IDF> [('light', 0.44407), ('interference', 0.24237), ('wave', 0.1529), ('diffraction', 0.13051), ('phase', 0.0847)] 
+Document 38
+	 refraction > https://en.wikipedia.org/wiki/Refraction
+	 light > https://en.wikipedia.org/wiki/Light
+	 reflection > https://en.wikipedia.org/wiki/Reflection_(physics)
+	 length > https://en.wikipedia.org/wiki/Length
+	 distance > https://en.wikipedia.org/wiki/Distance
 
- 41번 째 문서
-	BOW   > [('light', 23), ('point', 11), ('distance', 7), ('length', 5), ('power', 5)]
-	TF-IDF> [('light', 0.28774), ('focus', 0.16282), ('diffraction', 0.09769), ('wave', 0.07631), ('length', 0.07471)] 
+Document 39
+	 wave > https://en.wikipedia.org/wiki/Wave
+	 light > https://en.wikipedia.org/wiki/Light
+	 diffraction > https://en.wikipedia.org/wiki/Diffraction
+	 interference > https://en.wikipedia.org/wiki/Interference_(wave_propagation)
+	 wavelength > https://en.wikipedia.org/wiki/Wavelength
 
- 42번 째 문서
-	BOW   > [('light', 39), ('time', 27), ('speed', 26), ('length', 11), ('distance', 10)]
-	TF-IDF> [('light', 0.25589), ('speed', 0.17059), ('length', 0.0862), ('spacetime', 0.05355), ('distance', 0.0455)] 
+Document 40
+	 light > https://en.wikipedia.org/wiki/Light
+	 interference > https://en.wikipedia.org/wiki/Interference_(wave_propagation)
+	 wave > https://en.wikipedia.org/wiki/Wave
+	 diffraction > https://en.wikipedia.org/wiki/Diffraction
+	 phase > https://en.wikipedia.org/wiki/Phase_(waves)
 
- 43번 째 문서
-	BOW   > [('light', 37), ('energy', 32), ('wave', 16), ('frequency', 15), ('photon', 8)]
-	TF-IDF> [('light', 0.21168), ('photon', 0.15295), ('wave', 0.13958), ('energy', 0.13525), ('frequency', 0.13086)] 
+Document 41
+	 light > https://en.wikipedia.org/wiki/Light
+	 focus > https://en.wikipedia.org/wiki/Focus_(optics)
+	 diffraction > https://en.wikipedia.org/wiki/Diffraction
+	 wave > https://en.wikipedia.org/wiki/Wave
+	 length > https://en.wikipedia.org/wiki/Length
 
- 44번 째 문서
-	BOW   > [('electron', 24), ('wave', 16), ('momentum', 16), ('wavelength', 14), ('quantum', 14)]
-	TF-IDF> [('electron', 0.35525), ('quantum', 0.23164), ('probability', 0.21509), ('momentum', 0.19752), ('wavelength', 0.14842)] 
+Document 42
+	 light > https://en.wikipedia.org/wiki/Light
+	 speed > https://en.wikipedia.org/wiki/Speed#Average_speed
+	 length > https://en.wikipedia.org/wiki/Length
+	 spacetime > https://en.wikipedia.org/wiki/Spacetime
+	 distance > https://en.wikipedia.org/wiki/Distance
 
- 45번 째 문서
-	BOW   > [('mass', 35), ('energy', 23), ('atom', 13), ('force', 13), ('power', 7)]
-	TF-IDF> [('mass', 0.29808), ('atom', 0.23266), ('energy', 0.12857), ('proton', 0.12643), ('electron', 0.09848)] 
+Document 43
+	 light > https://en.wikipedia.org/wiki/Light
+	 photon > https://en.wikipedia.org/wiki/Photon
+	 wave > https://en.wikipedia.org/wiki/Wave
+	 energy > https://en.wikipedia.org/wiki/Energy
+	 frequency > https://en.wikipedia.org/wiki/Frequency
 
- 46번 째 문서
-	BOW   > [('universe', 23), ('light', 21), ('matter', 9), ('radiation', 9), ('energy', 8)]
-	TF-IDF> [('universe', 0.30756), ('radiation', 0.16371), ('light', 0.16151), ('redshift', 0.15691), ('plasma', 0.12553)] 
+Document 44
+	 electron > https://en.wikipedia.org/wiki/Electron
+	 quantum > https://en.wikipedia.org/wiki/Quantum
+	 probability > https://en.wikipedia.org/wiki/Probability
+	 momentum > https://en.wikipedia.org/wiki/Momentum#Conservation
+	 wavelength > https://en.wikipedia.org/wiki/Wavelength
+
+Document 45
+	 mass > https://en.wikipedia.org/wiki/Mass
+	 atom > https://en.wikipedia.org/wiki/Atom
+	 energy > https://en.wikipedia.org/wiki/Energy
+	 proton > https://en.wikipedia.org/wiki/Proton
+	 electron > https://en.wikipedia.org/wiki/Electron
+
+Document 46
+	 universe > https://en.wikipedia.org/wiki/Universe
+	 radiation > https://en.wikipedia.org/wiki/Radiation
+	 light > https://en.wikipedia.org/wiki/Light
+	 redshift > https://en.wikipedia.org/wiki/Redshift
+	 plasma > https://en.wikipedia.org/wiki/Plasma_(physics)
