@@ -1,6 +1,3 @@
-from bs4 import BeautifulSoup
-import requests
-
 """
 NOTE - progress
 17-08-16 23:30
@@ -21,14 +18,11 @@ NOTE - progress
     3. 위키피디아기반 Physics의 컨셉들(컨셉리스트)에 존재하는 합성어(e.g. newton's laws of motion) 처리:
        문서별 추출된 컨셉(k개)에 대하여, 위키피디아 정보(or 유튜브 강의) 추천할 때 사용
        (위 컨셉리스트에 존재하는 개념들은 모두 위키피디아 URL 정보를 가지고 있으므로)
-    4. Mapping 클래스의 결과물인 딕셔너리를 Concept Extraction 파트에서 활용-> Tokenzie() in conceptExtracton.py
-    
+    4. Mapping 클래스의 결과물인 딕셔너리를 Concept Extraction 파트에서 활용-> Tokenzie() in conceptExtracton.py"""
+#############################################################################################################################
 
-@ In progress/ 아이디어 및 계획
-    1. Word2Vec/Clustering/ LSA(유튜브강의 추천) 시도
-    2. 시각화
-    3. 각 강의별 컨셉맵+ "전체 컨셉맵"?
-"""
+from bs4 import BeautifulSoup
+import requests
 
 class Mapping:
     """
