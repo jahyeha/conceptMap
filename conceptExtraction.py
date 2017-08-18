@@ -224,6 +224,7 @@ def main():
     ### 1. Result of BOW(Bag of Words) /before applying TF-IDF ###
     num_topic = 5
     dictSet = Cextract.create_dictSet()
+    print(dictSet)
     sorted_dictSet = [sorted(dic.items(), key=operator.itemgetter(1), reverse=True) for dic in dictSet]
     BOW_result = [dic[:num_topic] for dic in sorted_dictSet]
     # print(BOW_result)

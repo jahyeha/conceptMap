@@ -1,6 +1,7 @@
 #import ExtractConcept as EX
 import conceptExtraction as CE
 import conceptMapping as CM
+
 import DefineDistanceByConcept as DD
 import GetWikiFeature as GF
 
@@ -16,11 +17,11 @@ def main():
     #######################################################
 
     """e.g. of Result    ## 46개 문서(강의)에 대하여 각각 5개씩 뽑힌 컨셉리스트 입니다. ##
-    [['acceleration', 'velocity', 'displacement', 'motion', 'light'], 
-    ['derivative', 'velocity', 'calculus', 'acceleration', 'power'], 
-    ['integral', 'derivative', 'acceleration', 'velocity', 'displacement'], 
-    ['vector', 'machine', 'velocity', 'dimension', 'motion'], 
-    ['force', 'gravity', 'acceleration', 'mass', 'inertia'], 
+    [['acceleration', 'velocity', 'displacement', 'motion', 'light'],
+    ['derivative', 'velocity', 'calculus', 'acceleration', 'power'],
+    ['integral', 'derivative', 'acceleration', 'velocity', 'displacement'],
+    ['vector', 'machine', 'velocity', 'dimension', 'motion'],
+    ['force', 'gravity', 'acceleration', 'mass', 'inertia'],
     ......
     ['universe', 'radiation', 'light', 'redshift', 'plasma']]
     """

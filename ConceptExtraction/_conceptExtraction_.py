@@ -9,15 +9,13 @@ import nltk
 #nltk.download('popular')
 import operator
 from nltk.corpus import stopwords
-from nltk.corpus import words
 from nltk.tokenize import RegexpTokenizer
-import pandas as pd
 
 from ConceptExtraction import conceptMapping
 
 class Preprocessor:
     """
-    @Document preprocessing for computing TF-IDF
+    @"Document Preprocessing" for Concept Extraction
         1. Get all video URLs& IDs from an Education YouTube Channel(for Physics).
         2. Crawl and parse all video subtitles(documents).
         3. Clean up the documents by tokenizing, stemming& removing stop words.
@@ -105,7 +103,26 @@ class Preprocessor:
         return filtered_bowSet
 
 
-class ComputeTfIdf:
+class ConceptExtraction: #ConputeTfIdf->ConceptExtraction
+    def __init__(self, bow_set):
+        self.bowSet = bow_set
+
+    def get_Concepts(self, tfidf, num_concept):
+        #input: tfidf(the result of run_TfIdf)
+        candidate_set = []
+
+        for dic in tfidf:
+            candidate = {}
+            temp = []
+            for word, val in dic.items():
+                if dic[word] == 0:
+                    temp.append(word)
+                else:
+                    candidate[word] = val
+            candidate = sorted(candidate.items(), key=operator.itemgetter(1), reverse=True)
+            candidate_set.append(candidate[:num_concept])
+        return candidate_set
+    ################################################################################
     """
     @Computing TF-IDF
         1. Get ready to compute tf-idf
@@ -115,10 +132,6 @@ class ComputeTfIdf:
           2-1) Compute tf(w) = (Number of times the word appears in a document) / (Total number of words in the document)
           2-2) Compute idf(w) = log(Number of documents / Number of documents that contain word w)
     """
-
-    def __init__(self, bow_set):
-        self.bowSet = bow_set
-
     def run_TfIdf(self):
         dict_set = self.create_dictSet()
         tf = self.compute_Tf(dict_set, self.bowSet)
@@ -180,22 +193,7 @@ class ComputeTfIdf:
             tfidf_set.append(tfidf)
         return tfidf_set
 
-def extract_Concept(tfidf, num_concept):
-    candidate_set = []
-    meaningless_wordset = []
-
-    for dic in tfidf:
-        candidate = {}
-        temp = []
-        for word, val in dic.items():
-            if dic[word] == 0:
-                temp.append(word)
-            else:
-                candidate[word] = val
-        candidate = sorted(candidate.items(), key=operator.itemgetter(1), reverse=True)
-        candidate_set.append(candidate[:num_concept])
-    return candidate_set
-
+    ######################################################
 
 def main():
     ## Import 'conceptMapping' Class(module) to get my Physics dictionary
@@ -211,20 +209,21 @@ def main():
     ## Result of my first class(Preprocessor)
     bowSet = Pre.get_result()
 
-    Tfidf = ComputeTfIdf(bowSet)
-    ## 1. Result of BOW(Bag of Words) /before applying TF-IDF
+    Tfidf = ConceptExtraction(bowSet)
+    ### 1. Result of BOW(Bag of Words) /before applying TF-IDF ###
     num_topic = 5
     dictSet = Tfidf.create_dictSet()
     sorted_dictSet = [sorted(dic.items(), key=operator.itemgetter(1), reverse=True) for dic in dictSet]
     BOW_result = [dic[:num_topic] for dic in sorted_dictSet]
+    #print(BOW_result)
 
-    ## 2. Result of applying TF-IDF
+    ### 2. Result of applying TF-IDF ###
     Tfidf_dicSet = Tfidf.run_TfIdf()
-    Tfidf_result = extract_Concept(Tfidf_dicSet, num_topic)
+    Tfidf_result = Tfidf.get_Concepts(Tfidf_dicSet, num_topic)
     #print(Tfidf_result)
     #[[('concept1 of first doc', weight),('concept2', weight)..,[('concept1 of second doc', weight)..],..]
 
-
+    print(Tfidf_result)
 
     ################### TEST ###################
     """
