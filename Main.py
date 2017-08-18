@@ -1,37 +1,35 @@
-import ExtractConcept as EX
+#import ExtractConcept as EX
+import conceptExtraction as CE
 import DefineDistanceByConcept as DD
 import GetWikiFeature as GF
 
 
 def main():
-    #input
-    video_id = "bxe2T-V8XRs"
-    video_list_id = "PLiaHhY2iBX9hdHaRr6b7XevZtgZRa1PoU"
+    ##################Concept Extraction##################
+    playlistURL = 'https://www.youtube.com/playlist?list=PL8dPuuaLjXtN0ge7yDk_UA0ldZJdhwkoV'
+    c_extraction = CE.ConceptExtraction(playlistURL)
 
-    #instance
-    extractConcept = EX.ExtractConcept()
+    num_topic = 5
+    Result = c_extraction.get_Concepts(num_topic)
+    #print(Result)
+    #######################################################
+
+    """e.g. of Result    ## 46개 문서(강의)에 대하여 각각 5개씩 뽑힌 컨셉리스트 입니다. ##
+    [['acceleration', 'velocity', 'displacement', 'motion', 'light'], 
+    ['derivative', 'velocity', 'calculus', 'acceleration', 'power'], 
+    ['integral', 'derivative', 'acceleration', 'velocity', 'displacement'], 
+    ['vector', 'machine', 'velocity', 'dimension', 'motion'], 
+    ['force', 'gravity', 'acceleration', 'mass', 'inertia'], 
+    ......
+    ['universe', 'radiation', 'light', 'redshift', 'plasma']]
+    """
+    ######################################################
+
     defineConcept = DD.DefineDistance()
-
-    #concept = extractConcept.getConcept(video_list_id)
-    #print(concept)
-
-    #tmpt concept
-    concept = [
-    'Machine_learning',
-    'Supervised_learning',
-    'Linear_regression',
-    'Classification',
-    # 'Statistical_classification',
-    # 'Artificial_neural_network',
-    # 'Neuron',
-    # 'Layered_hidden_Markov_model',
-    # 'Deep_learning',
-    # 'Synapse',
-    # 'Activation_function',
-    # 'Sigmoid_function'
-    ]
-
-    conceptRelation = defineConcept.getConceptRelation2(concept)
+    #### NOTE ####
+    #### 임시로 밑에 getConceptRelation2 파라미터-> Result[1]으로 해놓았습니다.
+    #### Result[doc_num]   0 <= doc_num < 47
+    conceptRelation = defineConcept.getConceptRelation2(Result[1])
     print(conceptRelation)
 
 

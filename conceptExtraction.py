@@ -26,11 +26,9 @@ class Preprocessor:
 
     def __init__(self, playlist_url):
         self.playlist_url = playlist_url
-
         ## Import 'conceptMapping' Class(module) to get my Physics dictionary
         self.Cmap = conceptMapping.Mapping()
         self.physicsDict = self.Cmap.make_compelteDict()
-
         # this list below contains all possible topics(concepts) of Physics based on Wikipedia
         self.physicsConcepts = list(self.physicsDict.keys())
 
@@ -113,23 +111,37 @@ class ConceptExtraction:  # ConputeTfIdf->ConceptExtraction
     def __init__(self, playlist_url):
         self.Pre = Preprocessor(playlist_url)
         self.bowSet = self.Pre.get_result()
+        self.Tfidf_result = self.run_TfIdf()
 
-    def get_Concepts(self, tfidf, num_concept):
+    def get_Concepts(self, num_concept):
         # input: tfidf(the result of run_TfIdf)
         candidate_set = []
+        tfidf = self.Tfidf_result
 
         for dic in tfidf:
             candidate = {}
-            temp = []
             for word, val in dic.items():
-                if dic[word] == 0:
-                    temp.append(word)
-                else:
+                if dic[word] != 0:
                     candidate[word] = val
             candidate = sorted(candidate.items(), key=operator.itemgetter(1), reverse=True)
             candidate_set.append(candidate[:num_concept])
-        return candidate_set
 
+        """candidate_set  => CONCEPT NAME with its WEIGHT
+        [[('acceleration', 0.2855), ('velocity', 0.15526), ('displacement', 0.15062), ('motion', 0.0354),
+          ('light', 0.03002)],
+         [('derivative', 0.54908), ('velocity', 0.12148), ('calculus', 0.11439), ('acceleration', 0.11037),
+          ('power', 0.05717)],
+         [('integral', 0.41838), ('derivative', 0.26713), ('acceleration', 0.23131), ('velocity', 0.11552),
+          ('displacement', 0.0523)]..]
+        """
+        #### ONLY GET CONCEPT NAMES without their weights ####
+        RESULT = []
+        for lst in candidate_set:
+            temp = []
+            for word in lst:
+                temp.append(word[0])
+            RESULT.append(temp)
+        return RESULT
     ################################################################################
     """
     @Computing TF-IDF
@@ -217,12 +229,9 @@ def main():
     # print(BOW_result)
 
     ### 2. Result of applying TF-IDF ###
-    Tfidf_dicSet = Cextract.run_TfIdf()
-    Tfidf_result = Cextract.get_Concepts(Tfidf_dicSet, num_topic)
-    # print(Tfidf_result)
+    Tfidf_result = Cextract.get_Concepts(num_topic)
     # [[('concept1 of first doc', weight),('concept2', weight)..,[('concept1 of second doc', weight)..],..]
-    print(Tfidf_dicSet, '\n')
-    print(Tfidf_result)
+    print(Tfidf_result, '\n')
 
     ################### TEST ###################
     """
