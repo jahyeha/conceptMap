@@ -1,5 +1,6 @@
 #import ExtractConcept as EX
 import conceptExtraction as CE
+import conceptMapping as CM
 import DefineDistanceByConcept as DD
 import GetWikiFeature as GF
 
@@ -23,20 +24,36 @@ def main():
     ......
     ['universe', 'radiation', 'light', 'redshift', 'plasma']]
     """
-    ######################################################
+
+    ##################Concept Mapping##################
+    """
+    NOTE (e.g.)
+    Input(concept) : 'inertia'
+    Output(URL) : https://en.wikipedia.org/wiki/Inertia
+    """
+    Cmap = CM.Mapping()
+
+    ##TEST##
+    print('[첫 번째 문서(강의)에 대한 컨셉-위키피디아 URL 매핑 결과]')
+    for concept in Result[0]:
+        URL = Cmap.maping_Concept2Wiki(concept)
+        print('\t{}의 위키피디아 URL> '.format(concept), URL)
+        
+    ###################################################
+
 
     defineConcept = DD.DefineDistance()
     #### NOTE ####
     #### 임시로 밑에 getConceptRelation2 파라미터-> Result[1]으로 해놓았습니다.
     #### Result[doc_num]   0 <= doc_num < 47
     conceptRelation = defineConcept.getConceptRelation2(Result[1])
-    print(conceptRelation)
+    #print(conceptRelation)
 
 
     def testFeature(concept):
         for c in concept:
             c = c.replace("/wiki/", "")
-            print(c)
+            #print(c)
             feature = GF.GetWikiFeature(c)
 
             feature.getCategoriesdegree()
