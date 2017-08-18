@@ -6,18 +6,16 @@ import requests
 import re
 import math
 import nltk
-#nltk.download('popular')
+# nltk.download('popular')
 import operator
 from nltk.corpus import stopwords
-from nltk.corpus import words
 from nltk.tokenize import RegexpTokenizer
-import pandas as pd
-
 from ConceptExtraction import conceptMapping
+
 
 class Preprocessor:
     """
-    @Document preprocessing for computing TF-IDF
+    @"Document Preprocessing" for Concept Extraction
         1. Get all video URLs& IDs from an Education YouTube Channel(for Physics).
         2. Crawl and parse all video subtitles(documents).
         3. Clean up the documents by tokenizing, stemming& removing stop words.
@@ -26,16 +24,22 @@ class Preprocessor:
             but to precisely distinguish which word is meaningful concept for Physics.
     """
 
-    def __init__(self, playlist_url, glossary_physics):
+    def __init__(self, playlist_url):
         self.playlist_url = playlist_url
-        self.physics_WordList = glossary_physics
+
+        ## Import 'conceptMapping' Class(module) to get my Physics dictionary
+        self.Cmap = conceptMapping.Mapping()
+        self.physicsDict = self.Cmap.make_compelteDict()
+
+        # this list below contains all possible topics(concepts) of Physics based on Wikipedia
+        self.physicsConcepts = list(self.physicsDict.keys())
 
     def get_result(self):
         playlist_url = self.playlist_url
         URLs = self.get_all_URLs()
         video_IDs = self.get_videoIDs(URLs)
         doc_set = self.get_documents(video_IDs)
-        bow_set = self.tokenize(doc_set, self.physics_WordList)
+        bow_set = self.tokenize(doc_set, self.physicsConcepts)
         return bow_set
     ###########################################################
 
@@ -69,7 +73,7 @@ class Preprocessor:
 
     def get_documents(self, videoIDs):
         doc_set = []
-        #Importing & cleaning my documents
+        # Importing & cleaning my documents
         for ID in videoIDs:
             video_sub_url = 'http://video.google.com/timedtext?lang=en&v=' + ID
             page = requests.get(video_sub_url)
@@ -80,11 +84,11 @@ class Preprocessor:
         return doc_set
 
     def tokenize(self, docSet, conceptLst):
-        #Tokenizing& removing stopwords
+        # Tokenizing& removing stopwords
         tokenizer = RegexpTokenizer(r'\w+')
         bow_set = []
         stop = set(stopwords.words('english'))
-        #(X) all_eng_words = words.words()
+        # (X) all_eng_words = words.words()
 
         physics_glossary = conceptLst
 
@@ -93,8 +97,8 @@ class Preprocessor:
             stopped_tokens = [i for i in tokens if not i in stop and len(i) > 1]
             bow_set.append(stopped_tokens)
 
-        #(X) Applying POS tagging to extract all Nouns & Checking English spelling
-        #(X) tagged = [nltk.pos_tag(bow) for bow in bow_set]
+        # (X) Applying POS tagging to extract all Nouns & Checking English spelling
+        # (X) tagged = [nltk.pos_tag(bow) for bow in bow_set]
         filtered_bowSet = []
         for lst in bow_set:
             temp = []
@@ -105,7 +109,28 @@ class Preprocessor:
         return filtered_bowSet
 
 
-class ComputeTfIdf:
+class ConceptExtraction:  # ConputeTfIdf->ConceptExtraction
+    def __init__(self, playlist_url):
+        self.Pre = Preprocessor(playlist_url)
+        self.bowSet = self.Pre.get_result()
+
+    def get_Concepts(self, tfidf, num_concept):
+        # input: tfidf(the result of run_TfIdf)
+        candidate_set = []
+
+        for dic in tfidf:
+            candidate = {}
+            temp = []
+            for word, val in dic.items():
+                if dic[word] == 0:
+                    temp.append(word)
+                else:
+                    candidate[word] = val
+            candidate = sorted(candidate.items(), key=operator.itemgetter(1), reverse=True)
+            candidate_set.append(candidate[:num_concept])
+        return candidate_set
+
+    ################################################################################
     """
     @Computing TF-IDF
         1. Get ready to compute tf-idf
@@ -115,9 +140,6 @@ class ComputeTfIdf:
           2-1) Compute tf(w) = (Number of times the word appears in a document) / (Total number of words in the document)
           2-2) Compute idf(w) = log(Number of documents / Number of documents that contain word w)
     """
-
-    def __init__(self, bow_set):
-        self.bowSet = bow_set
 
     def run_TfIdf(self):
         dict_set = self.create_dictSet()
@@ -131,7 +153,7 @@ class ComputeTfIdf:
         for bow in self.bowSet:
             all_words += bow
         word_set = set(all_words)
-        #print('\nword_set>\n\t', word_set)
+        # print('\nword_set>\n\t', word_set)
 
         dict_set = []
         for i in range(len(self.bowSet)):
@@ -159,13 +181,13 @@ class ComputeTfIdf:
         N = len(dictSet)
         idf_dict = dict.fromkeys(dictSet[0].keys(), 0)
 
-        #Computing df
+        # Computing df
         for wordDict in dictSet:
             for word, val in wordDict.items():
                 if val > 0:
                     idf_dict[word] += 1
 
-        #Computing idf
+        # Computing idf
         for word, val in idf_dict.items():
             idf_dict[word] = math.log(N / float(val))
         return idf_dict
@@ -179,57 +201,33 @@ class ComputeTfIdf:
                 tfidf[word] = round(result, 5)
             tfidf_set.append(tfidf)
         return tfidf_set
-
-def extract_Concept(tfidf, num_concept):
-    candidate_set = []
-    meaningless_wordset = []
-
-    for dic in tfidf:
-        candidate = {}
-        temp = []
-        for word, val in dic.items():
-            if dic[word] == 0:
-                temp.append(word)
-            else:
-                candidate[word] = val
-        candidate = sorted(candidate.items(), key=operator.itemgetter(1), reverse=True)
-        candidate_set.append(candidate[:num_concept])
-    return candidate_set
+        ######################################################
 
 
 def main():
-    ## Import 'conceptMapping' Class(module) to get my Physics dictionary
-    Cmap = conceptMapping.Mapping()
-    physicsDict = Cmap.make_compelteDict()
-    #print(physicsDict)
-    #this list below contains all possible topics(concepts) of Physics based on Wikipedia
-    physicsConcepts = list(physicsDict.keys())
-
     ############### Get the result ###############
     playlistURL = 'https://www.youtube.com/playlist?list=PL8dPuuaLjXtN0ge7yDk_UA0ldZJdhwkoV'
-    Pre = Preprocessor(playlistURL, physicsConcepts)
-    ## Result of my first class(Preprocessor)
-    bowSet = Pre.get_result()
+    Cextract = ConceptExtraction(playlistURL)  # OBJECT
 
-    Tfidf = ComputeTfIdf(bowSet)
-    ## 1. Result of BOW(Bag of Words) /before applying TF-IDF
+    ### 1. Result of BOW(Bag of Words) /before applying TF-IDF ###
     num_topic = 5
-    dictSet = Tfidf.create_dictSet()
+    dictSet = Cextract.create_dictSet()
     sorted_dictSet = [sorted(dic.items(), key=operator.itemgetter(1), reverse=True) for dic in dictSet]
     BOW_result = [dic[:num_topic] for dic in sorted_dictSet]
+    # print(BOW_result)
 
-    ## 2. Result of applying TF-IDF
-    Tfidf_dicSet = Tfidf.run_TfIdf()
-    Tfidf_result = extract_Concept(Tfidf_dicSet, num_topic)
-    #print(Tfidf_result)
-    #[[('concept1 of first doc', weight),('concept2', weight)..,[('concept1 of second doc', weight)..],..]
-
-
+    ### 2. Result of applying TF-IDF ###
+    Tfidf_dicSet = Cextract.run_TfIdf()
+    Tfidf_result = Cextract.get_Concepts(Tfidf_dicSet, num_topic)
+    # print(Tfidf_result)
+    # [[('concept1 of first doc', weight),('concept2', weight)..,[('concept1 of second doc', weight)..],..]
+    print(Tfidf_dicSet, '\n')
+    print(Tfidf_result)
 
     ################### TEST ###################
     """
     num_doc = len(Tfidf_result)
-    
+
     print("###The Result of Concept to Wikipedia Mapping###")
     for i in range(num_doc):
         print("\nDocument {}".format(i+1))
@@ -244,6 +242,7 @@ def main():
         print('\tBOW   >', BOW_result[i])
         print('\tTF-IDF>', Tfidf_result[i],'\n')"""
     ############################################
+
 
 if __name__ == "__main__":
     main()
