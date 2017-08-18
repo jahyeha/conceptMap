@@ -6,12 +6,12 @@ import requests
 import re
 import math
 import nltk
-#nltk.download('popular')
+# nltk.download('popular')
 import operator
 from nltk.corpus import stopwords
 from nltk.tokenize import RegexpTokenizer
-
 from ConceptExtraction import conceptMapping
+
 
 class Preprocessor:
     """
@@ -24,16 +24,20 @@ class Preprocessor:
             but to precisely distinguish which word is meaningful concept for Physics.
     """
 
-    def __init__(self, playlist_url, glossary_physics):
+    def __init__(self, playlist_url):
         self.playlist_url = playlist_url
-        self.physics_WordList = glossary_physics
+        ## Import 'conceptMapping' Class(module) to get my Physics dictionary
+        self.Cmap = conceptMapping.Mapping()
+        self.physicsDict = self.Cmap.make_compelteDict()
+        # this list below contains all possible topics(concepts) of Physics based on Wikipedia
+        self.physicsConcepts = list(self.physicsDict.keys())
 
     def get_result(self):
         playlist_url = self.playlist_url
         URLs = self.get_all_URLs()
         video_IDs = self.get_videoIDs(URLs)
         doc_set = self.get_documents(video_IDs)
-        bow_set = self.tokenize(doc_set, self.physics_WordList)
+        bow_set = self.tokenize(doc_set, self.physicsConcepts)
         return bow_set
     ###########################################################
 
@@ -67,7 +71,7 @@ class Preprocessor:
 
     def get_documents(self, videoIDs):
         doc_set = []
-        #Importing & cleaning my documents
+        # Importing & cleaning my documents
         for ID in videoIDs:
             video_sub_url = 'http://video.google.com/timedtext?lang=en&v=' + ID
             page = requests.get(video_sub_url)
@@ -78,11 +82,11 @@ class Preprocessor:
         return doc_set
 
     def tokenize(self, docSet, conceptLst):
-        #Tokenizing& removing stopwords
+        # Tokenizing& removing stopwords
         tokenizer = RegexpTokenizer(r'\w+')
         bow_set = []
         stop = set(stopwords.words('english'))
-        #(X) all_eng_words = words.words()
+        # (X) all_eng_words = words.words()
 
         physics_glossary = conceptLst
 
@@ -91,8 +95,8 @@ class Preprocessor:
             stopped_tokens = [i for i in tokens if not i in stop and len(i) > 1]
             bow_set.append(stopped_tokens)
 
-        #(X) Applying POS tagging to extract all Nouns & Checking English spelling
-        #(X) tagged = [nltk.pos_tag(bow) for bow in bow_set]
+        # (X) Applying POS tagging to extract all Nouns & Checking English spelling
+        # (X) tagged = [nltk.pos_tag(bow) for bow in bow_set]
         filtered_bowSet = []
         for lst in bow_set:
             temp = []
@@ -103,25 +107,41 @@ class Preprocessor:
         return filtered_bowSet
 
 
-class ConceptExtraction: #ConputeTfIdf->ConceptExtraction
-    def __init__(self, bow_set):
-        self.bowSet = bow_set
+class ConceptExtraction:  # ConputeTfIdf->ConceptExtraction
+    def __init__(self, playlist_url):
+        self.Pre = Preprocessor(playlist_url)
+        self.bowSet = self.Pre.get_result()
+        self.Tfidf_result = self.run_TfIdf()
 
-    def get_Concepts(self, tfidf, num_concept):
-        #input: tfidf(the result of run_TfIdf)
+    def get_Concepts(self, num_concept):
+        # input: tfidf(the result of run_TfIdf)
         candidate_set = []
+        tfidf = self.Tfidf_result
 
         for dic in tfidf:
             candidate = {}
-            temp = []
             for word, val in dic.items():
-                if dic[word] == 0:
-                    temp.append(word)
-                else:
+                if dic[word] != 0:
                     candidate[word] = val
             candidate = sorted(candidate.items(), key=operator.itemgetter(1), reverse=True)
             candidate_set.append(candidate[:num_concept])
-        return candidate_set
+
+        """candidate_set  => CONCEPT NAME with its WEIGHT
+        [[('acceleration', 0.2855), ('velocity', 0.15526), ('displacement', 0.15062), ('motion', 0.0354),
+          ('light', 0.03002)],
+         [('derivative', 0.54908), ('velocity', 0.12148), ('calculus', 0.11439), ('acceleration', 0.11037),
+          ('power', 0.05717)],
+         [('integral', 0.41838), ('derivative', 0.26713), ('acceleration', 0.23131), ('velocity', 0.11552),
+          ('displacement', 0.0523)]..]
+        """
+        #### ONLY GET CONCEPT NAMES without their weights ####
+        RESULT = []
+        for lst in candidate_set:
+            temp = []
+            for word in lst:
+                temp.append(word[0])
+            RESULT.append(temp)
+        return RESULT
     ################################################################################
     """
     @Computing TF-IDF
@@ -132,6 +152,7 @@ class ConceptExtraction: #ConputeTfIdf->ConceptExtraction
           2-1) Compute tf(w) = (Number of times the word appears in a document) / (Total number of words in the document)
           2-2) Compute idf(w) = log(Number of documents / Number of documents that contain word w)
     """
+
     def run_TfIdf(self):
         dict_set = self.create_dictSet()
         tf = self.compute_Tf(dict_set, self.bowSet)
@@ -144,7 +165,7 @@ class ConceptExtraction: #ConputeTfIdf->ConceptExtraction
         for bow in self.bowSet:
             all_words += bow
         word_set = set(all_words)
-        #print('\nword_set>\n\t', word_set)
+        # print('\nword_set>\n\t', word_set)
 
         dict_set = []
         for i in range(len(self.bowSet)):
@@ -172,13 +193,13 @@ class ConceptExtraction: #ConputeTfIdf->ConceptExtraction
         N = len(dictSet)
         idf_dict = dict.fromkeys(dictSet[0].keys(), 0)
 
-        #Computing df
+        # Computing df
         for wordDict in dictSet:
             for word, val in wordDict.items():
                 if val > 0:
                     idf_dict[word] += 1
 
-        #Computing idf
+        # Computing idf
         for word, val in idf_dict.items():
             idf_dict[word] = math.log(N / float(val))
         return idf_dict
@@ -192,43 +213,31 @@ class ConceptExtraction: #ConputeTfIdf->ConceptExtraction
                 tfidf[word] = round(result, 5)
             tfidf_set.append(tfidf)
         return tfidf_set
+        ######################################################
 
-    ######################################################
 
 def main():
-    ## Import 'conceptMapping' Class(module) to get my Physics dictionary
-    Cmap = conceptMapping.Mapping()
-    physicsDict = Cmap.make_compelteDict()
-    #print(physicsDict)
-    #this list below contains all possible topics(concepts) of Physics based on Wikipedia
-    physicsConcepts = list(physicsDict.keys())
-
     ############### Get the result ###############
     playlistURL = 'https://www.youtube.com/playlist?list=PL8dPuuaLjXtN0ge7yDk_UA0ldZJdhwkoV'
-    Pre = Preprocessor(playlistURL, physicsConcepts)
-    ## Result of my first class(Preprocessor)
-    bowSet = Pre.get_result()
+    Cextract = ConceptExtraction(playlistURL)  # OBJECT
 
-    Tfidf = ConceptExtraction(bowSet)
     ### 1. Result of BOW(Bag of Words) /before applying TF-IDF ###
     num_topic = 5
-    dictSet = Tfidf.create_dictSet()
+    dictSet = Cextract.create_dictSet()
+    print(dictSet)
     sorted_dictSet = [sorted(dic.items(), key=operator.itemgetter(1), reverse=True) for dic in dictSet]
     BOW_result = [dic[:num_topic] for dic in sorted_dictSet]
-    #print(BOW_result)
+    # print(BOW_result)
 
     ### 2. Result of applying TF-IDF ###
-    Tfidf_dicSet = Tfidf.run_TfIdf()
-    Tfidf_result = Tfidf.get_Concepts(Tfidf_dicSet, num_topic)
-    #print(Tfidf_result)
-    #[[('concept1 of first doc', weight),('concept2', weight)..,[('concept1 of second doc', weight)..],..]
-
-    print(Tfidf_result)
+    Tfidf_result = Cextract.get_Concepts(num_topic)
+    # [[('concept1 of first doc', weight),('concept2', weight)..,[('concept1 of second doc', weight)..],..]
+    print(Tfidf_result, '\n')
 
     ################### TEST ###################
     """
     num_doc = len(Tfidf_result)
-    
+
     print("###The Result of Concept to Wikipedia Mapping###")
     for i in range(num_doc):
         print("\nDocument {}".format(i+1))
@@ -243,6 +252,7 @@ def main():
         print('\tBOW   >', BOW_result[i])
         print('\tTF-IDF>', Tfidf_result[i],'\n')"""
     ############################################
+
 
 if __name__ == "__main__":
     main()
