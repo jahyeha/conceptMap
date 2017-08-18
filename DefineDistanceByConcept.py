@@ -1,10 +1,10 @@
 import urllib
 from urllib.request import urlopen
 from urllib.error import HTTPError
-
 import itertools
 from bs4 import BeautifulSoup
 import re
+import numpy as np
 import queue
 
 class DefineDistance :
@@ -14,11 +14,10 @@ class DefineDistance :
         # 입력 : page_url(위키 페이지 링크)를 받음
         # 리턴 : page_url의 첫번째 문단에 존재하는 링크들을 links리스트에 담아 리턴함
 
-    def getConceptRelation2(self, wordSet):
+    def getConceptRelation(self, wordSet):
         regex = r'\[.+\]'
         #exam)
         #wordSet = ["inertia", "Motion (physics)", "Rest (physics)", "Physical body", "Physical law"]
-        #print(len(wordSet))
 
         for i in range(len(wordSet)):
             wordSet[i] = urllib.parse.quote_plus(wordSet[i])
@@ -28,7 +27,7 @@ class DefineDistance :
         #print(wordPair)
 
         matrix = []
-        submitCode = "1502778167%7C000c276c1f193255d1d2c40ba425c7f4"
+        submitCode = "1503041836%7C33983fd15cbb719bf8ed14f653770db5"
 
         for words in wordPair:
             a1 = words[0]
@@ -59,10 +58,11 @@ class DefineDistance :
                 print("a1:", a1, "---", degree, "--->", "a2:", a2)
                 matrix.append(degree)
 
+
         start_pos = 0
         out = []
         while (start_pos < len(matrix)):
             out.append(matrix[start_pos:start_pos + len(wordSet)])
             start_pos += len(wordSet)
         #print(out)
-        return out
+        return np.array(out)
