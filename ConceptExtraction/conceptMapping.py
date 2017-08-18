@@ -21,7 +21,14 @@ class Mapping:
         ## Read a text file that contains Wikipedia pages which have information(list of Concepts) about Physics.
          # e.g. url_set = [url1, url2, url3], startEnd_set = [[start1, end1], [start2, end2], [start3, end3]]
         num_pages = 3
-        info_set = open('info.txt').read().split('\n')
+        #info_set = open('info.txt').read().split('\n')
+        info_set = ['https://en.wikipedia.org/wiki/Glossary_of_physics#D',
+                    'https://en.wikipedia.org/wiki/Outline_of_physics',
+                    'https://en.wikipedia.org/wiki/List_of_physics_concepts_in_primary_and_secondary_education_curricula',
+                    '<h2><span class="mw-headline" id="A">', '<h2><span class="mw-headline" id="See_also">',
+                    '<table class="wikitable">','<h3><span class="mw-headline" id="Concepts_by_field">',
+                    '<h2><span class="mw-headline" id="Motion_and_forces">', '<h2><span class="mw-headline" id="See_also">']
+
         url_set = info_set[:num_pages]
         startEnd = info_set[num_pages:]
 
