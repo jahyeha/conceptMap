@@ -38,9 +38,13 @@ def main():
     for concept in Result[0]:
         URL = Cmap.maping_Concept2Wiki(concept)
         print('\t{}의 위키피디아 URL> '.format(concept), URL)
-        
-    ###################################################
 
+    ##URL의 고유 path name(e.g. "Motion_(physics)")을 알고 싶을 경우##
+    for concept in Result[0]:
+        URL = Cmap.maping_Concept2Wiki(concept)
+        idx = URL.find('/wiki/') + 6
+        print('\t{}의 위키피디아 URL> '.format(URL[idx:]), URL)
+    ##################################################
 
     defineConcept = DD.DefineDistance()
     #### NOTE ####
