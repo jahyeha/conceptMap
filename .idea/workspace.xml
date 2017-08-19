@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5ada885e-a3ea-476c-88af-ecb28166c831" name="Default" comment="">
+<<<<<<< HEAD
       <change type="DELETED" beforePath="$PROJECT_DIR$/ConceptExtraction/conceptMapping.py" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/conceptExtraction.py" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
@@ -9,6 +10,51 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ConceptExtraction/_conceptExtraction_.py" afterPath="$PROJECT_DIR$/ConceptExtraction/_conceptExtraction_.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Main.py" afterPath="$PROJECT_DIR$/Main.py" />
+=======
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/conceptproto/play/migrations/0001_initial.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/conceptproto/play/migrations/0002_auto_20170811_1258.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/conceptproto/play/migrations/0003_auto_20170811_1302.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/graph-test/README.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/graph-test/data.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/graph-test/index.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/graph-test/jquery-3.2.1.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/graph-test/vis.min.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/graph-test/vis.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/prototype-plainweb/alchemy-white.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/prototype-plainweb/alchemy.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/prototype-plainweb/alchemy.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/prototype-plainweb/alchemy.min.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/prototype-plainweb/alchemy.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/prototype-plainweb/css/styles.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/prototype-plainweb/data/contrib.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/prototype-plainweb/drawmap.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/prototype-plainweb/index.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/prototype-plainweb/js/scripts.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/prototype-plainweb/map.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/prototype-plainweb/play.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/prototype-plainweb/scripts/vendor.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/prototype-plainweb/style.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/prototype-plainweb/styles/fonts/FontAwesome.otf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/prototype-plainweb/styles/fonts/fontawesome-webfont.eot" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/prototype-plainweb/styles/fonts/fontawesome-webfont.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/prototype-plainweb/styles/fonts/fontawesome-webfont.ttf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/prototype-plainweb/styles/fonts/fontawesome-webfont.woff" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/prototype-plainweb/styles/images/maze-black.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/prototype-plainweb/styles/vendor.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/conceptExtraction.py" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Web/conceptproto/play/migrations/__init__.py" afterPath="$PROJECT_DIR$/Web/conceptproto/play/templates/play/graphScript.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DefineDistanceByConcept.py" afterPath="$PROJECT_DIR$/DefineDistanceByConcept.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Main.py" afterPath="$PROJECT_DIR$/Main.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MakeGraph.py" afterPath="$PROJECT_DIR$/MakeGraph.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Web/conceptproto/play/admin.py" afterPath="$PROJECT_DIR$/Web/conceptproto/play/admin.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Web/conceptproto/play/models.py" afterPath="$PROJECT_DIR$/Web/conceptproto/play/models.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Web/conceptproto/play/static/play/data/bxe2T-V8XRs.json" afterPath="$PROJECT_DIR$/Web/conceptproto/play/static/play/data/bxe2T-V8XRs.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Web/conceptproto/play/templates/play/index.html" afterPath="$PROJECT_DIR$/Web/conceptproto/play/templates/play/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Web/conceptproto/play/templates/play/layout.html" afterPath="$PROJECT_DIR$/Web/conceptproto/play/templates/play/layout.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Web/conceptproto/play/templates/play/video.html" afterPath="$PROJECT_DIR$/Web/conceptproto/play/templates/play/video.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Web/conceptproto/play/views.py" afterPath="$PROJECT_DIR$/Web/conceptproto/play/views.py" />
+>>>>>>> 445dfff30064305685c3d487672e75b58ea347f1
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -30,6 +76,7 @@
     <option name="PATCH_PATH" value="" />
   </component>
   <component name="FileEditorManager">
+<<<<<<< HEAD
     <splitter split-orientation="horizontal" split-proportion="0.71627504">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
@@ -106,6 +153,92 @@
         </leaf>
       </split-second>
     </splitter>
+=======
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="600">
+      <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Web/conceptproto/play/models.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="admin.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Web/conceptproto/play/admin.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="180">
+              <caret line="5" column="0" lean-forward="true" selection-start-line="3" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="video.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Web/conceptproto/play/templates/play/video.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="468">
+              <caret line="14" column="51" lean-forward="false" selection-start-line="14" selection-start-column="19" selection-end-line="14" selection-end-column="51" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="settings.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Web/conceptproto/conceptproto/settings.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="260">
+              <caret line="79" column="37" lean-forward="false" selection-start-line="79" selection-start-column="29" selection-end-line="79" selection-end-column="37" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Web/conceptproto/play/views.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="468">
+              <caret line="13" column="64" lean-forward="true" selection-start-line="13" selection-start-column="64" selection-end-line="13" selection-end-column="64" />
+              <folding>
+                <element signature="e#0#35#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="bxe2T-V8XRs.json" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Web/conceptproto/play/static/play/data/bxe2T-V8XRs.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PL8dPuuaLjXtN0ge7yDk_UA0ldZJdhwkoV.json" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Web/conceptproto/play/static/play/data/PL8dPuuaLjXtN0ge7yDk_UA0ldZJdhwkoV.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Web/README.md">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="504">
+              <caret line="14" column="25" lean-forward="true" selection-start-line="14" selection-start-column="25" selection-end-line="14" selection-end-column="25" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+>>>>>>> 445dfff30064305685c3d487672e75b58ea347f1
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -116,27 +249,45 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>Extract</find>
-      <find>nltk</find>
-      <find>_get_videoIDs</find>
-      <find>get_all_URLs</find>
-      <find>LDA</find>
-      <find>getlist</find>
-      <find>wiki</find>
-      <find>&quot;</find>
-      <find>Compu</find>
-      <find>_bfs_search</find>
-      <find>print</find>
-      <find>언어</find>
-      <find>nodes</find>
       <find>out</find>
       <find>for</find>
+<<<<<<< HEAD
       <find>urllib</find>
       <find>tfidf_result</find>
       <find>{</find>
       <find>bow_set</find>
       <find>weights</find>
       <find>bow_Set</find>
+=======
+      <find>dict</find>
+      <find>wordPair</find>
+      <find>self</find>
+      <find>1</find>
+      <find>data</find>
+      <find>bxe2T-V8XRs</find>
+      <find>alchemy</find>
+      <find>URL</find>
+      <find>video</find>
+      <find>수정중</find>
+      <find>\{\% load staticfiles \%\}\n\&lt;\!DOCTYPE html\&gt;\n  \&lt;html lang\=\&quot;en\&quot;\&gt;\n\&lt;head\&gt;\n  \&lt;title\&gt;\n    \{\% block title \%\}\{\% endblock \%\}\n  \&lt;\/title\&gt;\n\n\n  \&lt;\!\-\- Required meta tags \-\-\&gt;\n  \&lt;meta charset\=\&quot;utf\-8\&quot;\&gt;\n\n  \&lt;\!\-\- semantic and jquery \-\-\&gt;\n  \&lt;link rel\=\&quot;stylesheet\&quot; type\=\&quot;text\/css\&quot; href\=\&quot;\{\% static \'play\/semantic\/semantic\.css\' \%\}\&quot;\&gt;\n  \&lt;script src\=\&quot;https\:\/\/code\.jquery\.com\/jquery\-3\.1\.1\.min\.js\&quot; integrity\=\&quot;sha256\-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8\=\&quot; crossorigin\=\&quot;anonymous\&quot;\&gt;\&lt;\/script\&gt;\n  \&lt;script src\=\&quot;\{\% static \'play\/semantic\/semantic\.js\' \%\}\&quot;\&gt;\&lt;\/script\&gt;\n\n  \&lt;\!\-\- vis \-\-\&gt;\n  \&lt;script type\=\&quot;text\/javascript\&quot; src\=\&quot;\{\% static \'play\/vis\/vis\.min\.js\' \%\}\&quot;\&gt;\&lt;\/script\&gt;\n  \&lt;link href\=\&quot;\{\% static \'play\/vis\/vis\.min\.css\' \%\}\&quot; rel\=\&quot;stylesheet\&quot; type\=\&quot;text\/css\&quot; \/\&gt;\n\n\n\n  \&lt;link rel\=\&quot;stylesheet\&quot; type\=\&quot;text\/css\&quot; href\=\&quot;\{\% static \'play\/style\.css\' \%\}\&quot;\&gt;\n  \&lt;script src\=\&quot;\{\% static \'play\/script\.js\' \%\}\&quot;\&gt;\&lt;\/script\&gt;\n\n  \&lt;style\&gt;\n  body \{padding\-top\: 4em\;\}\n  \&lt;\/style\&gt;\n\n\&lt;\/head\&gt;\n\&lt;body\&gt;\n\n  \&lt;div class\=\&quot;ui top fixed menu\&quot;\&gt;\n    \&lt;div class\=\&quot;item\&quot;\&gt;\n      \&lt;\!\-\- \&lt;img src\=\&quot;\/images\/logo\.png\&quot;\&gt; \-\-\&gt;\n      \&lt;a href\=\&quot;\/\&quot;\&gt;ConceptMap\&lt;\/a\&gt;\n    \&lt;\/div\&gt;\n    \&lt;a class\=\&quot;item\&quot;\&gt;Features\&lt;\/a\&gt;\n    \&lt;a class\=\&quot;item\&quot;\&gt;Testimonials\&lt;\/a\&gt;\n    \&lt;a class\=\&quot;item\&quot; href\=\&quot;\/admin\/\&quot;\&gt;Sign\-in\&lt;\/a\&gt;\n  \&lt;\/div\&gt;\n\n  \{\% block content \%\}\{\% endblock \%\}\n\n\n\n\n\&lt;\/body\&gt;\n\&lt;\/html\&gt;\n</find>
+      <find>ne</find>
+      <find>json</find>
+      <find>subm</find>
+      <find>py</find>
+      <find>sub</find>
+      <find>resistDistnace</find>
+      <find>print</find>
+      <find>script</find>
+      <find>layout</find>
+      <find>concept</find>
+      <find>ten</find>
+      <find>Video</find>
+      <find>indexindex</find>
+      <find>request</find>
+      <find>vid</find>
+      <find>list</find>
+      <find>BASE_DIR</find>
+>>>>>>> 445dfff30064305685c3d487672e75b58ea347f1
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -150,10 +301,10 @@
         <option value="$PROJECT_DIR$/A.py" />
         <option value="$PROJECT_DIR$/main.py" />
         <option value="$PROJECT_DIR$/makeGraph.py" />
-        <option value="$PROJECT_DIR$/MakeGraph.py" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/ExtractConcept.py" />
         <option value="$PROJECT_DIR$/GetWikiFeature.py" />
+<<<<<<< HEAD
         <option value="$PROJECT_DIR$/DefineDistanceByConcept.py" />
         <option value="$PROJECT_DIR$/concept.test.py" />
         <option value="$PROJECT_DIR$/conceptExtraction.py" />
@@ -165,6 +316,23 @@
         <option value="$PROJECT_DIR$/ConceptExtraction/_conceptExtraction_.py" />
         <option value="$PROJECT_DIR$/ConceptExtraction/clustering_test3.py" />
         <option value="$PROJECT_DIR$/Clustering.py" />
+=======
+        <option value="$PROJECT_DIR$/Web/graph-test/data.json" />
+        <option value="$PROJECT_DIR$/Web/prototype-plainweb/data/contrib.json" />
+        <option value="$PROJECT_DIR$/Web/prototype-plainweb/index.html" />
+        <option value="$PROJECT_DIR$/DefineDistanceByConcept.py" />
+        <option value="$PROJECT_DIR$/MakeGraph.py" />
+        <option value="$PROJECT_DIR$/Main.py" />
+        <option value="$PROJECT_DIR$/Web/conceptproto/play/templates/play/graphScript.js" />
+        <option value="$PROJECT_DIR$/Web/conceptproto/play/migrations/0001_initial.py" />
+        <option value="$PROJECT_DIR$/Web/conceptproto/play/templates/play/index.html" />
+        <option value="$PROJECT_DIR$/Web/conceptproto/play/templates/play/layout.html" />
+        <option value="$PROJECT_DIR$/Web/conceptproto/play/migrations/0002_auto_20170811_1258.py" />
+        <option value="$PROJECT_DIR$/Web/conceptproto/play/templates/play/video.html" />
+        <option value="$PROJECT_DIR$/Web/conceptproto/play/models.py" />
+        <option value="$PROJECT_DIR$/Web/conceptproto/play/admin.py" />
+        <option value="$PROJECT_DIR$/Web/conceptproto/play/views.py" />
+>>>>>>> 445dfff30064305685c3d487672e75b58ea347f1
       </list>
     </option>
   </component>
@@ -198,6 +366,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+<<<<<<< HEAD
       <pane id="Scratches" />
       <pane id="Scope" />
       <pane id="ProjectPane">
@@ -214,8 +383,70 @@
             </path>
           </expand>
           <select />
+=======
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ConceptMap" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="conceptMap" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ConceptMap" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="conceptMap" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ConceptMap" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="conceptMap" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="conceptproto" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ConceptMap" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="conceptMap" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ConceptExtraction" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+>>>>>>> 445dfff30064305685c3d487672e75b58ea347f1
         </subPane>
       </pane>
+      <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -424,6 +655,7 @@
     <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
     <editor active="true" />
     <layout>
+<<<<<<< HEAD
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15885799" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.123809524" sideWeight="0.13323572" order="7" side_tool="true" content_ui="tabs" />
@@ -431,6 +663,15 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.123809524" sideWeight="0.86676425" order="2" side_tool="false" content_ui="tabs" />
+=======
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2692683" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.40892193" sideWeight="0.3395122" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.40892193" sideWeight="0.66048783" order="2" side_tool="false" content_ui="tabs" />
+>>>>>>> 445dfff30064305685c3d487672e75b58ea347f1
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -441,7 +682,6 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -458,17 +698,67 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/Main.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="252">
           <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-          <folding />
+=======
+    <entry file="file://$USER_HOME$/Documents/카카오톡 받은 파일/read_data.py" />
+    <entry file="file://$PROJECT_DIR$/../TomatoClock/TomatoClock.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="18" column="18" lean-forward="true" selection-start-line="18" selection-start-column="18" selection-end-line="18" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/site-packages/nltk/data.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1020">
+          <caret line="652" column="0" lean-forward="false" selection-start-line="652" selection-start-column="0" selection-end-line="652" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ExtractConcept.py" />
-    <entry file="file://$PROJECT_DIR$/DefineDistanceByConcept.py" />
-    <entry file="file://$PROJECT_DIR$/Main.py">
+    <entry file="file://$PROJECT_DIR$/conceptExtraction.py" />
+    <entry file="file://$PROJECT_DIR$/Web/ConceptWikiMapping/dataset/videolist.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="36">
+          <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Web/prototype-plainweb/alchemy.min.js" />
+    <entry file="file://$PROJECT_DIR$/Web/prototype-plainweb/scripts/vendor.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Web/graph-test/vis.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="24" column="31592" lean-forward="true" selection-start-line="24" selection-start-column="31592" selection-end-line="24" selection-end-column="31592" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Web/graph-test/vis.min.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Web/ConceptWikiMapping/dataset/bxe2T-V8XRs_out.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -476,6 +766,91 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Web/ConceptWikiMapping/dataset/bxe2T-V8XRs.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Web/prototype-plainweb/drawmap.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="734">
+          <caret line="28" column="28" lean-forward="false" selection-start-line="28" selection-start-column="22" selection-end-line="28" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Web/prototype-plainweb/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Web/graph-test/data.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="436">
+          <caret line="46" column="19" lean-forward="true" selection-start-line="46" selection-start-column="19" selection-end-line="46" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Web/prototype-plainweb/data/contrib.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="895" lean-forward="false" selection-start-line="0" selection-start-column="895" selection-end-line="0" selection-end-column="895" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Web/prototype-plainweb/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="81" column="17" lean-forward="false" selection-start-line="81" selection-start-column="17" selection-end-line="81" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Web/conceptproto/manage.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+>>>>>>> 445dfff30064305685c3d487672e75b58ea347f1
+          <folding />
+        </state>
+      </provider>
+    </entry>
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/ExtractConcept.py" />
+    <entry file="file://$PROJECT_DIR$/DefineDistanceByConcept.py" />
+    <entry file="file://$PROJECT_DIR$/Main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+=======
+    <entry file="file://$PROJECT_DIR$/Web/ConceptWikiMapping/ConceptWikiMapping.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-536">
+          <caret line="24" column="70" lean-forward="false" selection-start-line="24" selection-start-column="69" selection-end-line="24" selection-end-column="70" />
+          <folding>
+            <element signature="e#0#15#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ConceptExtraction/_conceptExtraction_.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="368">
+          <caret line="79" column="24" lean-forward="false" selection-start-line="79" selection-start-column="24" selection-end-line="79" selection-end-column="24" />
+>>>>>>> 445dfff30064305685c3d487672e75b58ea347f1
+          <folding />
+        </state>
+      </provider>
+    </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/MakeGraph.py" />
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="text-editor">
@@ -490,10 +865,49 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="144">
           <caret line="5" column="32" lean-forward="false" selection-start-line="5" selection-start-column="32" selection-end-line="5" selection-end-column="32" />
+=======
+    <entry file="file://$PROJECT_DIR$/Web/graph-test/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="541">
+          <caret line="24" column="22" lean-forward="true" selection-start-line="24" selection-start-column="22" selection-end-line="24" selection-end-column="22" />
           <folding />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/GetWikiFeature.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="27" column="35" lean-forward="true" selection-start-line="26" selection-start-column="69" selection-end-line="27" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Web/conceptproto/play/static/play/vis/vis.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3132">
+          <caret line="15" column="44" lean-forward="true" selection-start-line="15" selection-start-column="44" selection-end-line="15" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ConceptExtraction/conceptMapping.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4500">
+          <caret line="138" column="58" lean-forward="false" selection-start-line="138" selection-start-column="57" selection-end-line="138" selection-end-column="58" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MakeGraph.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="7" column="43" lean-forward="false" selection-start-line="7" selection-start-column="43" selection-end-line="7" selection-end-column="43" />
+>>>>>>> 445dfff30064305685c3d487672e75b58ea347f1
+          <folding />
+        </state>
+      </provider>
+    </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/MakeGraph.py" />
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="text-editor">
@@ -508,20 +922,69 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="144">
           <caret line="5" column="32" lean-forward="false" selection-start-line="5" selection-start-column="32" selection-end-line="5" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/MakeGraph.py" />
-    <entry file="file://$PROJECT_DIR$/README.md">
+=======
+    <entry file="file://$PROJECT_DIR$/DefineDistanceByConcept.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="360">
-          <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+          <caret line="56" column="53" lean-forward="false" selection-start-line="56" selection-start-column="53" selection-end-line="56" selection-end-column="53" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Main.py">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-180">
+          <caret line="34" column="7" lean-forward="false" selection-start-line="34" selection-start-column="7" selection-end-line="34" selection-end-column="7" />
+          <folding>
+            <element signature="e#29#84#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Web/conceptproto/play/templates/play/graphScript.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="299">
+          <caret line="41" column="27" lean-forward="true" selection-start-line="41" selection-start-column="27" selection-end-line="41" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Web/conceptproto/play/templates/play/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="296">
+          <caret line="16" column="46" lean-forward="true" selection-start-line="16" selection-start-column="46" selection-end-line="16" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Web/conceptproto/play/templates/play/layout.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="36">
+          <caret line="1" column="7" lean-forward="false" selection-start-line="1" selection-start-column="7" selection-end-line="1" selection-end-column="7" />
+>>>>>>> 445dfff30064305685c3d487672e75b58ea347f1
+          <folding />
+        </state>
+      </provider>
+    </entry>
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/MakeGraph.py" />
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+=======
+    <entry file="file://$PROJECT_DIR$/Web/conceptproto/play/migrations/0003_auto_20170811_1302.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="536">
+          <caret line="22" column="39" lean-forward="true" selection-start-line="22" selection-start-column="39" selection-end-line="22" selection-end-column="39" />
+          <folding />
+>>>>>>> 445dfff30064305685c3d487672e75b58ea347f1
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Web/conceptproto/play/migrations/0001_initial.py">
+      <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
@@ -531,10 +994,38 @@
     <entry file="file://$PROJECT_DIR$/ExtractConcept.py" />
     <entry file="file://$PROJECT_DIR$/DefineDistanceByConcept.py" />
     <entry file="file://$PROJECT_DIR$/Main.py">
+=======
+        <state relative-caret-position="585">
+          <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Web/conceptproto/play/migrations/0002_auto_20170811_1258.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Web/conceptproto/play/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#32#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Web/conceptproto/play/tests.py">
+>>>>>>> 445dfff30064305685c3d487672e75b58ea347f1
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+<<<<<<< HEAD
         </state>
       </provider>
     </entry>
@@ -556,10 +1047,20 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
           <caret line="5" column="14" lean-forward="true" selection-start-line="5" selection-start-column="14" selection-end-line="5" selection-end-column="14" />
+=======
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Web/conceptproto/play/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+>>>>>>> 445dfff30064305685c3d487672e75b58ea347f1
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/DefineDistanceByConcept.py" />
     <entry file="file://$USER_HOME$/Documents/카카오톡 받은 파일/read_data.py" />
     <entry file="file://$PROJECT_DIR$/../TomatoClock/TomatoClock.py" />
@@ -577,11 +1078,25 @@
     <entry file="file://$PROJECT_DIR$/GetWikiFeature.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-126">
+=======
+    <entry file="file://$PROJECT_DIR$/Web/conceptproto/conceptproto/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Web/conceptproto/conceptproto/wsgi.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+>>>>>>> 445dfff30064305685c3d487672e75b58ea347f1
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/Web/ConceptWikiMapping/ConceptWikiMapping.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -593,10 +1108,25 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1554">
           <caret line="34" column="25" lean-forward="true" selection-start-line="34" selection-start-column="25" selection-end-line="34" selection-end-column="25" />
+=======
+    <entry file="file://$PROJECT_DIR$/Web/conceptproto/conceptproto/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="576">
+          <caret line="17" column="0" lean-forward="true" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Web/conceptproto/play/apps.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+>>>>>>> 445dfff30064305685c3d487672e75b58ea347f1
+          <folding />
+        </state>
+      </provider>
+    </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/concept.test.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="538">
@@ -628,11 +1158,8 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="168">
           <caret line="8" column="30" lean-forward="false" selection-start-line="8" selection-start-column="30" selection-end-line="8" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/MakeGraph.py">
+=======
+    <entry file="file://$PROJECT_DIR$/Web/conceptproto/play/forms.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -640,24 +1167,70 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Main.py">
+    <entry file="file://$PROJECT_DIR$/Web/conceptproto/conceptproto/settings.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="42">
-          <caret line="2" column="46" lean-forward="false" selection-start-line="2" selection-start-column="46" selection-end-line="2" selection-end-column="46" />
+        <state relative-caret-position="260">
+          <caret line="79" column="37" lean-forward="false" selection-start-line="79" selection-start-column="29" selection-end-line="79" selection-end-column="37" />
           <folding />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Web/conceptproto/play/templates/play/video.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="468">
+          <caret line="14" column="51" lean-forward="false" selection-start-line="14" selection-start-column="19" selection-end-line="14" selection-end-column="51" />
+>>>>>>> 445dfff30064305685c3d487672e75b58ea347f1
+          <folding />
+        </state>
+      </provider>
+    </entry>
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/MakeGraph.py">
+=======
+    <entry file="file://$PROJECT_DIR$/Web/conceptproto/play/models.py">
+>>>>>>> 445dfff30064305685c3d487672e75b58ea347f1
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/Main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="42">
+          <caret line="2" column="46" lean-forward="false" selection-start-line="2" selection-start-column="46" selection-end-line="2" selection-end-column="46" />
+=======
+    <entry file="file://$PROJECT_DIR$/Web/conceptproto/play/admin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="5" column="0" lean-forward="true" selection-start-line="3" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+>>>>>>> 445dfff30064305685c3d487672e75b58ea347f1
+          <folding />
+        </state>
+      </provider>
+    </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/ConceptExtraction/clustering_test3.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-14">
           <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
           <folding>
             <element signature="e#0#55#0" expanded="true" />
+=======
+    <entry file="file://$PROJECT_DIR$/Web/conceptproto/play/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="468">
+          <caret line="13" column="64" lean-forward="true" selection-start-line="13" selection-start-column="64" selection-end-line="13" selection-end-column="64" />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+>>>>>>> 445dfff30064305685c3d487672e75b58ea347f1
           </folding>
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/Clustering.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="72">
@@ -682,6 +1255,36 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="157">
           <caret line="12" column="11" lean-forward="false" selection-start-line="12" selection-start-column="10" selection-end-line="12" selection-end-column="11" />
+=======
+    <entry file="file://$PROJECT_DIR$/Web/conceptproto/play/static/play/data/bxe2T-V8XRs - 복사본.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Web/conceptproto/play/static/play/data/bxe2T-V8XRs.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Web/conceptproto/play/static/play/data/PL8dPuuaLjXtN0ge7yDk_UA0ldZJdhwkoV.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Web/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="504">
+          <caret line="14" column="25" lean-forward="true" selection-start-line="14" selection-start-column="25" selection-end-line="14" selection-end-column="25" />
+>>>>>>> 445dfff30064305685c3d487672e75b58ea347f1
           <folding />
         </state>
       </provider>
