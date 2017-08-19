@@ -28,8 +28,8 @@ class DefineDistance :
         #print(wordPair)
 
         matrix = []
-        submitCode = "1502778167%7C000c276c1f193255d1d2c40ba425c7f4"
-
+        submitCode = "1503127496%7C3aedd14c06244fb6ef125742013b60e3"
+        print(wordPair)
         for words in wordPair:
             a1 = words[0]
             a2 = words[1]
@@ -40,7 +40,7 @@ class DefineDistance :
                 continue
 
             searchingUrl = "http://degreesofwikipedia.com/?a1=" + a1 + "&linktype=1&a2=" + a2 + "&skips=&submit=" + submitCode + "&currentlang=en#"
-            #print(searchingUrl)
+            print(searchingUrl)
             try:
                 html = urlopen(searchingUrl)
             except HTTPError as e:
@@ -64,5 +64,6 @@ class DefineDistance :
         while (start_pos < len(matrix)):
             out.append(matrix[start_pos:start_pos + len(wordSet)])
             start_pos += len(wordSet)
-        #print(out)
+        print(out)
+        #print(degree)
         return out
