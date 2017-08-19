@@ -1,6 +1,8 @@
 import urllib
 from urllib.parse import urlparse
+from urllib.request import urlopen
 from bs4 import BeautifulSoup
+from lxml import etree
 import requests
 
 import re
@@ -10,7 +12,7 @@ import nltk
 import operator
 from nltk.corpus import stopwords
 from nltk.tokenize import RegexpTokenizer
-from ConceptExtraction import conceptMapping
+from ConceptExtraction import _conceptMapping_ as CM
 
 
 class Preprocessor:
@@ -27,7 +29,7 @@ class Preprocessor:
     def __init__(self, playlist_url):
         self.playlist_url = playlist_url
         ## Import 'conceptMapping' Class(module) to get my Physics dictionary
-        self.Cmap = conceptMapping.Mapping()
+        self.Cmap = CM.Mapping()
         self.physicsDict = self.Cmap.make_compelteDict()
         # this list below contains all possible topics(concepts) of Physics based on Wikipedia
         self.physicsConcepts = list(self.physicsDict.keys())
@@ -59,6 +61,24 @@ class Preprocessor:
             else:
                 break
         return URLs
+    #####################################################################
+    """NOTE 17-08-20 새로 추가 (Optional)"""
+    def get_videoTitle(self, URLs):
+        #Input: a list which contains all video URLs from the input playlist (page)
+        #Output: a list of titles from the videos(lectures)
+        video_titles = []
+
+        for singleUrl in URLs:
+            youtube = etree.HTML(urlopen(singleUrl).read())
+            video_title = youtube.xpath("//span[@id='eow-title']/@title")
+            title = video_title[0]
+
+            if ':' in title:
+                video_titles.append(title[:title.find(':')])
+            else:
+                video_titles.append(title)
+        return video_titles
+    #####################################################################
 
     def get_videoIDs(self, URLs):
         video_IDs = []
