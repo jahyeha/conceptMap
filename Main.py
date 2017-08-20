@@ -1,6 +1,6 @@
 #import ExtractConcept as EX
-import conceptExtraction as CE
-from ConceptExtraction import conceptMapping as CM
+from ConceptExtraction import _conceptExtraction_ as CE
+from ConceptExtraction import _conceptMapping_ as CM
 
 import DefineDistanceByConcept as DD
 import GetWikiFeature as GF
