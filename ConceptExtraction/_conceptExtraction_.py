@@ -35,12 +35,18 @@ class Preprocessor:
         self.physicsConcepts = list(self.physicsDict.keys())
 
     def get_result(self):
-        playlist_url = self.playlist_url
-        URLs = self.get_all_URLs()
-        video_IDs = self.get_videoIDs(URLs)
+        video_IDs, titles = self.get_videoID_titles()
         doc_set = self.get_documents(video_IDs)
         bow_set = self.tokenize(doc_set, self.physicsConcepts)
         return bow_set
+
+    """NOTE 2017-08-20 변경/추가"""
+    def get_videoID_titles(self):
+        playlist_url = self.playlist_url
+        URLs = self.get_all_URLs()
+        video_IDs = self.get_videoIDs(URLs)
+        video_titles = self.get_videoTitle(URLs)
+        return video_IDs, video_titles
     ###########################################################
 
     def get_all_URLs(self):

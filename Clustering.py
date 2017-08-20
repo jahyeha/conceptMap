@@ -8,29 +8,29 @@ import matplotlib.pyplot as plt
 
 
 class Clustering():
-    def __init__(self):
-        self.playlistURL = 'https://www.youtube.com/playlist?list=PL8dPuuaLjXtN0ge7yDk_UA0ldZJdhwkoV'
-        self.Pre = CE.Preprocessor(self.playlistURL)      #module1
+    def __init__(self, playlistURL):
+        self.playlist_url = playlistURL
+        self.Pre = CE.Preprocessor(self.playlist_url)      #module1
         self.all_urls = self.Pre.get_all_URLs()
         self.video_titles = self.Pre.get_videoTitle(self.all_urls)
-        self.Con = CE.ConceptExtraction(self.playlistURL) #module2
+
+        self.Con = CE.ConceptExtraction(self.playlist_url) #module2
         self.dict_set = self.Con.create_dictSet()
 
     def get_cosMatrix(self):
-        tfidf_dicSet = self.get_tfidf_result()
+        num_concept = 5
+        tfidf_dicSet = self.get_tfidf_result(num_concept)
         cosine = self.cosine_similarity(tfidf_dicSet)
         return cosine
         ##########################################################################
 
-    def get_tfidf_result(self):
-        ##Importing ConceptExtraction module from CE to get TF-IDF(concept extraction) result
-        num_concept = 5
+    def get_tfidf_result(self, num_concept):
         sorted_dictSet = [sorted(dic.items(), key=operator.itemgetter(1), reverse=True) for dic in self.dict_set]
         BOW_result = [dic[:num_concept] for dic in sorted_dictSet]
-        # BOW_result = [[('acceleration',30), ('velocity',28),..],['pressure',41),.."num_concept" 만큼],..]
+            # BOW_result = [[('acceleration',30), ('velocity',28),..],['pressure',41),.."num_concept" 만큼],..]
         Tfidf_dicSet = self.Con.run_TfIdf()
-        # Tfidf_dictSet = [{'motion':0.0, 'capacitor':0.15, 'mass':0.0},
-        #                  {'motion':0.35, 'capacitor':0.0, 'mass':0.01}..]
+            # Tfidf_dictSet = [{'motion':0.0, 'capacitor':0.15, 'mass':0.0},
+            #                  {'motion':0.35, 'capacitor':0.0, 'mass':0.01}..]
         return Tfidf_dicSet
 
     def cosine_similarity(self,Tfidf_dicSet):
@@ -56,33 +56,36 @@ class Clustering():
 
     def Hclustering(self, cos):
         dist = 1 - cos
-        #linkage_matrix = hier.linkage(dist, method='single')  #single-linkage
+        #linkage_matrix = hier.linkage(dist, method='single')  #singleprint(Z, labels)-linkage
         linkage_matrix = ward(dist)
         num_cluster = 4
         cluster_id = fcluster(linkage_matrix, num_cluster, criterion='maxclust')
         #print(cluster_id)
+        return linkage_matrix, cluster_id
 
+    def plot_clusters(self, Z, labels):
         ### Plotting ###
-        title_name = self.video_titles
-        titles = ['{}: {}'.format(i+1, title_name[i]) for i in range(len(title_name))]
+        video_titles = self.video_titles
+        titles = ['{}: {}'.format(i+1, video_titles[i]) for i in range(len(video_titles))]
 
         dflt_col = "#808080"
-        assign_col = {1: "#1b9e77", 2: "#FFD041", 3: "#6E9ECF", 4: "#6A60A9"}
+        assign_col = {1: "#67D5B5", 2: "#A593E0", 3: "#566270", 4: "#e94e77"}
+        #assign_col = {1: "#1b9e77", 2: "#263149", 3: "#E7475E", 4: "#1F6ED4"}
         D_leaf_colors = {}
 
         for i in range(len(titles)):
-            D_leaf_colors[titles[i]] = assign_col[cluster_id[i]]
+            D_leaf_colors[titles[i]] = assign_col[labels[i]]
 
         link_cols = {}
-        for i, i12 in enumerate(linkage_matrix[:, :2].astype(int)):
-            c1, c2 = (link_cols[x] if x > len(linkage_matrix) else D_leaf_colors["{}: ".format(x+1)+title_name[x]] for x in i12)
-            link_cols[i + 1 + len(linkage_matrix)] = c1 if c1 == c2 else dflt_col
+        for i, i12 in enumerate(Z[:, :2].astype(int)):
+            c1, c2 = (link_cols[x] if x > len(Z) else D_leaf_colors["{}: ".format(x+1)+title_name[x]] for x in i12)
+            link_cols[i + 1 + len(Z)] = c1 if c1 == c2 else dflt_col
 
-        ax = dendrogram(Z=linkage_matrix,
+        ax = dendrogram(Z=Z,
                         orientation="left",
                         labels=titles,
                         link_color_func=lambda x: link_cols[x],
-                        leaf_font_size=9.,
+                        leaf_font_size=8.,
                         show_leaf_counts=4)
 
         plt.tick_params(
@@ -98,6 +101,8 @@ class Clustering():
 
 
 if __name__ == "__main__":
-    c = Clustering()
-    cos = c.get_cosMatrix()
-    c.Hclustering(cos)
+    playlistURL = 'https://www.youtube.com/playlist?list=PL8dPuuaLjXtN0ge7yDk_UA0ldZJdhwkoV'
+    C = Clustering(playlistURL)
+    cos = C.get_cosMatrix()
+    Z, labels = C.Hclustering(cos)
+    C.plot_clusters(Z, labels)
