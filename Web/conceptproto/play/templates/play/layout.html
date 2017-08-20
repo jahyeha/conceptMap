@@ -1,13 +1,11 @@
 {% load staticfiles %}
 <!DOCTYPE html>
-<html lang="en">
+  <html lang="en">
 <head>
   <title>
     {% block title %}{% endblock %}
   </title>
-
-
-  <!-- Required meta tags -->
+    <!-- Required meta tags -->
   <meta charset="utf-8">
 
   <!-- semantic and jquery -->
@@ -19,11 +17,8 @@
   <script type="text/javascript" src="{% static 'play/vis/vis.min.js' %}"></script>
   <link href="{% static 'play/vis/vis.min.css' %}" rel="stylesheet" type="text/css" />
 
-
-
   <link rel="stylesheet" type="text/css" href="{% static 'play/style.css' %}">
   <script src="{% static 'play/script.js' %}"></script>
-
   <style>
   body {padding-top: 4em;}
   </style>
@@ -42,9 +37,5 @@
   </div>
 
   {% block content %}{% endblock %}
-
-
-
-
 </body>
 </html>

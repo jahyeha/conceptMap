@@ -3,32 +3,28 @@
 {% block title %}
 play page
 {% endblock %}
-
-
 {% block content %}
 
-{% if video %}
 <div class="ui center aligned container">
-
   <div class="ui stackable centered grid"><!-- START video and conceptmap  -->
 
     <div class="ten wide column">
       <div class="ui segment" id="video_section">
         <div class="row"><!-- START video title -->
-          <h1>{{ video.title }}</h1>
-          <a href="https://www.youtube.com/watch?v={{ video.vid }}">
-            https://www.youtube.com/watch?v={{ video.vid }}
+          <h1>{{video}}</h1>
+          <a href="https://www.youtube.com/watch?v={{video}}">
+            링크
           </a>
         </div><!-- END video title -->
 
         <div class="row video_wrapper"><!-- START video iframe tag -->
-          <iframe id="video" src="//www.youtube.com/embed/{{ video.vid }}?enablejsapi=1&html5=1&controls=0&showinfo=0&autohide=1" frameborder="0" allowfullscreen></iframe>
+          <iframe id="video" src="//www.youtube.com/embed/{{ video }}?enablejsapi=1&html5=1&controls=0&showinfo=0&autohide=1" frameborder="0" allowfullscreen></iframe>
         </div><!-- END video iframe tag -->
 
         <div class="row"><!-- START video button -->
           <button class="green ui left floated labeled icon button" id="play-button">
             <i class="play icon"></i>
-            Play
+            Play!
           </button>
           <button class="red ui right floated labeled icon button" id="pause-button">
             <i class="pause icon"></i>
@@ -44,14 +40,13 @@ play page
         <div id="conceptmap"></div>
 
         <script type="text/javascript">
-
             // dataset만들기
             // 노드가 들어있는 데이터셋
             var nodes = new vis.DataSet();
             // 엣지가 들어있는 데이터셋
             var edges = new vis.DataSet();
 
-            $.getJSON('{% static "" %}play/data/{{video.vid}}.json', function(json) {
+            $.getJSON('{% static "" %}play/data/{{video}}.json', function(json) {
               // add nodes
               for(var i = 0; i < json.nodes.length; i++){
                 nodes.add({
@@ -69,7 +64,6 @@ play page
                 });
               }
             });
-
             // id가 conceptmap인 엘리먼트 선택
             var container = document.getElementById('conceptmap');
 
@@ -78,22 +72,31 @@ play page
                 nodes: nodes,
                 edges: edges
             };
-            var options = {};
-
+            var options = {
+                layout: {
+                randomSeed: undefined,
+                improvedLayout:true,
+                hierarchical: {
+                  enabled:true,
+                  levelSeparation: 80,
+                  nodeSpacing: 100,
+                  treeSpacing: 200,
+                  blockShifting: false,
+                  edgeMinimization: false,
+                  parentCentralization: false,
+                  direction: 'UD',        // UD, DU, LR, RL
+                  sortMethod: 'hubsize'   // hubsize, directed
+                }
+              }
+            };
             // data와 option을 이용하여 container에 그래프 초기화
             var network = new vis.Network(container, data, options);
-
-
+            network.setOptions(options);
             console.log("end");
         </script>
       </div>
     </div><!-- END conceptmap -->
 
   </div><!-- END video and conceptmap -->
-
-
-
 </div>
-{% endif %}
-
 {% endblock %}

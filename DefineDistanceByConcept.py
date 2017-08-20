@@ -1,6 +1,7 @@
 import urllib
 from urllib.request import urlopen
 from urllib.error import HTTPError
+
 import itertools
 from bs4 import BeautifulSoup
 import re
@@ -19,6 +20,7 @@ class DefineDistance :
         All_nodes = []
         #exam)
         #wordSet = ["inertia", "Motion (physics)", "Rest (physics)", "Physical body", "Physical law"]
+        #print(len(wordSet))
 
         for i in range(len(wordSet)):
             wordSet[i] = urllib.parse.quote_plus(wordSet[i])

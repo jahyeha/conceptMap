@@ -1,10 +1,7 @@
 {% extends "play/layout.html" %}
-
 {% block title %}
 main page
 {% endblock %}
-
-
 {% block content %}
 
   <div class="ui center aligned text container">
@@ -13,12 +10,13 @@ main page
       Draw video concept map
     </h1>
     <h2>
-      input URL( https://www.youtube.com/watch?v=bxe2T-V8XRs )
+      input Lecture Playlist URL( https://www.youtube.com/watch?v=bxe2T-V8XRs ) {{video.id}}
     </h2>
     <br />
     <form class="ui form" action="/video/" method="get">
       <div class="ui huge fluid action input">
-        <input name="v" type="text" placeholder="https://www.youtube.com/watch?v=bxe2T-V8XRs">
+        <input name="v" type="text" placeholder="https://www.youtube.com/watch?v=bxe2T-V8XRs" autocomplete="v" autofocus="autofocus">
+
         <button type="submit" class="ui red button">Search</button>
       </div>
     </form>

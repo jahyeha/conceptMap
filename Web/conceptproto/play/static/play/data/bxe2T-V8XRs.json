@@ -35,7 +35,12 @@
         {
             "id": 8,
             "label": "Supervised_learning"
-        }
+        },
+		{
+			"id": 9,
+            "label": "Supervised"
+        
+		}
     ],
     "edges": [
         {
@@ -69,6 +74,10 @@
         {
             "from": 5,
             "to": 3
-        }
+        },
+		{
+			"from": 9,
+			"to": 3
+		}
     ]
 }
