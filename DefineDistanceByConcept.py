@@ -5,6 +5,7 @@ from urllib.error import HTTPError
 import itertools
 from bs4 import BeautifulSoup
 import re
+import numpy as np
 import queue
 
 class DefineDistance :
@@ -14,8 +15,9 @@ class DefineDistance :
         # 입력 : page_url(위키 페이지 링크)를 받음
         # 리턴 : page_url의 첫번째 문단에 존재하는 링크들을 links리스트에 담아 리턴함
 
-    def getConceptRelation2(self, wordSet):
-        regex = r'\[.+\]'
+    def getConceptRelation(self, wordSet):
+        regex = r'\>.+'
+        All_nodes = []
         #exam)
         #wordSet = ["inertia", "Motion (physics)", "Rest (physics)", "Physical body", "Physical law"]
         #print(len(wordSet))
@@ -28,8 +30,8 @@ class DefineDistance :
         #print(wordPair)
 
         matrix = []
-        submitCode = "1503127496%7C3aedd14c06244fb6ef125742013b60e3"
-        print(wordPair)
+        submitCode = "1503212873%7Cc452a23b0c2794e8863b9a415367cea2"
+
         for words in wordPair:
             a1 = words[0]
             a2 = words[1]
@@ -40,7 +42,7 @@ class DefineDistance :
                 continue
 
             searchingUrl = "http://degreesofwikipedia.com/?a1=" + a1 + "&linktype=1&a2=" + a2 + "&skips=&submit=" + submitCode + "&currentlang=en#"
-            print(searchingUrl)
+            #print(searchingUrl)
             try:
                 html = urlopen(searchingUrl)
             except HTTPError as e:
@@ -48,6 +50,7 @@ class DefineDistance :
                 break
             bsObj = BeautifulSoup(html.read(), "html.parser")
             preTag = bsObj.pre
+            node_list =[]
             if preTag == None:
                 degree = 999
                 print("a1:", a1, "---", degree, "--->", "a2:", a2)
@@ -55,15 +58,19 @@ class DefineDistance :
             else:
                 linkText = preTag.get_text()  # Array를 텍스트로
                 nodes = re.findall(regex, linkText)  # Array로 link뽑아냄
-                degree = len(nodes)
-                print("a1:", a1, "---", degree, "--->", "a2:", a2)
-                matrix.append(degree)
+                for node in nodes:
+                    x = re.sub('>.', '', node)
+                    node_list.append(x)
+                All_nodes.append(node_list)
+                degree = len(node_list)
+                print("a1:", a1, "---", degree-1, "--->", "a2:", a2)
+                matrix.append(degree-1)
+
 
         start_pos = 0
         out = []
         while (start_pos < len(matrix)):
             out.append(matrix[start_pos:start_pos + len(wordSet)])
             start_pos += len(wordSet)
-        print(out)
-        #print(degree)
-        return out
+        #print(out)
+        return np.array(out), np.array(All_nodes)
