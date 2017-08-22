@@ -18,13 +18,14 @@ def main():
     defineConcept = DD.DefineDistance(submitCode)
     makeGraph = MG.MakeGraph()
 
-    print(c_extraction.Pre.get_all_URLs())
-
-    index = 1
+    testIndex = 0
+    index = 2
     num_topic = 5
 
     Result = c_extraction.get_Concepts(num_topic)
+    #print(Result)
     #######################################################
+
     """e.g. of Result    ## 46개 문서(강의)에 대하여 각각 5개씩 뽑힌 컨셉리스트 입니다. ##
     [['acceleration', 'velocity', 'displacement', 'motion', 'light'],
     ['derivative', 'velocity', 'calculus', 'acceleration', 'power'],
@@ -34,6 +35,7 @@ def main():
     ......
     ['universe', 'radiation', 'light', 'redshift', 'plasma']]
     """
+
     ##################Concept Mapping##################
     """
     NOTE (e.g.)
@@ -59,16 +61,10 @@ def main():
     #### NOTE ####
     #### 임시로 밑에 getConceptRelation2 파라미터-> Result[1]으로 해놓았습니다.
     #### Result[doc_num]   0 <= doc_num < 47
-    print ("result index ",Result[0][index])
-    conceptRelation = defineConcept.getConceptRelation(Result[0][index])
-    print(conceptRelation)
+    print ("result index ",Result[index])
 
-    graphSource = makeGraph.py2json(Result[index], conceptRelation)
-    sourceName = originURL+".json"
-    sourceLoc = os.path.join("./Web/conceptproto/play/static/play/data/" +sourceName)
-    print(sourceLoc)
-    with open(sourceLoc, "w") as f:
-        f.write(graphSource)
+
+
 
     #관계부분 시작
     conceptRelation, All_degree = defineConcept.getConceptRelation(Result[index])
@@ -80,6 +76,14 @@ def main():
     Rocation_Algo2.get_rocation()
 
     testFeature(Result[index])
+
+    #그래프 시작
+    graphSource = makeGraph.py2json(Result[index], conceptRelation)
+    sourceName = originURL+".json"
+    sourceLoc = os.path.join("./Web/conceptproto/play/static/play/data/" +sourceName)
+    print(sourceLoc)
+    with open(sourceLoc, "w") as f:
+        f.write(graphSource)
 
 def testFeature(concept):
     for c in concept:

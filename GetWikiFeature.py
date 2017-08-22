@@ -74,9 +74,11 @@ class GetWikiFeature:
         return countInDegree
 
     def getOutdegree2(self):
-
+        print("keyword:", self.keyword)
         fulUrl = urlopen("https://en.wikipedia.org/wiki/" + str(self.keyword))
+        print("fulUrl:", fulUrl)
         bsObj = BeautifulSoup(fulUrl, "html.parser")
+        print("##")
         countInDegree = 0
         links = []
 

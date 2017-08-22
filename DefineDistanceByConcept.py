@@ -25,13 +25,14 @@ class DefineDistance :
         #print(len(wordSet))
 
         for i in range(len(wordSet)):
-            wordSet[i] = urllib.parse.quote_plus(wordSet[i])
+             wordSet[i] = urllib.parse.quote_plus(wordSet[i])
             #print(wordSet[i])
 
         wordPair = list(itertools.product(wordSet, repeat=2))
         #print(wordPair)
 
         matrix = []
+        submitCode = "1503212873%7Cc452a23b0c2794e8863b9a415367cea2"
 
         for words in wordPair:
             a1 = words[0]
@@ -73,5 +74,5 @@ class DefineDistance :
         while (start_pos < len(matrix)):
             out.append(matrix[start_pos:start_pos + len(wordSet)])
             start_pos += len(wordSet)
-        #print(out)
-        return np.array(out), np.array(All_nodes)
+        print(out)
+        return out, np.array(All_nodes)

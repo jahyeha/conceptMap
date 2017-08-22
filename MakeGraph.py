@@ -15,7 +15,9 @@ class MakeGraph:
             node['label'] = ci
             nodes.append(node)
             for j in range(i+1,len(concept)):
-                #print(i, j)
+                print("i:",i,"j:", j)
+                print("conceptRelation[i]:",conceptRelation[i])
+                print("conceptRelation[j]",conceptRelation[j])
                 if (conceptRelation[i] == conceptRelation[j]):
                     # 다른 feature로 정의
                     print(i, j)
