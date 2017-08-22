@@ -1,11 +1,12 @@
-// dataset만들기
+// dataset만들기   js 를 나누기 적용이 아직 안됨 ..
 // 노드가 들어있는 데이터셋
 var nodes = new vis.DataSet();
 // 엣지가 들어있는 데이터셋
 var edges = new vis.DataSet();
 
-$.getJSON('{% static "" %}play/data/PL8dPuuaLjXtN0ge7yDk_UA0ldZJdhwkoV.json', function(json) {
+$.getJSON('{% static "" %}play/data/{{video}}.json', function(json) {
   // add nodes
+  console.log({{video}})
   for(var i = 0; i < json.nodes.length; i++){
     nodes.add({
       id: json.nodes[i].id,

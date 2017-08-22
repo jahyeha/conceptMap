@@ -48,6 +48,7 @@ play page
 
             $.getJSON('{% static "" %}play/data/{{video}}.json', function(json) {
               // add nodes
+
               for(var i = 0; i < json.nodes.length; i++){
                 nodes.add({
                   id: json.nodes[i].id,
@@ -93,6 +94,8 @@ play page
             var network = new vis.Network(container, data, options);
             network.setOptions(options);
             console.log("end");
+            console.log("v"+ "{{video}}")
+
         </script>
       </div>
     </div><!-- END conceptmap -->
