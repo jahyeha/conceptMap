@@ -14,6 +14,8 @@ class DefineDistance :
         # 위키 링크를 받아서 그 페이지의 첫 번째 문단에 존재하는 링크들을 리스트에 담아 리턴함
         # 입력 : page_url(위키 페이지 링크)를 받음
         # 리턴 : page_url의 첫번째 문단에 존재하는 링크들을 links리스트에 담아 리턴함
+    def __init__(self, submitCode):
+        self.submitCode = submitCode
 
     def getConceptRelation(self, wordSet):
         regex = r'\>.+'
@@ -30,7 +32,6 @@ class DefineDistance :
         #print(wordPair)
 
         matrix = []
-        submitCode = "1503212873%7Cc452a23b0c2794e8863b9a415367cea2"
 
         for words in wordPair:
             a1 = words[0]
@@ -41,7 +42,7 @@ class DefineDistance :
                 matrix.append(degree)
                 continue
 
-            searchingUrl = "http://degreesofwikipedia.com/?a1=" + a1 + "&linktype=1&a2=" + a2 + "&skips=&submit=" + submitCode + "&currentlang=en#"
+            searchingUrl = "http://degreesofwikipedia.com/?a1=" + a1 + "&linktype=1&a2=" + a2 + "&skips=&submit=" + self.submitCode + "&currentlang=en#"
             #print(searchingUrl)
             try:
                 html = urlopen(searchingUrl)

@@ -11,20 +11,20 @@ import os
 
 def main():
     ##################Concept Extraction##################
-    originURL = "PLmhKTejvqnoOrQOcTY-pxN00BOZTGSWc3"  #:로마 역사  # "PL8dPuuaLjXtN0ge7yDk_UA0ldZJdhwkoV" :물리학
+    originURL = "ZM8ECpBuQYE"  #:로마 역사  # "ZM8ECpBuQYE / PL8dPuuaLjXtN0ge7yDk_UA0ldZJdhwkoV" :물리학
     playlistURL = 'https://www.youtube.com/playlist?list=PL8dPuuaLjXtN0ge7yDk_UA0ldZJdhwkoV'
+    submitCode = "1503382656%7Ce5c72339e330f6814ae2fe97aa5c6301"
     c_extraction = CE.ConceptExtraction(playlistURL)
-    defineConcept = DD.DefineDistance()
+    defineConcept = DD.DefineDistance(submitCode)
     makeGraph = MG.MakeGraph()
 
-    testIndex = 0
+    print(c_extraction.Pre.get_all_URLs())
+
     index = 1
     num_topic = 5
 
     Result = c_extraction.get_Concepts(num_topic)
-    #print(Result)
     #######################################################
-
     """e.g. of Result    ## 46개 문서(강의)에 대하여 각각 5개씩 뽑힌 컨셉리스트 입니다. ##
     [['acceleration', 'velocity', 'displacement', 'motion', 'light'],
     ['derivative', 'velocity', 'calculus', 'acceleration', 'power'],
@@ -34,7 +34,6 @@ def main():
     ......
     ['universe', 'radiation', 'light', 'redshift', 'plasma']]
     """
-
     ##################Concept Mapping##################
     """
     NOTE (e.g.)
@@ -56,13 +55,12 @@ def main():
         print('\t{}의 위키피디아 URL> '.format(URL[idx:]), URL)
     ##################################################
     '''
-    defineConcept = DD.DefineDistance()
 
     #### NOTE ####
     #### 임시로 밑에 getConceptRelation2 파라미터-> Result[1]으로 해놓았습니다.
     #### Result[doc_num]   0 <= doc_num < 47
-    print (Result[index])
-    conceptRelation = defineConcept.getConceptRelation2(Result[index])
+    print ("result index ",Result[0][index])
+    conceptRelation = defineConcept.getConceptRelation(Result[0][index])
     print(conceptRelation)
 
     graphSource = makeGraph.py2json(Result[index], conceptRelation)
@@ -72,9 +70,8 @@ def main():
     with open(sourceLoc, "w") as f:
         f.write(graphSource)
 
-
     #관계부분 시작
-    conceptRelation, All_degree = defineConcept.getConceptRelation(Result[1])
+    conceptRelation, All_degree = defineConcept.getConceptRelation(Result[index])
     print(conceptRelation)
     print(All_degree)
 
@@ -82,7 +79,7 @@ def main():
     Rocation_Algo2 = WR.WikiRotion(All_degree)
     Rocation_Algo2.get_rocation()
 
-    testFeature(Result[1])
+    testFeature(Result[index])
 
 def testFeature(concept):
     for c in concept:
