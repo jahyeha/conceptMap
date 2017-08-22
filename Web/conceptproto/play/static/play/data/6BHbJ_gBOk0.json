@@ -1,0 +1,34 @@
+{
+    "nodes": [
+        {
+            "id": 0,
+            "label": "temperature"
+        },
+        {
+            "id": 1,
+            "label": "volume"
+        },
+        {
+            "id": 2,
+            "label": "pressure"
+        },
+        {
+            "id": 3,
+            "label": "kelvin"
+        },
+        {
+            "id": 4,
+            "label": "length"
+        }
+    ],
+    "edges": [
+        {
+            "to": 0,
+            "from": 3
+        },
+        {
+            "to": 1,
+            "from": 4
+        }
+    ]
+}

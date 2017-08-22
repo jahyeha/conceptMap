@@ -1,0 +1,42 @@
+{
+    "nodes": [
+        {
+            "id": 0,
+            "label": "acceleration"
+        },
+        {
+            "id": 1,
+            "label": "gravity"
+        },
+        {
+            "id": 2,
+            "label": "mass"
+        },
+        {
+            "id": 3,
+            "label": "force"
+        },
+        {
+            "id": 4,
+            "label": "ground"
+        }
+    ],
+    "edges": [
+        {
+            "to": 0,
+            "from": 1
+        },
+        {
+            "to": 0,
+            "from": 2
+        },
+        {
+            "to": 0,
+            "from": 3
+        },
+        {
+            "to": 2,
+            "from": 3
+        }
+    ]
+}

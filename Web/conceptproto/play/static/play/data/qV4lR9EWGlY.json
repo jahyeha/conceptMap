@@ -1,0 +1,30 @@
+{
+    "nodes": [
+        {
+            "id": 0,
+            "label": "sound"
+        },
+        {
+            "id": 1,
+            "label": "wave"
+        },
+        {
+            "id": 2,
+            "label": "watt"
+        },
+        {
+            "id": 3,
+            "label": "pressure"
+        },
+        {
+            "id": 4,
+            "label": "decibel"
+        }
+    ],
+    "edges": [
+        {
+            "to": 0,
+            "from": 1
+        }
+    ]
+}

@@ -5,9 +5,7 @@ class MakeGraph:
         out = dict()
         nodes = list()
         edges = list()
-        resistDistnace = len(concept)/2 - 1
-        print("py")
-        print(concept, conceptRelation)
+        resistDistnace = 3
 
         for i, ci in enumerate(concept):
             node = dict()
@@ -15,47 +13,48 @@ class MakeGraph:
             node['label'] = ci
             nodes.append(node)
             for j in range(i+1,len(concept)):
-                print("i:",i,"j:", j)
-                print("conceptRelation[i]:",conceptRelation[i])
-                print("conceptRelation[j]",conceptRelation[j])
+                # print("i:",i,"j:", j)
+                # print("conceptRelation[i]:",conceptRelation[i])
+                # print("conceptRelation[j]",conceptRelation[j])
                 if (conceptRelation[i] == conceptRelation[j]):
-                    # 다른 feature로 정의
-                    print(i, j)
+                    #if(conceptRelation[i]==1):
                     edge = dict()
                     edge['to'] = i
                     edge['from'] = j
+                    edge['middle'] = 'none'
                     edges.append(edge)
-
-                    edge['to'] = j
-                    edge['from'] = i
-                    edges.append(edge)
-
-                    print("\n")
                     continue
                 elif(conceptRelation[i][j] > conceptRelation[j][i]):
                     if(conceptRelation[i][j] < resistDistnace):
-                        source = i
-                        target = j
+                        if(conceptRelation[j][i] < 2):
+                            source = i
+                            target = j
+                        else:
+                            continue
                     else:
                         continue
                 else:
                     if (conceptRelation[j][i] < resistDistnace):
-                        source = j
-                        target = i
+                        if(conceptRelation[i][j] < 2):
+                            source = j
+                            target = i
+                        else:
+                            continue
                     else:
                         continue
 
                 edge = dict()
                 edge['to'] = target
                 edge['from'] = source
+                edge['middle'] = 'yes'
                 edges.append(edge)
 
         out['nodes'] = nodes
         out['edges'] = edges
-        print("dic")
-        print(out)
+        #print("dic")
+        #print(out)
         source = json.dumps(out,indent=4)
-        print(source)
+        #print(source)
         # file write  : ./con
         return source
 

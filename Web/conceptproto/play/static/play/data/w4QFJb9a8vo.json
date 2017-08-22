@@ -1,0 +1,25 @@
+{
+    "nodes": [
+        {
+            "id": 0,
+            "label": "energy"
+        },
+        {
+            "id": 1,
+            "label": "pendulum"
+        },
+        {
+            "id": 2,
+            "label": "work"
+        },
+        {
+            "id": 3,
+            "label": "force"
+        },
+        {
+            "id": 4,
+            "label": "distance"
+        }
+    ],
+    "edges": []
+}

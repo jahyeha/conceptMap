@@ -1,0 +1,34 @@
+{
+    "nodes": [
+        {
+            "id": 0,
+            "label": "circle"
+        },
+        {
+            "id": 1,
+            "label": "acceleration"
+        },
+        {
+            "id": 2,
+            "label": "motion"
+        },
+        {
+            "id": 3,
+            "label": "speed"
+        },
+        {
+            "id": 4,
+            "label": "velocity"
+        }
+    ],
+    "edges": [
+        {
+            "to": 1,
+            "from": 4
+        },
+        {
+            "to": 3,
+            "from": 4
+        }
+    ]
+}

@@ -22,7 +22,7 @@
 }
 
 #conceptmap {
-	width: 400px;
+	width: inherit;
 	height: 400px;
 	border: 1px solid lightgray;
 }

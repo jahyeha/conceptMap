@@ -1,0 +1,30 @@
+{
+    "nodes": [
+        {
+            "id": 0,
+            "label": "momentum"
+        },
+        {
+            "id": 1,
+            "label": "mass"
+        },
+        {
+            "id": 2,
+            "label": "pendulum"
+        },
+        {
+            "id": 3,
+            "label": "velocity"
+        },
+        {
+            "id": 4,
+            "label": "energy"
+        }
+    ],
+    "edges": [
+        {
+            "to": 1,
+            "from": 4
+        }
+    ]
+}

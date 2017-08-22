@@ -1,0 +1,25 @@
+{
+    "nodes": [
+        {
+            "id": 0,
+            "label": "amplitude"
+        },
+        {
+            "id": 1,
+            "label": "motion"
+        },
+        {
+            "id": 2,
+            "label": "energy"
+        },
+        {
+            "id": 3,
+            "label": "frequency"
+        },
+        {
+            "id": 4,
+            "label": "velocity"
+        }
+    ],
+    "edges": []
+}

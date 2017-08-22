@@ -11,21 +11,20 @@ import os
 
 def main():
     ##################Concept Extraction##################
-    originURL = "ZM8ECpBuQYE"  #:로마 역사  # "ZM8ECpBuQYE / PL8dPuuaLjXtN0ge7yDk_UA0ldZJdhwkoV" :물리학
-    playlistURL = 'https://www.youtube.com/playlist?list=PL8dPuuaLjXtN0ge7yDk_UA0ldZJdhwkoV'
+    originURL = "PL8dPuuaLjXtN0ge7yDk_UA0ldZJdhwkoV"#playlist로 감  #:로마 역사  # "ZM8ECpBuQYE / PL8dPuuaLjXtN0ge7yDk_UA0ldZJdhwkoV" :물리학
+    playlistURL = 'https://www.youtube.com/playlist?list=' + originURL
     submitCode = "1503382656%7Ce5c72339e330f6814ae2fe97aa5c6301"
     c_extraction = CE.ConceptExtraction(playlistURL)
     defineConcept = DD.DefineDistance(submitCode)
     makeGraph = MG.MakeGraph()
 
-    testIndex = 0
-    index = 2
-    num_topic = 5
+    num_topic = 6
 
     Result = c_extraction.get_Concepts(num_topic)
-    #print(Result)
+    print(Result)
+    origins = c_extraction.Pre.get_all_URLs()
+    print(c_extraction.Pre.get_all_URLs())
     #######################################################
-
     """e.g. of Result    ## 46개 문서(강의)에 대하여 각각 5개씩 뽑힌 컨셉리스트 입니다. ##
     [['acceleration', 'velocity', 'displacement', 'motion', 'light'],
     ['derivative', 'velocity', 'calculus', 'acceleration', 'power'],
@@ -61,29 +60,31 @@ def main():
     #### NOTE ####
     #### 임시로 밑에 getConceptRelation2 파라미터-> Result[1]으로 해놓았습니다.
     #### Result[doc_num]   0 <= doc_num < 47
-    print ("result index ",Result[index])
-
-
-
-
+    #print(Result)
     #관계부분 시작
-    conceptRelation, All_degree = defineConcept.getConceptRelation(Result[index])
-    print(conceptRelation)
-    print(All_degree)
+    print(len(origins))
+    print(len(Result))
+    for index in range(len(origins)):
+
+        sourceName = origins[index].split("v=")[1].split("&")[0] + ".json"
+        print(Result[index])
+        print(sourceName)
+        conceptRelation, All_degree = defineConcept.getConceptRelation(Result[index])
+        print(conceptRelation)
+
+        #그래프 시작
+        graphSource = makeGraph.py2json(Result[index], conceptRelation)
+        #sourceName = str(originURL)+"_index"+str(index)+".json"
+        sourceLoc = os.path.join("./Web/conceptproto/play/static/play/data/" +sourceName)
+        print(sourceLoc)
+        with open(sourceLoc, "w") as f:
+            f.write(graphSource)
 
     #관계 두번째 알고리즘
-    Rocation_Algo2 = WR.WikiRotion(All_degree)
-    Rocation_Algo2.get_rocation()
+    # Rocation_Algo2 = WR.WikiRotion(All_degree)
+    # Rocation_Algo2.get_rocation()
+    # testFeature(Result[index])
 
-    testFeature(Result[index])
-
-    #그래프 시작
-    graphSource = makeGraph.py2json(Result[index], conceptRelation)
-    sourceName = originURL+".json"
-    sourceLoc = os.path.join("./Web/conceptproto/play/static/play/data/" +sourceName)
-    print(sourceLoc)
-    with open(sourceLoc, "w") as f:
-        f.write(graphSource)
 
 def testFeature(concept):
     for c in concept:
@@ -103,7 +104,7 @@ def testFeature(concept):
 
 
 def testGraph():
-    originURL = "PLmhKTejvqnoOrQOcTY-pxN00BOZTGSWc3"#:로마 역사  # "PL8dPuuaLjXtN0ge7yDk_UA0ldZJdhwkoV" :물리학
+    originURL = "PLmhKTejvqnoOrQOcTY-pxN00BOZTGSWc3"#"PL8dPuuaLjXtN0ge7yDk_UA0ldZJdhwkoV" :물리학
     playlistURL = 'https://www.youtube.com/playlist?list=' + originURL
     #c_extraction = CE.ConceptExtraction(playlistURL)
     #defineConcept = DD.DefineDistance()

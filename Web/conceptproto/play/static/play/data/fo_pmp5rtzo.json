@@ -1,0 +1,45 @@
+{
+    "nodes": [
+        {
+            "id": 0,
+            "label": "force"
+        },
+        {
+            "id": 1,
+            "label": "gravity"
+        },
+        {
+            "id": 2,
+            "label": "acceleration"
+        },
+        {
+            "id": 3,
+            "label": "trigonometry"
+        },
+        {
+            "id": 4,
+            "label": "sound"
+        },
+        {
+            "id": 5,
+            "label": "heat"
+        }
+    ],
+    "edges": [
+        {
+            "to": 1,
+            "from": 0,
+            "middle": "yes"
+        },
+        {
+            "to": 0,
+            "from": 2,
+            "middle": "yes"
+        },
+        {
+            "to": 1,
+            "from": 2,
+            "middle": "yes"
+        }
+    ]
+}

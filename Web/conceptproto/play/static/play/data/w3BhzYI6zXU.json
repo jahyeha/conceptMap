@@ -1,0 +1,29 @@
+{
+    "nodes": [
+        {
+            "id": 0,
+            "label": "vector"
+        },
+        {
+            "id": 1,
+            "label": "machine"
+        },
+        {
+            "id": 2,
+            "label": "velocity"
+        },
+        {
+            "id": 3,
+            "label": "dimension"
+        },
+        {
+            "id": 4,
+            "label": "motion"
+        },
+        {
+            "id": 5,
+            "label": "ground"
+        }
+    ],
+    "edges": []
+}

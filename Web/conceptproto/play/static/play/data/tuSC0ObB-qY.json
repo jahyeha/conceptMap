@@ -1,0 +1,25 @@
+{
+    "nodes": [
+        {
+            "id": 0,
+            "label": "heat"
+        },
+        {
+            "id": 1,
+            "label": "temperature"
+        },
+        {
+            "id": 2,
+            "label": "convection"
+        },
+        {
+            "id": 3,
+            "label": "phase"
+        },
+        {
+            "id": 4,
+            "label": "radiation"
+        }
+    ],
+    "edges": []
+}

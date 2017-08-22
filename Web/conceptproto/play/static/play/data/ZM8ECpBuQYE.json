@@ -1,0 +1,45 @@
+{
+    "nodes": [
+        {
+            "id": 0,
+            "label": "acceleration"
+        },
+        {
+            "id": 1,
+            "label": "velocity"
+        },
+        {
+            "id": 2,
+            "label": "displacement"
+        },
+        {
+            "id": 3,
+            "label": "motion"
+        },
+        {
+            "id": 4,
+            "label": "light"
+        },
+        {
+            "id": 5,
+            "label": "universe"
+        }
+    ],
+    "edges": [
+        {
+            "to": 0,
+            "from": 1,
+            "middle": "yes"
+        },
+        {
+            "to": 5,
+            "from": 0,
+            "middle": "yes"
+        },
+        {
+            "to": 5,
+            "from": 4,
+            "middle": "yes"
+        }
+    ]
+}

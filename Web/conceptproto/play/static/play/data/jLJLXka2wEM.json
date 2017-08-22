@@ -1,0 +1,75 @@
+{
+    "nodes": [
+        {
+            "id": 0,
+            "label": "integral"
+        },
+        {
+            "id": 1,
+            "label": "derivative"
+        },
+        {
+            "id": 2,
+            "label": "acceleration"
+        },
+        {
+            "id": 3,
+            "label": "velocity"
+        },
+        {
+            "id": 4,
+            "label": "displacement"
+        },
+        {
+            "id": 5,
+            "label": "calculus"
+        }
+    ],
+    "edges": [
+        {
+            "to": 0,
+            "from": 1,
+            "middle": "yes"
+        },
+        {
+            "to": 2,
+            "from": 0,
+            "middle": "yes"
+        },
+        {
+            "to": 0,
+            "from": 5,
+            "middle": "yes"
+        },
+        {
+            "to": 1,
+            "from": 2,
+            "middle": "yes"
+        },
+        {
+            "to": 1,
+            "from": 3,
+            "middle": "yes"
+        },
+        {
+            "to": 1,
+            "from": 5,
+            "middle": "yes"
+        },
+        {
+            "to": 2,
+            "from": 3,
+            "middle": "yes"
+        },
+        {
+            "to": 2,
+            "from": 5,
+            "middle": "yes"
+        },
+        {
+            "to": 5,
+            "from": 3,
+            "middle": "yes"
+        }
+    ]
+}

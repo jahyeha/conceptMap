@@ -1,0 +1,38 @@
+{
+    "nodes": [
+        {
+            "id": 0,
+            "label": "wave"
+        },
+        {
+            "id": 1,
+            "label": "pulse"
+        },
+        {
+            "id": 2,
+            "label": "amplitude"
+        },
+        {
+            "id": 3,
+            "label": "crest"
+        },
+        {
+            "id": 4,
+            "label": "sound"
+        }
+    ],
+    "edges": [
+        {
+            "to": 0,
+            "from": 2
+        },
+        {
+            "to": 0,
+            "from": 4
+        },
+        {
+            "to": 2,
+            "from": 4
+        }
+    ]
+}

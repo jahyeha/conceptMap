@@ -19,24 +19,47 @@
         {
             "id": 4,
             "label": "power"
+        },
+        {
+            "id": 5,
+            "label": "mathematics"
         }
     ],
     "edges": [
         {
             "to": 0,
-            "from": 2
+            "from": 1,
+            "middle": "yes"
         },
         {
             "to": 0,
-            "from": 3
+            "from": 2,
+            "middle": "yes"
         },
         {
-            "to": 1,
-            "from": 3
+            "to": 0,
+            "from": 3,
+            "middle": "yes"
         },
         {
             "to": 2,
-            "from": 3
+            "from": 1,
+            "middle": "yes"
+        },
+        {
+            "to": 1,
+            "from": 3,
+            "middle": "yes"
+        },
+        {
+            "to": 2,
+            "from": 3,
+            "middle": "yes"
+        },
+        {
+            "to": 2,
+            "from": 5,
+            "middle": "yes"
         }
     ]
 }

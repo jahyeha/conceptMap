@@ -1,0 +1,34 @@
+{
+    "nodes": [
+        {
+            "id": 0,
+            "label": "stress"
+        },
+        {
+            "id": 1,
+            "label": "torque"
+        },
+        {
+            "id": 2,
+            "label": "force"
+        },
+        {
+            "id": 3,
+            "label": "statics"
+        },
+        {
+            "id": 4,
+            "label": "length"
+        }
+    ],
+    "edges": [
+        {
+            "to": 1,
+            "from": 2
+        },
+        {
+            "to": 2,
+            "from": 3
+        }
+    ]
+}

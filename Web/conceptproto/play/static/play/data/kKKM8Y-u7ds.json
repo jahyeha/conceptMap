@@ -1,0 +1,80 @@
+{
+    "nodes": [
+        {
+            "id": 0,
+            "label": "force"
+        },
+        {
+            "id": 1,
+            "label": "gravity"
+        },
+        {
+            "id": 2,
+            "label": "acceleration"
+        },
+        {
+            "id": 3,
+            "label": "mass"
+        },
+        {
+            "id": 4,
+            "label": "inertia"
+        },
+        {
+            "id": 5,
+            "label": "ground"
+        }
+    ],
+    "edges": [
+        {
+            "to": 1,
+            "from": 0,
+            "middle": "yes"
+        },
+        {
+            "to": 0,
+            "from": 2,
+            "middle": "yes"
+        },
+        {
+            "to": 0,
+            "from": 3,
+            "middle": "yes"
+        },
+        {
+            "to": 0,
+            "from": 4,
+            "middle": "yes"
+        },
+        {
+            "to": 1,
+            "from": 2,
+            "middle": "yes"
+        },
+        {
+            "to": 1,
+            "from": 3,
+            "middle": "yes"
+        },
+        {
+            "to": 4,
+            "from": 1,
+            "middle": "yes"
+        },
+        {
+            "to": 2,
+            "from": 3,
+            "middle": "yes"
+        },
+        {
+            "to": 2,
+            "from": 4,
+            "middle": "yes"
+        },
+        {
+            "to": 3,
+            "from": 4,
+            "middle": "yes"
+        }
+    ]
+}

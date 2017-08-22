@@ -1,0 +1,34 @@
+{
+    "nodes": [
+        {
+            "id": 0,
+            "label": "fluid"
+        },
+        {
+            "id": 1,
+            "label": "density"
+        },
+        {
+            "id": 2,
+            "label": "pressure"
+        },
+        {
+            "id": 3,
+            "label": "viscosity"
+        },
+        {
+            "id": 4,
+            "label": "volume"
+        }
+    ],
+    "edges": [
+        {
+            "to": 0,
+            "from": 3
+        },
+        {
+            "to": 1,
+            "from": 4
+        }
+    ]
+}

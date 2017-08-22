@@ -31,7 +31,6 @@ play page
             Pause
           </button>
         </div><!-- END video button -->
-
       </div>
     </div>
 
@@ -45,10 +44,8 @@ play page
             var nodes = new vis.DataSet();
             // 엣지가 들어있는 데이터셋
             var edges = new vis.DataSet();
-
             $.getJSON('{% static "" %}play/data/{{video}}.json', function(json) {
               // add nodes
-
               for(var i = 0; i < json.nodes.length; i++){
                 nodes.add({
                   id: json.nodes[i].id,
@@ -57,12 +54,27 @@ play page
                 });
               }
               // add edges
-              for(var i = 0; i < json.edges.length; i++){
-                edges.add({
-                  from: json.edges[i].from,
-                  to: json.edges[i].to,
-                  arrows:'to'
-                });
+              //len = json.nodes.length
+              //if(json.edges.length < len){
+                len = json.edges.length
+              //}
+
+              for(var i = 0; i < len; i++){
+                if(json.edges[i].middle == 'yes'){
+                  console.log(json.edges[i])
+                  edges.add({
+                    from: json.edges[i].from,
+                    to: json.edges[i].to,
+                    arrows:'to'
+                  });
+                }else{
+                  console.log(json.edges[i])
+                  edges.add({
+                    from: json.edges[i].from,
+                    to: json.edges[i].to,
+                    arrows:'middle'
+                  });
+               }
               }
             });
             // id가 conceptmap인 엘리먼트 선택
@@ -73,19 +85,19 @@ play page
                 nodes: nodes,
                 edges: edges
             };
-            var options = {
+              var options = {
                 layout: {
                 randomSeed: undefined,
                 improvedLayout:true,
                 hierarchical: {
                   enabled:true,
                   levelSeparation: 80,
-                  nodeSpacing: 100,
-                  treeSpacing: 200,
+                  nodeSpacing: 80,
+                  treeSpacing: 0,
                   blockShifting: false,
                   edgeMinimization: false,
                   parentCentralization: false,
-                  direction: 'UD',        // UD, DU, LR, RL
+                  direction: 'DU',        // UD, DU, LR, RL
                   sortMethod: 'hubsize'   // hubsize, directed
                 }
               }
