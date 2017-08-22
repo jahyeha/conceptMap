@@ -19,20 +19,37 @@
         {
             "id": 4,
             "label": "momentum"
+        },
+        {
+            "id": 5,
+            "label": "motion"
         }
     ],
     "edges": [
         {
-            "to": 0,
-            "from": 2
+            "to": 3,
+            "from": 4,
+            "value": 1
+        },
+        {
+            "to": 4,
+            "from": 2,
+            "value": 1
         },
         {
             "to": 0,
-            "from": 3
+            "from": 4,
+            "value": 1
         },
         {
-            "to": 2,
-            "from": 3
+            "to": 0,
+            "from": 1,
+            "value": 1
+        },
+        {
+            "to": 5,
+            "from": 4,
+            "value": 2
         }
     ]
 }

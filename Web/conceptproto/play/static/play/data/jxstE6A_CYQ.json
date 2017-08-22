@@ -19,7 +19,40 @@
         {
             "id": 4,
             "label": "velocity"
+        },
+        {
+            "id": 5,
+            "label": "wave"
         }
     ],
-    "edges": []
+    "edges": [
+        {
+            "to": 3,
+            "from": 5,
+            "middle": "none",
+            "value": 1
+        },
+        {
+            "to": 5,
+            "from": 2,
+            "value": 1
+        },
+        {
+            "to": 0,
+            "from": 5,
+            "middle": "none",
+            "value": 1
+        },
+        {
+            "to": 4,
+            "from": 5,
+            "middle": "none",
+            "value": 2
+        },
+        {
+            "to": 1,
+            "from": 5,
+            "value": 2
+        }
+    ]
 }

@@ -60,7 +60,7 @@ play page
               //}
 
               for(var i = 0; i < len; i++){
-                if(json.edges[i].middle == 'yes'){
+                if(json.edges[i].option == 'direct'){
                   console.log(json.edges[i])
                   edges.add({
                     from: json.edges[i].from,
@@ -72,7 +72,6 @@ play page
                   edges.add({
                     from: json.edges[i].from,
                     to: json.edges[i].to,
-                    arrows:'middle'
                   });
                }
               }
@@ -91,13 +90,14 @@ play page
                 improvedLayout:true,
                 hierarchical: {
                   enabled:true,
-                  levelSeparation: 80,
-                  nodeSpacing: 80,
-                  treeSpacing: 0,
-                  blockShifting: false,
-                  edgeMinimization: false,
+                  autoResize:true,
+                  levelSeparation: 100,
+                  nodeSpacing: 40,
+                  treeSpacing: 100,
+                  blockShifting: true,
+                  edgeMinimization: true,
                   parentCentralization: false,
-                  direction: 'DU',        // UD, DU, LR, RL
+                  direction: 'UD',        // UD, DU, LR, RL
                   sortMethod: 'hubsize'   // hubsize, directed
                 }
               }

@@ -19,12 +19,38 @@
         {
             "id": 4,
             "label": "frequency"
+        },
+        {
+            "id": 5,
+            "label": "ground"
         }
     ],
     "edges": [
         {
+            "to": 3,
+            "from": 4,
+            "value": 1
+        },
+        {
             "to": 0,
-            "from": 3
+            "from": 3,
+            "middle": "none",
+            "value": 1
+        },
+        {
+            "to": 0,
+            "from": 2,
+            "value": 1
+        },
+        {
+            "to": 1,
+            "from": 3,
+            "value": 2
+        },
+        {
+            "to": 5,
+            "from": 4,
+            "value": 3
         }
     ]
 }

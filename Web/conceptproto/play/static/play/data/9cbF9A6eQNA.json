@@ -19,16 +19,40 @@
         {
             "id": 4,
             "label": "length"
+        },
+        {
+            "id": 5,
+            "label": "pressure"
         }
     ],
     "edges": [
         {
-            "to": 1,
-            "from": 2
+            "to": 2,
+            "from": 5,
+            "middle": "none",
+            "value": 1
         },
         {
             "to": 2,
-            "from": 3
+            "from": 3,
+            "middle": "none",
+            "value": 1
+        },
+        {
+            "to": 3,
+            "from": 1,
+            "value": 1
+        },
+        {
+            "to": 4,
+            "from": 5,
+            "middle": "none",
+            "value": 2
+        },
+        {
+            "to": 0,
+            "from": 2,
+            "value": 2
         }
     ]
 }

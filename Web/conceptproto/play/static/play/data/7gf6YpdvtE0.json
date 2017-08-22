@@ -19,24 +19,39 @@
         {
             "id": 4,
             "label": "ground"
+        },
+        {
+            "id": 5,
+            "label": "focus"
         }
     ],
     "edges": [
         {
-            "to": 0,
-            "from": 1
-        },
-        {
-            "to": 0,
-            "from": 2
-        },
-        {
-            "to": 0,
-            "from": 3
-        },
-        {
             "to": 2,
-            "from": 3
+            "from": 3,
+            "middle": "none",
+            "value": 1
+        },
+        {
+            "to": 1,
+            "from": 3,
+            "value": 1
+        },
+        {
+            "to": 0,
+            "from": 3,
+            "middle": "none",
+            "value": 1
+        },
+        {
+            "to": 5,
+            "from": 3,
+            "value": 3
+        },
+        {
+            "to": 4,
+            "from": 3,
+            "value": 3
         }
     ]
 }

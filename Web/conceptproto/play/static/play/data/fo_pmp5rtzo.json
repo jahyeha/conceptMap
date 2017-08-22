@@ -28,18 +28,31 @@
     "edges": [
         {
             "to": 1,
-            "from": 0,
-            "middle": "yes"
+            "from": 2,
+            "middle": "none",
+            "value": 1
         },
         {
             "to": 0,
             "from": 2,
-            "middle": "yes"
+            "middle": "none",
+            "value": 1
         },
         {
-            "to": 1,
-            "from": 2,
-            "middle": "yes"
+            "to": 4,
+            "from": 5,
+            "value": 2
+        },
+        {
+            "to": 3,
+            "from": 4,
+            "value": 2
+        },
+        {
+            "to": 2,
+            "from": 5,
+            "middle": "none",
+            "value": 2
         }
     ]
 }

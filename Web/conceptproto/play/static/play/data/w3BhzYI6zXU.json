@@ -25,5 +25,32 @@
             "label": "ground"
         }
     ],
-    "edges": []
+    "edges": [
+        {
+            "to": 4,
+            "from": 2,
+            "value": 2
+        },
+        {
+            "to": 3,
+            "from": 2,
+            "value": 2
+        },
+        {
+            "to": 1,
+            "from": 3,
+            "middle": "none",
+            "value": 2
+        },
+        {
+            "to": 0,
+            "from": 3,
+            "value": 2
+        },
+        {
+            "to": 5,
+            "from": 3,
+            "value": 3
+        }
+    ]
 }

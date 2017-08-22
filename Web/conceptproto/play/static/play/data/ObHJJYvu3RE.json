@@ -27,39 +27,33 @@
     ],
     "edges": [
         {
-            "to": 0,
-            "from": 1,
-            "middle": "yes"
-        },
-        {
-            "to": 0,
-            "from": 2,
-            "middle": "yes"
-        },
-        {
-            "to": 0,
-            "from": 3,
-            "middle": "yes"
+            "to": 2,
+            "from": 5,
+            "middle": "none",
+            "value": 1
         },
         {
             "to": 2,
-            "from": 1,
-            "middle": "yes"
+            "from": 3,
+            "middle": "none",
+            "value": 1
         },
         {
             "to": 1,
             "from": 3,
-            "middle": "yes"
+            "middle": "none",
+            "value": 1
         },
         {
-            "to": 2,
+            "to": 0,
             "from": 3,
-            "middle": "yes"
+            "middle": "none",
+            "value": 1
         },
         {
-            "to": 2,
+            "to": 4,
             "from": 5,
-            "middle": "yes"
+            "value": 2
         }
     ]
 }

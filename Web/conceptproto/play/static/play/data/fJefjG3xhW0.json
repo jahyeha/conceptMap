@@ -19,16 +19,39 @@
         {
             "id": 4,
             "label": "volume"
+        },
+        {
+            "id": 5,
+            "label": "energy"
         }
     ],
     "edges": [
         {
-            "to": 0,
-            "from": 3
+            "to": 5,
+            "from": 2,
+            "value": 1
+        },
+        {
+            "to": 4,
+            "from": 2,
+            "value": 1
+        },
+        {
+            "to": 3,
+            "from": 2,
+            "value": 1
         },
         {
             "to": 1,
-            "from": 4
+            "from": 4,
+            "middle": "none",
+            "value": 1
+        },
+        {
+            "to": 0,
+            "from": 3,
+            "middle": "none",
+            "value": 1
         }
     ]
 }

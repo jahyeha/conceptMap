@@ -19,12 +19,39 @@
         {
             "id": 4,
             "label": "decibel"
+        },
+        {
+            "id": 5,
+            "label": "plane"
         }
     ],
     "edges": [
         {
+            "to": 4,
+            "from": 2,
+            "value": 1
+        },
+        {
             "to": 0,
-            "from": 1
+            "from": 3,
+            "value": 1
+        },
+        {
+            "to": 0,
+            "from": 1,
+            "middle": "none",
+            "value": 1
+        },
+        {
+            "to": 3,
+            "from": 4,
+            "middle": "none",
+            "value": 2
+        },
+        {
+            "to": 5,
+            "from": 4,
+            "value": 3
         }
     ]
 }

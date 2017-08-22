@@ -19,16 +19,39 @@
         {
             "id": 4,
             "label": "force"
+        },
+        {
+            "id": 5,
+            "label": "gravity"
         }
     ],
     "edges": [
         {
-            "to": 0,
-            "from": 4
+            "to": 5,
+            "from": 4,
+            "value": 1
         },
         {
             "to": 2,
-            "from": 3
+            "from": 3,
+            "middle": "none",
+            "value": 1
+        },
+        {
+            "to": 4,
+            "from": 1,
+            "value": 1
+        },
+        {
+            "to": 0,
+            "from": 4,
+            "middle": "none",
+            "value": 1
+        },
+        {
+            "to": 3,
+            "from": 0,
+            "value": 1
         }
     ]
 }
