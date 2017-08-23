@@ -9,7 +9,7 @@ import matplotlib.pyplot as plt
 """NOTE 17-08-24 04:00
 메인이랑 연결해야함. _conceptExtraction_.py 에 get_concept_only -> 메인의 getConcept 틀림
 강의별 개념추출할 때도 weight 커트라인(max_weight)& max_concept을 정해서 추출할건지?
--> 결정 후, Main.py line 23 수정, _conceptExtraction_.py & main() COMMIT
+ -> 결정 후, Main.py line 23 수정, _conceptExtraction_.py & main() COMMIT
 """
 ##############################
 # 카테고리(클러스터)별 개념추출 #
@@ -21,8 +21,7 @@ class ConceptFromCluster:
         self.Pre = CE.Preprocessor(self.playlist_url)
         self.Con = CE.ConceptExtraction(self.playlist_url)
         self.cos = self.Clu.get_cosMatrix()
-        self.Z, labels = self.Clu.Hclustering(self.cos, num_cluster=5)
-        self.titles = self.Pre.get_video_title(self.playlist_url)[1]
+        self.titles = self.Pre.get_videoID_titles()[1] #(videoIDs, titles)
 
         """
         # labels
@@ -47,6 +46,7 @@ class ConceptFromCluster:
 
     def get_clu_videos(self):
         clu_videos = {}
+        Z, labels = self.Clu.Hclustering(self.cos, num_cluster=5)
         for i in range(len(self.titles)):
             if labels[i] not in clu_videos:
                 clu_videos[labels[i]] = [(i + 1, self.titles[i])]
@@ -171,6 +171,7 @@ class Clustering:
 
 
 if __name__ == "__main__":
+    """
     playlistURL = 'https://www.youtube.com/playlist?list=PL8dPuuaLjXtN0ge7yDk_UA0ldZJdhwkoV'
     C = Clustering(playlistURL)
     cos = C.get_cosMatrix()
@@ -178,6 +179,7 @@ if __name__ == "__main__":
     Z, labels = C.Hclustering(cos, num_cluster)
     #print(Z, '\n', labels)
     C.plot_clusters(Z, labels)
+    """
 
     ########TEST 08/24########
     CC = ConceptFromCluster()
@@ -187,3 +189,27 @@ if __name__ == "__main__":
     clu_main_concepts = CC.get_clu_concept(max_concept, max_weight)
     for i in range(1, len(clu_main_concepts) + 1):
         print('{}번 카테고리 주요개념 ({}개)\n\t'.format(i, len(clu_main_concepts[i])), clu_main_concepts[i])
+
+    """result
+    1번 카테고리 주요개념 (13개)
+	     ['voltmeter', 'resistor', 'transformer', 'flux', 'capacitance', 'electricity', 
+	      'inductor', 'inductance', 'energy', 'capacitor', 'voltage', 'ohm', 'battery']
+    
+    2번 카테고리 주요개념 (29개)
+         ['universe', 'amplitude', 'permittivity', 'speed', 'radiation', 'probability', 'focus', 
+          'photon', 'reflection', 'crest', 'flux', 'redshift', 'energy', 'plasma', 'sound', 
+          'diffraction', 'light', 'frequency', 'momentum', 'refraction', 'wave', 'pressure', 
+          'density', 'electron', 'interference', 'watt', 'pulse', 'quantum', 'wavelength']
+    
+    3번 카테고리 주요개념 (13개)
+         ['density', 'liquid', 'engine', 'thermodynamics', 'viscosity', 'entropy', 'fluid', 
+          'pressure', 'temperature', 'volume', 'convection', 'heat', 'kelvin']
+    
+    4번 카테고리 주요개념 (8개)
+         ['integral', 'displacement', 'motion', 'velocity', 'acceleration', 'derivative', 'circle', 'calculus']
+    
+    5번 카테고리 주요개념 (20개)
+         ['electron', 'amplitude', 'machine', 'momentum', 'motion', 'force', 'radiation', 'acceleration', 
+          'velocity', 'inertia', 'torque', 'coulomb', 'vector', 'energy', 'proton', 'stress', 'atom', 
+          'gravity', 'magnetism', 'mass']
+    """
