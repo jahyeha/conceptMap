@@ -6,8 +6,79 @@ from sklearn.metrics.pairwise import cosine_similarity
 from scipy.cluster.hierarchy import ward, dendrogram, fcluster
 import matplotlib.pyplot as plt
 
+"""NOTE 17-08-24 04:00
+메인이랑 연결해야함. _conceptExtraction_.py 에 get_concept_only -> 메인의 getConcept 틀림
+강의별 개념추출할 때도 weight 커트라인(max_weight)& max_concept을 정해서 추출할건지?
+-> 결정 후, Main.py line 23 수정, _conceptExtraction_.py & main() COMMIT
+"""
+##############################
+# 카테고리(클러스터)별 개념추출 #
+##############################
+class ConceptFromCluster:
+    def __init__(self):
+        self.playlist_url = 'https://www.youtube.com/playlist?list=PL8dPuuaLjXtN0ge7yDk_UA0ldZJdhwkoV'
+        self.Clu = Clustering(self.playlist_url)
+        self.Pre = CE.Preprocessor(self.playlist_url)
+        self.Con = CE.ConceptExtraction(self.playlist_url)
+        self.cos = self.Clu.get_cosMatrix()
+        self.Z, labels = self.Clu.Hclustering(self.cos, num_cluster=5)
+        self.titles = self.Pre.get_video_title(self.playlist_url)[1]
 
-class Clustering():
+        """
+        # labels
+            = [4 4 4 4 4 4 4 4 4 4 4 4 4 3 3 4 2 2 2 3,..] 
+        # titles 
+            = ['Motion in a Straight Line', 'Derivatives', 'Integrals', 
+                'Vectors and 2D Motion',"Newton's Laws", 'Friction'..]
+        """
+
+    def get_clu_concept(self, max_concept, max_weight):
+        clu_main_concepts = {}
+        clu_videos = self.get_clu_videos()
+        lec_concepts_dic = self.get_conceptByweight(max_concept, max_weight)
+        for i in range(1, len(clu_videos) + 1):
+            temp_for_set = []
+            for lec in clu_videos[i]:
+                lec_num = lec[0]
+                temp_for_set += lec_concepts_dic[lec_num]
+            clu_main_concepts[i] = list(set(temp_for_set))
+        return clu_main_concepts
+    #########################################################################
+
+    def get_clu_videos(self):
+        clu_videos = {}
+        for i in range(len(self.titles)):
+            if labels[i] not in clu_videos:
+                clu_videos[labels[i]] = [(i + 1, self.titles[i])]
+            else:
+                clu_videos[labels[i]].append((i + 1, self.titles[i]))
+        return clu_videos
+
+    """clu_videos
+    {1: [(27, 'Voltage, Electric Energy, and Capacitors'), (28, 'Electric Current'), 
+         (29, 'DC Resistors & Batteries'), (30, 'Circuit Analysis'), ...], 2: [..], ..}"""
+
+    def get_conceptByweight(self, max_concept, max_weight):
+        #max_concept = 5, max_weight = 0.1
+        #concepts = self.Con.get_concept_weight(max_concept,max_weight)
+        only_concepts = self.Con.get_only_concepts(max_concept, max_weight)
+        """only_concepts
+        [['acceleration', 'velocity', 'displacement'],  #1st lecture's Concepts
+        ['derivative', 'velocity', 'calculus', 'acceleration'], #2nd
+        ['integral', 'derivative', 'acceleration', 'velocity'], #3rd ..
+        """
+        lec_concepets_dic = {}
+        for i in range(len(self.titles)):
+            lec_concepets_dic[i+1] = only_concepts[i]
+
+        """lec_concepts_dic
+        {1 : ['acceleration', 'velocity', 'displacement'], 
+         2 : ['derivative', 'velocity', 'calculus', 'acceleration'],..}
+        """
+        return lec_concepets_dic
+
+
+class Clustering:
     def __init__(self, playlistURL):
         self.playlist_url = playlistURL
         self.Pre = CE.Preprocessor(self.playlist_url)      #module1
@@ -105,5 +176,14 @@ if __name__ == "__main__":
     cos = C.get_cosMatrix()
     num_cluster = 5 #color : max = 5
     Z, labels = C.Hclustering(cos, num_cluster)
-    print(Z, '\n', labels)
+    #print(Z, '\n', labels)
     C.plot_clusters(Z, labels)
+
+    ########TEST 08/24########
+    CC = ConceptFromCluster()
+    max_concept = 5
+    max_weight = 0.1
+    result = CC.get_clu_concept(max_concept, max_weight)
+    clu_main_concepts = CC.get_clu_concept(max_concept, max_weight)
+    for i in range(1, len(clu_main_concepts) + 1):
+        print('{}번 카테고리 주요개념 ({}개)\n\t'.format(i, len(clu_main_concepts[i])), clu_main_concepts[i])
