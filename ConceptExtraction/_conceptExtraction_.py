@@ -14,6 +14,7 @@ from nltk.corpus import stopwords
 from nltk.tokenize import RegexpTokenizer
 from ConceptExtraction import _conceptMapping_ as CM
 
+################17-08-22 01:30 Updating..################
 
 class Preprocessor:
     """
@@ -37,15 +38,38 @@ class Preprocessor:
     def get_result(self):
         video_IDs, titles = self.get_videoID_titles()
         doc_set = self.get_documents(video_IDs)
-        bow_set = self.tokenize(doc_set, self.physicsConcepts)
-        return bow_set
+        bow_set = self.tokenizer(doc_set)
+        filtered_bowSet = self.adv_tokenizer(bow_set, self.physicsConcepts)
+        return filtered_bowSet
 
-    """NOTE 2017-08-20 변경/추가"""
+    #############################################################
+    #17-08-22 03:05 new+
+    def temp_get_result(self, subject_name):
+        video_IDs, titles = self.get_videoID_titles()
+        doc_set = self.get_documents(video_IDs)
+        bow_set = self.tokenizer(doc_set)
+        temp_conceptList = self.temp_matching_dict(subject_name)
+        filtered_bowSet = self.adv_tokenizer(bow_set, temp_conceptList)
+        return filtered_bowSet
+
+    #NOTE 17-08-22 02:50 new+ (TEMP)
+    def temp_matching_dict(self, subject_name):
+        if subject_name == "physics":
+            return self.physicsConcepts
+
+        else:
+            temp = self.Cmap.temp_get_dict(subject_name)
+            res_dict = self.Cmap.make_dicts(temp)[0]
+            return list(res_dict.keys())
+        # [motion, power, electricity, zenith,...]
+    #############################################################
+
+    """NOTE 2017-08-20 new+ """
     def get_videoID_titles(self):
         playlist_url = self.playlist_url
         URLs = self.get_all_URLs()
         video_IDs = self.get_videoIDs(URLs)
-        video_titles = self.get_videoTitle(URLs)
+        video_titles = self.get_video_title(URLs)
         return video_IDs, video_titles
     ###########################################################
 
@@ -68,8 +92,8 @@ class Preprocessor:
                 break
         return URLs
     #####################################################################
-    """NOTE 17-08-20 새로 추가 (Optional)"""
-    def get_videoTitle(self, URLs):
+    """NOTE 17-08-20 new+ (Optional)"""
+    def get_video_title(self, URLs):
         #Input: a list which contains all video URLs from the input playlist (page)
         #Output: a list of titles from the videos(lectures)
         video_titles = []
@@ -107,24 +131,30 @@ class Preprocessor:
             doc_set.append(doc)
         return doc_set
 
-    def tokenize(self, docSet, conceptLst):
+    def tokenizer(self, docSet):
         # Tokenizing& removing stopwords
         tokenizer = RegexpTokenizer(r'\w+')
         bow_set = []
         stop = set(stopwords.words('english'))
-        # (X) all_eng_words = words.words()
-
-        physics_glossary = conceptLst
 
         for doc in docSet:
             tokens = tokenizer.tokenize(doc)
             stopped_tokens = [i for i in tokens if not i in stop and len(i) > 1]
             bow_set.append(stopped_tokens)
+        """
+        bow_set = [['want', 'video', 'istalk', 'difference', 'vectors',..],
+                   ['direction', 'talking', 'velocity', 'talking',..],...]
+        """
+        return bow_set
 
-        # (X) Applying POS tagging to extract all Nouns & Checking English spelling
-        # (X) tagged = [nltk.pos_tag(bow) for bow in bow_set]
+    """
+    NOTE 17-08-22 new+ 
+    """
+    def adv_tokenizer(self, bowSet, concept_list):
+        physics_glossary = concept_list
         filtered_bowSet = []
-        for lst in bow_set:
+
+        for lst in bowSet:
             temp = []
             for item in lst:
                 if item in physics_glossary:
@@ -139,7 +169,27 @@ class ConceptExtraction:  # ConputeTfIdf->ConceptExtraction
         self.bowSet = self.Pre.get_result()
         self.Tfidf_result = self.run_TfIdf()
 
-    def get_Concepts(self, num_concept):
+    def get_only_concepts(self, num_concept):
+        #### ONLY GET CONCEPT NAMES without their weights ####
+        candidate_set = self.get_concept_weight(num_concept)
+        result = []
+
+        for lst in candidate_set:
+            temp = []
+            for word in lst:
+                temp.append(word[0])
+            result.append(temp)
+
+            """
+            [['acceleration', 'velocity', 'displacement', 'motion', 'light'], 
+            ['derivative', 'velocity', 'calculus', 'acceleration', 'power'], 
+            ['integral', 'derivative', 'acceleration', 'velocity', 'displacement'], 
+            ['vector', 'machine', 'velocity', 'dimension', 'motion'], 
+            ['force', 'gravity', 'acceleration', 'mass', 'inertia'],...] 
+            """
+        return result
+
+    def get_concept_weight(self, num_concept):
         # input: tfidf(the result of run_TfIdf)
         candidate_set = []
         tfidf = self.Tfidf_result
@@ -160,14 +210,8 @@ class ConceptExtraction:  # ConputeTfIdf->ConceptExtraction
          [('integral', 0.41838), ('derivative', 0.26713), ('acceleration', 0.23131), ('velocity', 0.11552),
           ('displacement', 0.0523)]..]
         """
-        #### ONLY GET CONCEPT NAMES without their weights ####
-        RESULT = []
-        for lst in candidate_set:
-            temp = []
-            for word in lst:
-                temp.append(word[0])
-            RESULT.append(temp)
-        return RESULT
+        return candidate_set
+
     ################################################################################
     """
     @Computing TF-IDF
@@ -242,43 +286,22 @@ class ConceptExtraction:  # ConputeTfIdf->ConceptExtraction
         ######################################################
 
 
-def main():
-    ############### Get the result ###############
-    playlistURL = 'https://www.youtube.com/playlist?list=PL8dPuuaLjXtN0ge7yDk_UA0ldZJdhwkoV'
-    Cextract = ConceptExtraction(playlistURL)  # OBJECT
-
-    ### 1. Result of BOW(Bag of Words) /before applying TF-IDF ###
-    num_topic = 5
-    dictSet = Cextract.create_dictSet()
-    print(dictSet)
-    sorted_dictSet = [sorted(dic.items(), key=operator.itemgetter(1), reverse=True) for dic in dictSet]
-    BOW_result = [dic[:num_topic] for dic in sorted_dictSet]
-    # print(BOW_result)
-
-    ### 2. Result of applying TF-IDF ###
-    Tfidf_result = Cextract.get_Concepts(num_topic)
-    # [[('concept1 of first doc', weight),('concept2', weight)..,[('concept1 of second doc', weight)..],..]
-    print(Tfidf_result, '\n')
-
-    ################### TEST ###################
-    """
-    num_doc = len(Tfidf_result)
-
-    print("###The Result of Concept to Wikipedia Mapping###")
-    for i in range(num_doc):
-        print("\nDocument {}".format(i+1))
-        for concept in Tfidf_result[i]:
-            url = physicsDict[concept[0]]
-            print('\t',concept[0],'>', url)"""
-
-    """
-    print('###The Result of Topic Extraction###')
-    for i in range(len(Tfidf_result)):
-        print(' {}번 째 문서'.format(i+1))
-        print('\tBOW   >', BOW_result[i])
-        print('\tTF-IDF>', Tfidf_result[i],'\n')"""
-    ############################################
-
-
 if __name__ == "__main__":
-    main()
+    ### ASTRONOMY > 추출은 OK, but 가중치가 전체적으로 낮음. 컨셉 데이터부족  ==> 추후 수정/업그레이드**
+    playlistURL1 = 'https://www.youtube.com/playlist?list=PL8dPuuaLjXtPAJr1ysd5yGIyiSFuh0mIL'
+    Con1 = ConceptExtraction(playlistURL1)
+    Pre1 = Preprocessor(playlistURL1)
+    astro_conept_list = Pre1.temp_matching_dict('astronomy')
+    #print(astro_conept_list)
+    #print(Pre1.temp_get_result('astronomy'),'\n\n')
+    #print(Con1.get_concept_weight(5))
+
+
+    ### ECONOMICS > TF-IDF 계산하는 데에서 Error
+    playlistURL2 = 'https://www.youtube.com/playlist?list=PL8dPuuaLjXtPNZwz5_o_5uirJ8gQXnhEO'
+    Con2 = ConceptExtraction(playlistURL2)
+    Pre2 = Preprocessor(playlistURL2)
+    astro_conept_list = Pre2.temp_matching_dict('astronomy')
+    # print(astro_conept_list)
+    print(Pre2.temp_get_result('astronomy'), '\n\n')
+    print(Con2.get_concept_weight(5))

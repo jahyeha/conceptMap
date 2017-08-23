@@ -1,10 +1,48 @@
 from bs4 import BeautifulSoup
 import requests
 
+"""NOTE 17-08-21
+    @사전정보: 기본적으로는 2가지(Glossary of -, Outline of -)
+    @Outline - 은 document slice하기 애매함 (physics와 비교한 뒤, 쓸 것인지 말 것인지 결정)
+
+    playlistURL = 'https://www.youtube.com/playlist?list=PL8dPuuaLjXtN0ge7yDk_UA0ldZJdhwkoV'  #Physics
+        - https://en.wikipedia.org/wiki/Glossary_of_physics#D
+        - https://en.wikipedia.org/wiki/Outline_of_physics
+        - https://en.wikipedia.org/wiki/List_of_physics_concepts_in_primary_and_secondary_education_curricula
+
+    ############################TEST##############################
+    V 8/22 테스트
+    playlistURL1 = 'https://www.youtube.com/playlist?list=PL8dPuuaLjXtNdTKZkV_GiIYXpV9w4WxbX' #Ecology 
+        - https://en.wikipedia.org/wiki/Glossary_of_ecology
+        - https://en.wikipedia.org/wiki/Outline_of_ecology
+
+    V 8/22 테스트
+    playlistURL2 = 'https://www.youtube.com/playlist?list=PL8dPuuaLjXtPAJr1ysd5yGIyiSFuh0mIL' #Astronomy
+        - https://en.wikipedia.org/wiki/Glossary_of_astronomy
+        - https://en.wikipedia.org/wiki/Outline_of_astronomy
+    ############################TEST##############################
+
+    playlistURL3 = 'https://www.youtube.com/playlist?list=PL3EED4C1D684D3ADF' #biology
+        - https://en.wikipedia.org/wiki/Glossary_of_biology
+        - https://en.wikipedia.org/wiki/Outline_of_biology
+
+    playlistURL4 = 'https://www.youtube.com/playlist?list=PL8dPuuaLjXtPHzzYuWy6fYEaX9mQQ8oGr' #Chemistry
+        - https://en.wikipedia.org/wiki/Glossary_of_chemistry_terms 
+        - https://en.wikipedia.org/wiki/Outline_of_chemistry
+        - https://en.wikipedia.org/wiki/List_of_chemical_elements 원소
+
+    V 8/22 테스트
+    playlistURL5 = 'https://www.youtube.com/playlist?list=PL8dPuuaLjXtPNZwz5_o_5uirJ8gQXnhEO' #Economics
+        - https://en.wikipedia.org/wiki/Glossary_of_economics
+        - https://en.wikipedia.org/wiki/Outline_of_economics
+"""
+
+
 class Mapping:
     """
     @ linking each concept to its Wikipedia URL
     """
+
     def __init__(self):
         self.dictionary = self.make_compelteDict()
 
@@ -17,17 +55,36 @@ class Mapping:
         combined_dict = self.combine_dicts(dictSet_lst)
         return combined_dict
 
+    #####################################################
+    """NOTE 17-08-22 new+ (TEMP)"""
+
+    def temp_get_dict(self, subject_name):
+        # pos = {페이지 특징 이름 : [start, end]}
+        pos = {'glossary': ['<h2><span class="mw-headline" id="A">', '<h2><span class="mw-headline" id="See_also">'],
+               'outline': ['<table class="wikitable">', '<h3><span class="mw-headline" id="Concepts_by_field">'],
+               'other': ['<h2><span class="mw-headline" id="Motion_and_forces">',
+                         '<h2><span class="mw-headline" id="See_also">']}
+
+        base_url = 'https://en.wikipedia.org/wiki/'
+        subject_url = {'astronomy': base_url + 'Glossary_of_astronomy',
+                       'economics': base_url + 'Glossary_of_economics'}
+        url = subject_url[subject_name]
+        base_info_dict = {url: pos['glossary']}
+        return base_info_dict
+
+    #####################################################
     def read_base_info(self):
         ## Read a text file that contains Wikipedia pages which have information(list of Concepts) about Physics.
-         # e.g. url_set = [url1, url2, url3], startEnd_set = [[start1, end1], [start2, end2], [start3, end3]]
+        # e.g. url_set = [url1, url2, url3], startEnd_set = [[start1, end1], [start2, end2], [start3, end3]]
         num_pages = 3
-        #info_set = open('info.txt').read().split('\n')
+        ###info_set 변경해야함###
         info_set = ['https://en.wikipedia.org/wiki/Glossary_of_physics#D',
                     'https://en.wikipedia.org/wiki/Outline_of_physics',
                     'https://en.wikipedia.org/wiki/List_of_physics_concepts_in_primary_and_secondary_education_curricula',
                     '<h2><span class="mw-headline" id="A">', '<h2><span class="mw-headline" id="See_also">',
-                    '<table class="wikitable">','<h3><span class="mw-headline" id="Concepts_by_field">',
-                    '<h2><span class="mw-headline" id="Motion_and_forces">', '<h2><span class="mw-headline" id="See_also">']
+                    '<table class="wikitable">', '<h3><span class="mw-headline" id="Concepts_by_field">',
+                    '<h2><span class="mw-headline" id="Motion_and_forces">',
+                    '<h2><span class="mw-headline" id="See_also">']
 
         url_set = info_set[:num_pages]
         startEnd = info_set[num_pages:]
@@ -37,15 +94,15 @@ class Mapping:
             startEnd_set.append([startEnd[i], startEnd[i + 1]])
 
         ## Make a temporary dictionary that has only URLs(&distinguishable starting&ending point) info.
-         # e.g. temp_dict = {url1 :[start1, end1],..}
+        # e.g. temp_dict = {url1 :[start1, end1],..}
         temp_dict = {}
         for i in range(len(url_set)):
             temp_dict[url_set[i]] = startEnd_set[i]
         return temp_dict
 
     def make_dicts(self, baseInfo_dict):
-        #input: a temporary dictionary that has only URLs info.  e.g. {url1 :[start1, end1],..}
-        #output: a list containing three dictionaries  e.g. [{WordUrl_dict1}, {WordUrl_dict2}, {WordUrl_dict3}]
+        # input: a temporary dictionary that has only URLs info.  e.g. {url1 :[start1, end1],..}
+        # output: a list containing three dictionaries  e.g. [{WordUrl_dict1}, {WordUrl_dict2}, {WordUrl_dict3}]
 
         urls = list(baseInfo_dict.keys())
         dictSet_lst = []
@@ -59,8 +116,8 @@ class Mapping:
 
     def combine_dicts(self, dict_set):
         ## Combine a base dictionary with the others
-         # input: a list containing three dictionaries
-         # output: one base dictionary combined with the others
+        # input: a list containing three dictionaries
+        # output: one base dictionary combined with the others
 
         base_dict = dict_set[0]
         for i in range(1, len(dict_set)):
@@ -70,9 +127,10 @@ class Mapping:
                     base_dict[word] = dict_set[i][word]
         return base_dict
 
+    ###############################################################################
     def get_page_doc(self, URL, start, end):
         ## Get the Wikipedia page(from input URL) and slice the document extracted from the page
-         # start, end : input string that can be distinguished as starting&ending point to slice the Wikipedia page(document)
+        # start, end : input string that can be distinguished as starting&ending point to slice the Wikipedia page(document)
         page = requests.get(URL)
         text = str(BeautifulSoup(page.content, 'html.parser'))
         startIdx = text.find(start)
@@ -112,32 +170,27 @@ class Mapping:
 
 def main():
     print('Running..')
-    ################TEST################
+    ##################TEST##################
     map = Mapping()
     concept_name = input('Concept Name>')
     print(map.maping_Concept2Wiki(concept_name))
-    ####################################
+    ########################################
+
 
 if __name__ == "__main__":
-    main()
+    ##################TEST##################
+    ## CC- Astronomy
+    M1 = Mapping()
+    temp_res1 = M1.temp_get_dict('astronomy')
+    result1 = M1.make_dicts(temp_res1)
+    # e.g. result1= [ {'zenith': 'https://en.wikipedia.org/wiki/Zenith','sun': 'https://en.wikipedia.org/wiki/Sun',..} ]
+    print('Astronomy\n\t', result1)
+    print(len(result1[0]))  # 160
+    print('--------------------------------------')
 
-
-"""
-NOTE - progress
-17-08-16 23:30
-@ 구현한 것/ 문제해결된 것 (08/15~)
-    #08/15 
-    1. URL path에 '_'부분을 error로 인식 : 문제 없음.
-    2. 낮은 매핑 정확도 : Glossary of Physics 외 2개의 위키피디아 페이지의 사전정보 활용
-        - 사용된 3개의 페이지는 "Physics에 대한 컨셉리스트와 각 컨셉의 위키피디아 URL 정보"를 가지고 있음.
-        - 우리가 만드는 컨셉맵의 모든 정보는 위키피디아 기반이기 때문에,
-          위키피디아에 컨셉에 대한 정보가 없거나 Physics의 Concept list(주요 개념)에 속하지 않는 단어는 무의미하다고 간주하고 제외함.
-        - 3개의 페이지를 크롤링하여 각 페이지에 대한 딕셔너리를 생성 후 -> 하나의 딕셔너리로 통합함.
-    2-1) 결과: 총 568개의 컨셉과 각 컨셉에 매핑되는 위키피디아 URL을 포함한 딕셔너리 생성
-                e.g. dictionary== {'inertia':'https://en.wikipedia.org/wiki/Inertia', ..}
-    #08/16
-    3. 위키피디아기반 Physics의 컨셉들(컨셉리스트)에 존재하는 합성어(e.g. newton's laws of motion) 처리:
-       문서별 추출된 컨셉(k개)에 대하여, 위키피디아 정보(or 유튜브 강의) 추천할 때 사용
-       (위 컨셉리스트에 존재하는 개념들은 모두 위키피디아 URL 정보를 가지고 있으므로)
-    4. Mapping 클래스의 결과물인 딕셔너리를 Concept Extraction 파트에서 활용-> Tokenzie() in conceptExtracton.py"""
-#############################################################################################################################
+    M2 = Mapping()
+    temp_res2 = M2.temp_get_dict('economics')
+    result2 = M2.make_dicts(temp_res2)
+    print('Economics\n\t', result2)
+    print(len(result2[0]))  # 208
+    ########################################

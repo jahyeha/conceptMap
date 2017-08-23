@@ -12,7 +12,7 @@ class Clustering():
         self.playlist_url = playlistURL
         self.Pre = CE.Preprocessor(self.playlist_url)      #module1
         self.all_urls = self.Pre.get_all_URLs()
-        self.video_titles = self.Pre.get_videoTitle(self.all_urls)
+        self.video_titles = self.Pre.get_video_title(self.all_urls)
 
         self.Con = CE.ConceptExtraction(self.playlist_url) #module2
         self.dict_set = self.Con.create_dictSet()
@@ -54,23 +54,22 @@ class Clustering():
             doc46                              1   """
         return cos
 
-    def Hclustering(self, cos):
+    def Hclustering(self, cos, num_cluster):
         dist = 1 - cos
         #linkage_matrix = hier.linkage(dist, method='single')  #singleprint(Z, labels)-linkage
         linkage_matrix = ward(dist)
-        num_cluster = 4
         cluster_id = fcluster(linkage_matrix, num_cluster, criterion='maxclust')
         #print(cluster_id)
         return linkage_matrix, cluster_id
 
     def plot_clusters(self, Z, labels):
-        ### Plotting ###
+        ##### Plotting #####
         video_titles = self.video_titles
         titles = ['{}: {}'.format(i+1, video_titles[i]) for i in range(len(video_titles))]
 
         dflt_col = "#808080"
-        assign_col = {1: "#67D5B5", 2: "#A593E0", 3: "#566270", 4: "#e94e77"}
-        #assign_col = {1: "#1b9e77", 2: "#263149", 3: "#E7475E", 4: "#1F6ED4"}
+        #if num_clusters > 5, this below has to be changed(adding colors)
+        assign_col = {1: "#58C9B9", 2: "#A593E0", 3: "#566270", 4: "#e94e77",5: "#4f953b"}
         D_leaf_colors = {}
 
         for i in range(len(titles)):
@@ -78,7 +77,7 @@ class Clustering():
 
         link_cols = {}
         for i, i12 in enumerate(Z[:, :2].astype(int)):
-            c1, c2 = (link_cols[x] if x > len(Z) else D_leaf_colors["{}: ".format(x+1)+title_name[x]] for x in i12)
+            c1, c2 = (link_cols[x] if x > len(Z) else D_leaf_colors["{}: ".format(x+1)+video_titles[x]] for x in i12)
             link_cols[i + 1 + len(Z)] = c1 if c1 == c2 else dflt_col
 
         ax = dendrogram(Z=Z,
@@ -104,5 +103,7 @@ if __name__ == "__main__":
     playlistURL = 'https://www.youtube.com/playlist?list=PL8dPuuaLjXtN0ge7yDk_UA0ldZJdhwkoV'
     C = Clustering(playlistURL)
     cos = C.get_cosMatrix()
-    Z, labels = C.Hclustering(cos)
+    num_cluster = 5 #color : max = 5
+    Z, labels = C.Hclustering(cos, num_cluster)
+    print(Z, '\n', labels)
     C.plot_clusters(Z, labels)
