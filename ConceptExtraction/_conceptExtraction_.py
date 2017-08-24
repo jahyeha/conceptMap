@@ -14,7 +14,6 @@ from nltk.corpus import stopwords
 from nltk.tokenize import RegexpTokenizer
 from ConceptExtraction import _conceptMapping_ as CM
 
-################17-08-22 01:30 Updating..################
 
 class Preprocessor:
     """
@@ -169,9 +168,31 @@ class ConceptExtraction:  # ConputeTfIdf->ConceptExtraction
         self.bowSet = self.Pre.get_result()
         self.Tfidf_result = self.run_TfIdf()
 
-    def get_only_concepts(self, num_concept):
+    ##########(기존) k만큼 컨셉 뽑기##########
+    def get_Kconcept(self, num_concept):
+        candidate_set = []
+        tfidf = self.Tfidf_result
+
+        for dic in tfidf:
+            candidate = {}
+            for word, val in dic.items():
+                if dic[word] != 0:
+                    candidate[word] = val
+            candidate = sorted(candidate.items(), key=operator.itemgetter(1), reverse=True)
+            candidate_set.append(candidate[:num_concept])
+
+        result = []
+        for lst in candidate_set:
+            temp = []
+            for word in lst:
+                temp.append(word[0])
+            result.append(temp)
+        return result
+        ########################################
+
+    def get_only_concepts(self, max_concept, max_weight):
         #### ONLY GET CONCEPT NAMES without their weights ####
-        candidate_set = self.get_concept_weight(num_concept)
+        candidate_set = self.get_concept_weight(max_concept, max_weight)
         result = []
 
         for lst in candidate_set:
@@ -189,18 +210,28 @@ class ConceptExtraction:  # ConputeTfIdf->ConceptExtraction
             """
         return result
 
-    def get_concept_weight(self, num_concept):
+    def get_concept_weight(self, max_concept, max_weight): #parameter num_concepts 삭제
         # input: tfidf(the result of run_TfIdf)
+        # 가중치(일정 가중치 이상의 단어)와 최대 컨셉 개수를 고려하여 개념 추출
         candidate_set = []
         tfidf = self.Tfidf_result
 
-        for dic in tfidf:
+        for dic in tfidf: # dic: each lecture
             candidate = {}
             for word, val in dic.items():
-                if dic[word] != 0:
+                # if dic[word] != 0:  NOTE 수정이전(수정일시 17-08-23)
+                # max_weight 이상인 단어만 candidate에 추가
+                if dic[word] >= max_weight:
                     candidate[word] = val
+
+            ## candidate : {'motion': 0.7(weight), 'power': 0.3,..}
             candidate = sorted(candidate.items(), key=operator.itemgetter(1), reverse=True)
-            candidate_set.append(candidate[:num_concept])
+            ## candidate(after sorted) : [('motion', 0.7), ('power', 0.3),..]
+
+            #candidate_set.append(candidate[:num_concept])
+            #하나의 강의에 대해 끝났으면, 가중치로 내림차순으로 정렬된 상태에서
+            #max_concept만큼 슬라이스해서 candidate_set에 추가합니다.
+            candidate_set.append(candidate[:max_concept])
 
         """candidate_set  => CONCEPT NAME with its WEIGHT
         [[('acceleration', 0.2855), ('velocity', 0.15526), ('displacement', 0.15062), ('motion', 0.0354),
@@ -285,23 +316,77 @@ class ConceptExtraction:  # ConputeTfIdf->ConceptExtraction
         return tfidf_set
         ######################################################
 
+def main():
+    #Physics
+    playlistURL = "https://www.youtube.com/playlist?list=PL8dPuuaLjXtN0ge7yDk_UA0ldZJdhwkoV"
+    Pre = Preprocessor(playlistURL)
+    URLs = Pre.get_all_URLs()
+    #print(URLs)
+    #print(Pre.get_videoID_titles())
+    IDs = Pre.get_videoIDs(URLs)
+    doc = Pre.get_documents(IDs)
+    #print(Pre.tokenizer(doc))
+
+    Con = ConceptExtraction(playlistURL)
+    #print(Con.get_concept_weight(5))
+    max_concept, max_weight = 5, 0.08 #카테고리에서 컨셉 뽑는 것과 가중치 다름
+    final_concept = Con.get_only_concepts(max_concept, max_weight)
+    #for i in range(len(final_concept)):
+        #print('{}번 강의의 컨셉({}개) : '.format(i+1, len(final_concept[i])), final_concept[i])
+
+    ########TEST 08-24 (기존 컨셉추출 방법)
+    temp_res = Con.get_Kconcept(num_concept=5)
+    for x in temp_res:
+        print(x)
+
+        """
+        1번 강의의 컨셉(3개) :  ['acceleration', 'velocity', 'displacement']
+        2번 강의의 컨셉(4개) :  ['derivative', 'velocity', 'calculus', 'acceleration']
+        3번 강의의 컨셉(4개) :  ['integral', 'derivative', 'acceleration', 'velocity']
+        4번 강의의 컨셉(4개) :  ['vector', 'machine', 'velocity', 'dimension']
+        5번 강의의 컨셉(5개) :  ['force', 'gravity', 'acceleration', 'mass', 'inertia']
+        6번 강의의 컨셉(3개) :  ['force', 'gravity', 'acceleration']
+        7번 강의의 컨셉(2개) :  ['circle', 'acceleration']
+        8번 강의의 컨셉(4개) :  ['acceleration', 'gravity', 'mass', 'force']
+        9번 강의의 컨셉(2개) :  ['energy', 'pendulum']
+        10번 강의의 컨셉(3개) :  ['momentum', 'mass', 'pendulum']
+        11번 강의의 컨셉(4개) :  ['velocity', 'motion', 'circle', 'acceleration']
+        12번 강의의 컨셉(5개) :  ['inertia', 'torque', 'mass', 'energy', 'momentum']
+        13번 강의의 컨셉(5개) :  ['stress', 'torque', 'force', 'statics', 'length']
+        14번 강의의 컨셉(5개) :  ['pressure', 'fluid', 'density', 'volume', 'force']
+        15번 강의의 컨셉(5개) :  ['fluid', 'density', 'pressure', 'viscosity', 'volume']
+        16번 강의의 컨셉(4개) :  ['amplitude', 'motion', 'energy', 'frequency']
+        17번 강의의 컨셉(5개) :  ['wave', 'pulse', 'amplitude', 'crest', 'sound']
+        18번 강의의 컨셉(5개) :  ['sound', 'wave', 'watt', 'pressure', 'decibel']
+        19번 강의의 컨셉(4개) :  ['wave', 'wavelength', 'frequency', 'sound']
+        20번 강의의 컨셉(5개) :  ['temperature', 'volume', 'pressure', 'kelvin', 'length']
+        21번 강의의 컨셉(4개) :  ['temperature', 'liquid', 'pressure', 'kelvin']
+        22번 강의의 컨셉(5개) :  ['heat', 'temperature', 'convection', 'phase', 'radiation']
+        23번 강의의 컨셉(5개) :  ['entropy', 'heat', 'thermodynamics', 'volume', 'temperature']
+        24번 강의의 컨셉(3개) :  ['engine', 'heat', 'temperature']
+        25번 강의의 컨셉(5개) :  ['coulomb', 'electron', 'atom', 'force', 'ground']
+        26번 강의의 컨셉(2개) :  ['coulomb', 'force']
+        27번 강의의 컨셉(5개) :  ['capacitor', 'capacitance', 'voltage', 'energy', 'dielectric']
+        28번 강의의 컨셉(5개) :  ['voltage', 'ohm', 'battery', 'power', 'light']
+        29번 강의의 컨셉(5개) :  ['voltage', 'battery', 'ohm', 'resistor', 'light']
+        30번 강의의 컨셉(4개) :  ['resistor', 'ohm', 'voltage', 'voltmeter']
+        31번 강의의 컨셉(5개) :  ['voltage', 'capacitor', 'capacitance', 'battery', 'resistor']
+        32번 강의의 컨셉(5개) :  ['force', 'radiation', 'vector', 'magnetism', 'tesla']
+        33번 강의의 컨셉(3개) :  ['circle', 'integral', 'ampere']
+        34번 강의의 컨셉(1개) :  ['flux']
+        35번 강의의 컨셉(5개) :  ['voltage', 'transformer', 'electricity', 'inductance', 'flux']
+        36번 강의의 컨셉(4개) :  ['voltage', 'inductor', 'inductance', 'flux']
+        37번 강의의 컨셉(5개) :  ['flux', 'wave', 'permittivity', 'density', 'energy']
+        38번 강의의 컨셉(4개) :  ['refraction', 'light', 'reflection', 'length']
+        39번 강의의 컨셉(5개) :  ['wave', 'light', 'diffraction', 'interference', 'wavelength']
+        40번 강의의 컨셉(5개) :  ['light', 'interference', 'wave', 'diffraction', 'phase']
+        41번 강의의 컨셉(3개) :  ['light', 'focus', 'diffraction']
+        42번 강의의 컨셉(3개) :  ['light', 'speed', 'length']
+        43번 강의의 컨셉(5개) :  ['light', 'photon', 'wave', 'energy', 'frequency']
+        44번 강의의 컨셉(5개) :  ['electron', 'quantum', 'probability', 'momentum', 'wavelength']
+        45번 강의의 컨셉(5개) :  ['mass', 'atom', 'energy', 'proton', 'electron']
+        46번 강의의 컨셉(5개) :  ['universe', 'radiation', 'light', 'redshift', 'plasma']
+        """
 
 if __name__ == "__main__":
-    ### ASTRONOMY > 추출은 OK, but 가중치가 전체적으로 낮음. 컨셉 데이터부족  ==> 추후 수정/업그레이드**
-    playlistURL1 = 'https://www.youtube.com/playlist?list=PL8dPuuaLjXtPAJr1ysd5yGIyiSFuh0mIL'
-    Con1 = ConceptExtraction(playlistURL1)
-    Pre1 = Preprocessor(playlistURL1)
-    astro_conept_list = Pre1.temp_matching_dict('astronomy')
-    #print(astro_conept_list)
-    #print(Pre1.temp_get_result('astronomy'),'\n\n')
-    #print(Con1.get_concept_weight(5))
-
-
-    ### ECONOMICS > TF-IDF 계산하는 데에서 Error
-    playlistURL2 = 'https://www.youtube.com/playlist?list=PL8dPuuaLjXtPNZwz5_o_5uirJ8gQXnhEO'
-    Con2 = ConceptExtraction(playlistURL2)
-    Pre2 = Preprocessor(playlistURL2)
-    astro_conept_list = Pre2.temp_matching_dict('astronomy')
-    # print(astro_conept_list)
-    print(Pre2.temp_get_result('astronomy'), '\n\n')
-    print(Con2.get_concept_weight(5))
+    main()
