@@ -1,0 +1,77 @@
+{
+1:  [(27, 'Voltage, Electric Energy, and Capacitors'), 전기에너지
+     (28, 'Electric Current'), 전류
+     (29, 'DC Resistors & Batteries'), 직류저항기, 배터리
+     (30, 'Circuit Analysis'), 회로 분석
+     (31, 'Capacitors and Kirchhoff'), 콘덴서,축전기,(전기회로 저항&전류) 물리학자
+     (35, 'How Power Gets to Your Home'), 전기/동력/에너지
+     (36, 'AC Circuits')], 교류 회로
+	
+	< 1st 카테고리 개념>
+	['voltmeter', 'resistor', 'transformer', 'flux', 'capacitance', 'electricity', 'inductor', 'inductance', 'energy', 'capacitor', 'voltage', 'ohm', 'battery']
+
+
+
+2: [(17, 'Traveling Waves'), 진행파
+    (18, 'Sound'), 소리
+    (19, 'The Physics of Music'), 음악의 물리
+    (34, 'Induction - An Introduction'), (전기의)유도  
+    (37, "Maxwell's Equations"), 멕스웰방정식:전기장과 자기장->빛이 전자기적인 현상을 밝힘
+    (38, 'Geometric Optics'), 기하학적 광학(시각)
+    (39, 'Light Is Waves'), 빛/광선, (열,소리, 빛 등의) 파장
+    (40, 'Spectra Interference'), 스펙트럼, 전파 방해/혼선
+    (41, 'Optical Instruments'), 광학 기계
+    (42, 'Special Relativity'), 특수 상대성 원리
+    (43, 'Quantum Mechanics - Part 1'), 양자역학
+    (44, 'Quantum Mechanics - Part 2'), 양자역학
+    (46, 'Astrophysics and Cosmology')], 천체물리학
+
+	< 2nd 카테고리 개념>
+	 ['universe', 'amplitude', 'permittivity', 'speed', 'radiation', 'probability', 'focus', 'photon', 'reflection', 'crest', 'flux', 'redshift', 'energy', 'plasma', 
+	  'sound', 'diffraction', 'light', 'frequency', 'momentum', 'refraction', 'wave', 'pressure', 'density', 'electron', 'interference', 'watt', 'pulse', 'quantum', 'wavelength']
+
+
+
+3: [(14, 'Fluids at Rest'), 유동체(기체+액체) <- 정지
+    (15, 'Fluids in Motion'), 유동체 <- 운동
+    (20, 'Temperature'), 온도
+    (21, 'Kinetic Theory and Phase Changes'), 운동학 이론, 상변화(위상변화)
+    (22, 'The Physics of Heat'), 열
+    (23, 'Thermodynamics'), 열역학(열을 에너지의 한 형태로 봄)
+    (24, 'Engines')], 열에너지, 전기에너지, 수력에너지 따위를 기계적인 힘으로 바꾸는 장치
+		      주로 열에너지를 이용하는 열기관
+	
+	< 3rd 카테고리 개념>
+	['density', 'liquid', 'engine', 'thermodynamics', 'viscosity', 'entropy', 'fluid', 'pressure', 'temperature', 'volume', 'convection', 'heat', 'kelvin']
+
+
+
+4: [(1, 'Motion in a Straight Line'), 직선 운동
+    (2, 'Derivatives'), 미분
+    (3, 'Integrals'), 적분
+    (7, 'Uniform Circular Motion'), 등속 원운동
+    (11, 'Rotational Motion'), 회전 운동
+    (33, "Ampere's Law")], 앙페에르의 순환법칙 
+	
+	<4th 카테고리 개념>
+	['integral', 'displacement', 'motion', 'velocity', 'acceleration', 'derivative', 'circle', 'calculus']
+
+
+
+5: [(4, 'Vectors and 2D Motion'), 벡터,2차원 운동
+    (5, "Newton's Laws"), 뉴턴의 운동법칙
+    (6, 'Friction'), 마찰/ 마찰저항
+    (8, 'Newtonian Gravity'), 뉴턴의 중력
+    (9, 'Work, Energy, and Power'), 힘과 에너지
+    (10, 'Collisions'), 충돌
+    (12, 'Torque'), 회전력
+    (13, 'Statics'), 정역학(물체에 작용하는 힘과 이에 따른 변형을 연구하는 학문)
+    (16, 'Simple Harmonic Motion'), 단진동(진동 중에서 가장 단순하고 기존적인 형태를 가지는 진동)
+    (25, 'Electric Charge'), 전하(물체가 띠고 있는 정전기의 양-모든 전기현상의 근원이 되는 실체)
+    (26, 'Electric Fields'),전하를 가진 물체나 전압이 가해진 선의 주위에서 전기력이 작용하는 장소
+    (32, 'Magnetism'),자기(금속을 끌어당기는 힘)
+    (45, 'Nuclear Physics')]} 핵물리학
+	
+	< 5th 카테고리 개념>
+	['electron', 'amplitude', 'machine', 'momentum', 'motion', 'force', 'radiation', 'acceleration', 'velocity', 'inertia', 
+	 'torque', 'coulomb', 'vector', 'energy', 'proton', 'stress', 'atom', 'gravity', 'magnetism', 'mass']
