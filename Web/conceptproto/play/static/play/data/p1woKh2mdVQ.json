@@ -2,34 +2,33 @@
     "nodes": [
         {
             "id": 0,
-            "label": "temperature"
+            "label": "engine"
         },
         {
             "id": 1,
-            "label": "volume"
+            "label": "heat"
         },
         {
             "id": 2,
-            "label": "pressure"
+            "label": "temperature"
         },
         {
             "id": 3,
-            "label": "kelvin"
+            "label": "work"
         },
         {
             "id": 4,
-            "label": "length"
+            "label": "volume"
         },
         {
             "id": 5,
-            "label": "stress"
+            "label": "pressure"
         }
     ],
     "edges": [
         {
-            "to": 1,
-            "from": 4,
-            "middle": "none",
+            "to": 4,
+            "from": 5,
             "value": 1
         },
         {
@@ -39,20 +38,18 @@
         },
         {
             "to": 0,
-            "from": 3,
-            "middle": "none",
+            "from": 5,
+            "value": 1
+        },
+        {
+            "to": 0,
+            "from": 2,
             "value": 1
         },
         {
             "to": 3,
-            "from": 4,
-            "middle": "none",
+            "from": 1,
             "value": 2
-        },
-        {
-            "to": 5,
-            "from": 4,
-            "value": 3
         }
     ]
 }

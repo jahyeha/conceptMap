@@ -2,38 +2,32 @@
     "nodes": [
         {
             "id": 0,
-            "label": "temperature"
+            "label": "voltage"
         },
         {
             "id": 1,
-            "label": "volume"
+            "label": "battery"
         },
         {
             "id": 2,
-            "label": "pressure"
+            "label": "ohm"
         },
         {
             "id": 3,
-            "label": "kelvin"
+            "label": "resistor"
         },
         {
             "id": 4,
-            "label": "length"
+            "label": "light"
         },
         {
             "id": 5,
-            "label": "stress"
+            "label": "energy"
         }
     ],
     "edges": [
         {
-            "to": 1,
-            "from": 4,
-            "middle": "none",
-            "value": 1
-        },
-        {
-            "to": 1,
+            "to": 3,
             "from": 2,
             "value": 1
         },
@@ -44,15 +38,22 @@
             "value": 1
         },
         {
-            "to": 3,
-            "from": 4,
+            "to": 4,
+            "from": 5,
             "middle": "none",
             "value": 2
         },
         {
-            "to": 5,
-            "from": 4,
-            "value": 3
+            "to": 3,
+            "from": 5,
+            "middle": "none",
+            "value": 2
+        },
+        {
+            "to": 0,
+            "from": 1,
+            "middle": "none",
+            "value": 2
         }
     ]
 }

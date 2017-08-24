@@ -42,7 +42,6 @@ class Mapping:
     """
     @ linking each concept to its Wikipedia URL
     """
-
     def __init__(self):
         self.dictionary = self.make_compelteDict()
 
@@ -142,7 +141,6 @@ class Mapping:
         wiki_dict = {}
         # wiki_dict : {title : url}
         # e.g.  {'motion' : https://en.wikipedia.org/wiki/Motion, 'inertia': https://en.wikipedia.org/wiki/Inertia, ..}
-
         base_url = 'https://en.wikipedia.org'
         right = 0
 

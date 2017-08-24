@@ -6,55 +6,52 @@
         },
         {
             "id": 1,
-            "label": "gravity"
+            "label": "radiation"
         },
         {
             "id": 2,
-            "label": "acceleration"
+            "label": "vector"
         },
         {
             "id": 3,
-            "label": "trigonometry"
+            "label": "magnetism"
         },
         {
             "id": 4,
-            "label": "sound"
+            "label": "tesla"
         },
         {
             "id": 5,
-            "label": "heat"
+            "label": "length"
         }
     ],
     "edges": [
         {
-            "to": 1,
-            "from": 2,
-            "option": "none",
-            "value": 1
-        },
-        {
             "to": 0,
-            "from": 2,
-            "option": "none",
+            "from": 3,
             "value": 1
-        },
-        {
-            "to": 4,
-            "from": 5,
-            "option": "direct",
-            "value": 2
         },
         {
             "to": 3,
-            "from": 4,
-            "option": "direct",
+            "from": 5,
             "value": 2
         },
         {
             "to": 2,
             "from": 5,
-            "option": "none",
             "value": 2
+        },
+        {
+            "to": 1,
+            "from": 3,
+            "middle": "none",
+            "value": 2
+        },
+        {
+            "to": 4,
+            "from": 5,
+            "middle": "none",
+            "value": 3
         }
     ]
 }

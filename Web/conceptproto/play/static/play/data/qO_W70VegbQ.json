@@ -2,56 +2,55 @@
     "nodes": [
         {
             "id": 0,
-            "label": "temperature"
+            "label": "electron"
         },
         {
             "id": 1,
-            "label": "liquid"
+            "label": "quantum"
         },
         {
             "id": 2,
-            "label": "pressure"
+            "label": "probability"
         },
         {
             "id": 3,
-            "label": "kelvin"
+            "label": "momentum"
         },
         {
             "id": 4,
-            "label": "speed"
+            "label": "wavelength"
         },
         {
             "id": 5,
-            "label": "phase"
+            "label": "wave"
         }
     ],
     "edges": [
         {
-            "to": 1,
-            "from": 2,
-            "middle": "none",
-            "value": 1
-        },
-        {
-            "to": 0,
-            "from": 4,
-            "value": 1
-        },
-        {
-            "to": 0,
-            "from": 3,
-            "middle": "none",
-            "value": 1
-        },
-        {
-            "to": 0,
-            "from": 1,
+            "to": 4,
+            "from": 5,
             "middle": "none",
             "value": 1
         },
         {
             "to": 5,
             "from": 3,
+            "value": 1
+        },
+        {
+            "to": 4,
+            "from": 0,
+            "value": 1
+        },
+        {
+            "to": 1,
+            "from": 0,
+            "value": 1
+        },
+        {
+            "to": 2,
+            "from": 5,
+            "middle": "none",
             "value": 2
         }
     ]

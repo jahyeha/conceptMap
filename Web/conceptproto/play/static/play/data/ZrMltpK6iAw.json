@@ -2,27 +2,27 @@
     "nodes": [
         {
             "id": 0,
-            "label": "temperature"
+            "label": "capacitor"
         },
         {
             "id": 1,
-            "label": "volume"
+            "label": "capacitance"
         },
         {
             "id": 2,
-            "label": "pressure"
+            "label": "voltage"
         },
         {
             "id": 3,
-            "label": "kelvin"
+            "label": "energy"
         },
         {
             "id": 4,
-            "label": "length"
+            "label": "dielectric"
         },
         {
             "id": 5,
-            "label": "stress"
+            "label": "battery"
         }
     ],
     "edges": [
@@ -39,20 +39,19 @@
         },
         {
             "to": 0,
-            "from": 3,
+            "from": 4,
             "middle": "none",
             "value": 1
         },
         {
-            "to": 3,
-            "from": 4,
-            "middle": "none",
-            "value": 2
+            "to": 0,
+            "from": 3,
+            "value": 1
         },
         {
             "to": 5,
             "from": 4,
-            "value": 3
+            "value": 2
         }
     ]
 }

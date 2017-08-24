@@ -13,28 +13,18 @@ def main():
     ##################Concept Extraction##################
     originURL = "PL8dPuuaLjXtN0ge7yDk_UA0ldZJdhwkoV"#playlist로 감  #:로마 역사  # "ZM8ECpBuQYE / PL8dPuuaLjXtN0ge7yDk_UA0ldZJdhwkoV" :물리학
     playlistURL = 'https://www.youtube.com/playlist?list=' + originURL
-    submitCode = "1503382656%7Ce5c72339e330f6814ae2fe97aa5c6301"
+    submitCode = "1503583470%7C27ffbb267ba8d3522f0aee70b23c388d"
+    #
     c_extraction = CE.ConceptExtraction(playlistURL)
     defineConcept = DD.DefineDistance(submitCode)
     makeGraph = MG.MakeGraph()
 
     num_topic = 6
 
-    Result = c_extraction.get_Concepts(num_topic)
+    Result = c_extraction.get_only_concepts(num_topic)
     print(Result)
     origins = c_extraction.Pre.get_all_URLs()
     print(c_extraction.Pre.get_all_URLs())
-    #######################################################
-    """e.g. of Result    ## 46개 문서(강의)에 대하여 각각 5개씩 뽑힌 컨셉리스트 입니다. ##
-    [['acceleration', 'velocity', 'displacement', 'motion', 'light'],
-    ['derivative', 'velocity', 'calculus', 'acceleration', 'power'],
-    ['integral', 'derivative', 'acceleration', 'velocity', 'displacement'],
-    ['vector', 'machine', 'velocity', 'dimension', 'motion'],
-    ['force', 'gravity', 'acceleration', 'mass', 'inertia'],
-    ......
-    ['universe', 'radiation', 'light', 'redshift', 'plasma']]
-    """
-
     ##################Concept Mapping##################
     """
     NOTE (e.g.)
@@ -42,22 +32,7 @@ def main():
     Output(URL) : https://en.wikipedia.org/wiki/Inertia
     """
     Cmap = CM.Mapping()
-    '''
-    ##TEST##
-    print('[첫 번째 문서(강의)에 대한 컨셉-위키피디아 URL 매핑 결과]')
-    for concept in Result[0]:
-        URL = Cmap.maping_Concept2Wiki(concept)
-        print('\t{}의 위키피디아 URL> '.format(concept), URL)
-
-    ##URL의 고유 path name(e.g. "Motion_(physics)")을 알고 싶을 경우##
-    for concept in Result[0]:
-        URL = Cmap.maping_Concept2Wiki(concept)
-        idx = URL.find('/wiki/') + 6
-        print('\t{}의 위키피디아 URL> '.format(URL[idx:]), URL)
-    ##################################################
-    '''
-
-    #### NOTE ####
+     #### NOTE ####
     #### 임시로 밑에 getConceptRelation2 파라미터-> Result[1]으로 해놓았습니다.
     #### Result[doc_num]   0 <= doc_num < 47
     #print(Result)
@@ -65,7 +40,6 @@ def main():
     print(len(origins))
     print(len(Result))
     for index in range(len(origins)):
-
         sourceName = origins[index].split("v=")[1].split("&")[0] + ".json"
         print(Result[index])
         print(sourceName)
@@ -138,6 +112,22 @@ def testGraph():
         with open(sourceLoc, "w") as f:
             f.write(graphSource)
 
+def testKruskal():
+    print("testKruskal")
+
+def testGetSubmitCode():
+    import requests
+    from bs4 import BeautifulSoup
+    url = "http://degreesofwikipedia.com/"
+    html = requests.get(url).text
+    print(html)
+    soup = BeautifulSoup(html, 'html.parser')
+    submit = soup.select(
+        'body > form > input[type = "hidden"]'
+    )
+    print(submit)
+
 if __name__ == "__main__":
     main()
     #testGraph()
+    #testGetSubmitCode()

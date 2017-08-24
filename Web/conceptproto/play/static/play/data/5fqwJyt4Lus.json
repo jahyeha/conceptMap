@@ -2,49 +2,50 @@
     "nodes": [
         {
             "id": 0,
-            "label": "temperature"
+            "label": "circle"
         },
         {
             "id": 1,
-            "label": "volume"
+            "label": "integral"
         },
         {
             "id": 2,
-            "label": "pressure"
+            "label": "ampere"
         },
         {
             "id": 3,
-            "label": "kelvin"
+            "label": "torque"
         },
         {
             "id": 4,
-            "label": "length"
+            "label": "force"
         },
         {
             "id": 5,
-            "label": "stress"
+            "label": "point"
         }
     ],
     "edges": [
         {
-            "to": 1,
+            "to": 3,
             "from": 4,
             "middle": "none",
             "value": 1
         },
         {
+            "to": 2,
+            "from": 4,
+            "middle": "none",
+            "value": 2
+        },
+        {
             "to": 1,
-            "from": 2,
-            "value": 1
+            "from": 4,
+            "middle": "none",
+            "value": 2
         },
         {
             "to": 0,
-            "from": 3,
-            "middle": "none",
-            "value": 1
-        },
-        {
-            "to": 3,
             "from": 4,
             "middle": "none",
             "value": 2

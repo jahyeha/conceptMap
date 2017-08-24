@@ -2,57 +2,56 @@
     "nodes": [
         {
             "id": 0,
-            "label": "temperature"
+            "label": "entropy"
         },
         {
             "id": 1,
-            "label": "volume"
+            "label": "heat"
         },
         {
             "id": 2,
-            "label": "pressure"
+            "label": "thermodynamics"
         },
         {
             "id": 3,
-            "label": "kelvin"
+            "label": "volume"
         },
         {
             "id": 4,
-            "label": "length"
+            "label": "temperature"
         },
         {
             "id": 5,
-            "label": "stress"
+            "label": "pressure"
         }
     ],
     "edges": [
         {
-            "to": 1,
+            "to": 3,
+            "from": 5,
+            "value": 1
+        },
+        {
+            "to": 2,
+            "from": 5,
+            "middle": "none",
+            "value": 1
+        },
+        {
+            "to": 2,
             "from": 4,
             "middle": "none",
             "value": 1
         },
         {
             "to": 1,
-            "from": 2,
+            "from": 4,
             "value": 1
         },
         {
             "to": 0,
-            "from": 3,
-            "middle": "none",
+            "from": 5,
             "value": 1
-        },
-        {
-            "to": 3,
-            "from": 4,
-            "middle": "none",
-            "value": 2
-        },
-        {
-            "to": 5,
-            "from": 4,
-            "value": 3
         }
     ]
 }

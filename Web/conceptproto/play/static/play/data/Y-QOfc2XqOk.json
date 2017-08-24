@@ -25,32 +25,5 @@
             "label": "sound"
         }
     ],
-    "edges": [
-        {
-            "to": 5,
-            "from": 3,
-            "value": 1
-        },
-        {
-            "to": 4,
-            "from": 2,
-            "value": 1
-        },
-        {
-            "to": 1,
-            "from": 4,
-            "middle": "none",
-            "value": 1
-        },
-        {
-            "to": 0,
-            "from": 5,
-            "value": 1
-        },
-        {
-            "to": 4,
-            "from": 0,
-            "value": 1
-        }
-    ]
+    "edges": []
 }

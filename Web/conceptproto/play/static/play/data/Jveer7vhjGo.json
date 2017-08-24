@@ -2,57 +2,55 @@
     "nodes": [
         {
             "id": 0,
-            "label": "temperature"
+            "label": "voltage"
         },
         {
             "id": 1,
-            "label": "volume"
+            "label": "inductor"
         },
         {
             "id": 2,
-            "label": "pressure"
+            "label": "inductance"
         },
         {
             "id": 3,
-            "label": "kelvin"
+            "label": "flux"
         },
         {
             "id": 4,
-            "label": "length"
+            "label": "battery"
         },
         {
             "id": 5,
-            "label": "stress"
+            "label": "resistor"
         }
     ],
     "edges": [
         {
-            "to": 1,
-            "from": 4,
-            "middle": "none",
-            "value": 1
-        },
-        {
-            "to": 1,
+            "to": 5,
             "from": 2,
             "value": 1
         },
         {
-            "to": 0,
-            "from": 3,
-            "middle": "none",
+            "to": 1,
+            "from": 5,
             "value": 1
         },
         {
             "to": 3,
-            "from": 4,
-            "middle": "none",
-            "value": 2
+            "from": 1,
+            "value": 1
         },
         {
-            "to": 5,
-            "from": 4,
-            "value": 3
+            "to": 0,
+            "from": 5,
+            "middle": "none",
+            "value": 1
+        },
+        {
+            "to": 4,
+            "from": 2,
+            "value": 2
         }
     ]
 }

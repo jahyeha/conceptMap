@@ -2,57 +2,57 @@
     "nodes": [
         {
             "id": 0,
-            "label": "temperature"
+            "label": "light"
         },
         {
             "id": 1,
-            "label": "volume"
+            "label": "speed"
         },
         {
             "id": 2,
-            "label": "pressure"
-        },
-        {
-            "id": 3,
-            "label": "kelvin"
-        },
-        {
-            "id": 4,
             "label": "length"
         },
         {
+            "id": 3,
+            "label": "spacetime"
+        },
+        {
+            "id": 4,
+            "label": "distance"
+        },
+        {
             "id": 5,
-            "label": "stress"
+            "label": "vacuum"
         }
     ],
     "edges": [
         {
-            "to": 1,
+            "to": 5,
+            "from": 3,
+            "value": 1
+        },
+        {
+            "to": 2,
             "from": 4,
             "middle": "none",
             "value": 1
         },
         {
             "to": 1,
-            "from": 2,
+            "from": 4,
             "value": 1
         },
         {
             "to": 0,
-            "from": 3,
+            "from": 5,
             "middle": "none",
             "value": 1
         },
         {
-            "to": 3,
-            "from": 4,
+            "to": 4,
+            "from": 5,
             "middle": "none",
             "value": 2
-        },
-        {
-            "to": 5,
-            "from": 4,
-            "value": 3
         }
     ]
 }

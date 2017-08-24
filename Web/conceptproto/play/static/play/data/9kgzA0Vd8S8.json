@@ -2,45 +2,43 @@
     "nodes": [
         {
             "id": 0,
-            "label": "temperature"
+            "label": "voltage"
         },
         {
             "id": 1,
-            "label": "volume"
+            "label": "transformer"
         },
         {
             "id": 2,
-            "label": "pressure"
+            "label": "electricity"
         },
         {
             "id": 3,
-            "label": "kelvin"
+            "label": "inductance"
         },
         {
             "id": 4,
-            "label": "length"
+            "label": "flux"
         },
         {
             "id": 5,
-            "label": "stress"
+            "label": "power"
         }
     ],
     "edges": [
         {
-            "to": 1,
-            "from": 4,
-            "middle": "none",
-            "value": 1
-        },
-        {
-            "to": 1,
-            "from": 2,
-            "value": 1
-        },
-        {
-            "to": 0,
+            "to": 2,
             "from": 3,
-            "middle": "none",
+            "value": 1
+        },
+        {
+            "to": 3,
+            "from": 1,
+            "value": 1
+        },
+        {
+            "to": 2,
+            "from": 0,
             "value": 1
         },
         {
@@ -51,8 +49,8 @@
         },
         {
             "to": 5,
-            "from": 4,
-            "value": 3
+            "from": 0,
+            "value": 2
         }
     ]
 }

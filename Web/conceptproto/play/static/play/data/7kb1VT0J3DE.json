@@ -2,57 +2,57 @@
     "nodes": [
         {
             "id": 0,
-            "label": "temperature"
+            "label": "light"
         },
         {
             "id": 1,
-            "label": "volume"
+            "label": "photon"
         },
         {
             "id": 2,
-            "label": "pressure"
+            "label": "wave"
         },
         {
             "id": 3,
-            "label": "kelvin"
+            "label": "energy"
         },
         {
             "id": 4,
-            "label": "length"
+            "label": "frequency"
         },
         {
             "id": 5,
-            "label": "stress"
+            "label": "electron"
         }
     ],
     "edges": [
         {
-            "to": 1,
-            "from": 4,
-            "middle": "none",
-            "value": 1
-        },
-        {
-            "to": 1,
-            "from": 2,
-            "value": 1
-        },
-        {
-            "to": 0,
-            "from": 3,
-            "middle": "none",
+            "to": 3,
+            "from": 5,
             "value": 1
         },
         {
             "to": 3,
             "from": 4,
-            "middle": "none",
-            "value": 2
+            "value": 1
         },
         {
-            "to": 5,
+            "to": 2,
             "from": 4,
-            "value": 3
+            "middle": "none",
+            "value": 1
+        },
+        {
+            "to": 1,
+            "from": 5,
+            "middle": "none",
+            "value": 1
+        },
+        {
+            "to": 0,
+            "from": 5,
+            "middle": "none",
+            "value": 1
         }
     ]
 }

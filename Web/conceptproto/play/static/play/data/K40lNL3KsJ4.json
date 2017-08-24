@@ -2,57 +2,54 @@
     "nodes": [
         {
             "id": 0,
-            "label": "temperature"
+            "label": "flux"
         },
         {
             "id": 1,
-            "label": "volume"
+            "label": "wave"
         },
         {
             "id": 2,
-            "label": "pressure"
+            "label": "permittivity"
         },
         {
             "id": 3,
-            "label": "kelvin"
+            "label": "density"
         },
         {
             "id": 4,
-            "label": "length"
+            "label": "energy"
         },
         {
             "id": 5,
-            "label": "stress"
+            "label": "speed"
         }
     ],
     "edges": [
         {
+            "to": 4,
+            "from": 5,
+            "value": 1
+        },
+        {
             "to": 1,
             "from": 4,
-            "middle": "none",
-            "value": 1
-        },
-        {
-            "to": 1,
-            "from": 2,
-            "value": 1
-        },
-        {
-            "to": 0,
-            "from": 3,
-            "middle": "none",
             "value": 1
         },
         {
             "to": 3,
-            "from": 4,
-            "middle": "none",
+            "from": 5,
             "value": 2
         },
         {
             "to": 5,
-            "from": 4,
-            "value": 3
+            "from": 2,
+            "value": 2
+        },
+        {
+            "to": 0,
+            "from": 5,
+            "value": 2
         }
     ]
 }

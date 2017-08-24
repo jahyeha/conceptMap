@@ -2,19 +2,19 @@
     "nodes": [
         {
             "id": 0,
-            "label": "temperature"
+            "label": "light"
         },
         {
             "id": 1,
-            "label": "volume"
+            "label": "focus"
         },
         {
             "id": 2,
-            "label": "pressure"
+            "label": "diffraction"
         },
         {
             "id": 3,
-            "label": "kelvin"
+            "label": "wave"
         },
         {
             "id": 4,
@@ -22,37 +22,35 @@
         },
         {
             "id": 5,
-            "label": "stress"
+            "label": "distance"
         }
     ],
     "edges": [
         {
-            "to": 1,
-            "from": 4,
-            "middle": "none",
-            "value": 1
-        },
-        {
-            "to": 1,
-            "from": 2,
-            "value": 1
-        },
-        {
-            "to": 0,
-            "from": 3,
+            "to": 4,
+            "from": 5,
             "middle": "none",
             "value": 1
         },
         {
             "to": 3,
-            "from": 4,
-            "middle": "none",
-            "value": 2
+            "from": 5,
+            "value": 1
         },
         {
-            "to": 5,
-            "from": 4,
-            "value": 3
+            "to": 2,
+            "from": 3,
+            "value": 1
+        },
+        {
+            "to": 0,
+            "from": 3,
+            "value": 1
+        },
+        {
+            "to": 1,
+            "from": 2,
+            "value": 2
         }
     ]
 }
