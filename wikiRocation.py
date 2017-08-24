@@ -72,9 +72,9 @@ def concept_rocation(words,wordPair,degree_table):
     feature_i_in = feature_i[0]
     feature_i_out = feature_i[1]
     links_i = feature_i[2]
-    #print("feature_i : ", feature_i, "links_i : ", links_i, "sub :", sub)
+    print("feature_i_out : ", feature_i_out)
     Wi = get_lank([feature_i_in,feature_i_out],sub)
-    #print("Wi",Wi)
+    print("Wi",Wi)
 
 
     # C(j)의 진입링크 개수
@@ -82,9 +82,9 @@ def concept_rocation(words,wordPair,degree_table):
     feature_j_in = feature_j[0]
     feature_j_out = feature_j[1]
     links_j = feature_j[2]
-    #print("feature_j : ", feature_j, "links_j : ", links_j, "sub :", sub)
+    print("feature_j_out : ", feature_j_out)
     Wj = get_lank([feature_j_in, feature_j_out], sub)
-    #print("wj",Wj)
+    print("wj",Wj)
 
 
     # C(i), C(j) 교집합 개수
@@ -94,23 +94,20 @@ def concept_rocation(words,wordPair,degree_table):
             cap_count += 1
 
     # (단어i가 출현하는 문서 집합)에 단어j도 출현활 확률
-    Hr_ij = cap_count / feature_i_in * Wi
-    Hr_ji = cap_count / feature_j_in * Wj
+    Hr_ij = cap_count / feature_j_in #* Wi
+    Hr_ji = cap_count / feature_i_in #* Wj
 
     ABS_Hr = abs(Hr_ij - Hr_ji)
 
-    if ABS_Hr < 0.05 and Hr_ij > Hr_ji:
-        print("상위개념 : ", wordPair[0])
-        print("하위개념 : ", wordPair[1])
-    elif ABS_Hr >= 0.2 and Hr_ij > Hr_ji:
+    if Hr_ij > Hr_ji:
         print("상위개념 : ", wordPair[0])
         print("하위개념 : ", wordPair[1])
     else:
         print("상위개념 : ", wordPair[1])
         print("하위개념 : ", wordPair[0])
 
-    #print("Hr_ij",Hr_ij)
-    #print("Hr_ji",Hr_ji)
+    print("Hr_ij",Hr_ij)
+    print("Hr_ji",Hr_ji)
     #print("ABS_Hr",ABS_Hr)
 
 
@@ -150,53 +147,10 @@ def max_sub(degree_table):
 
     return max_sub
 
-
 def main():
-    nodes = [['Derivative', 'Velocity'],
-             ['Derivative', 'Calculus'],
-             ['Derivative', 'Acceleration'],
-             ['Derivative', 'tangent_line', 'Power_function', 'Power_law', 'Power'],
-             ['Velocity', 'Absolute_value', 'Derivative'],
-             ['Velocity', 'Acceleration', 'Calculus'],
-             ['Velocity', 'Acceleration'],
-             ['Velocity', 'distance', 'Energy_distance', 'Power_law', 'Power'],
-             ['Calculus', 'Derivative'],
-             ['Calculus', 'Velocity'],
-             ['Calculus', 'Acceleration'],
-             ['Calculus', 'Latin', 'United_Kingdom', 'Power_(international_relations)', 'Power'],
-             ['Acceleration', 'Derivative'],
-             ['Acceleration', 'Velocity'],
-             ['Acceleration', 'Calculus'],
-             ['Acceleration', 'physics', 'Psychophysics', 'Power_law', 'Power'],
-             ['Power', 'Exponentiation', 'Derivative'],
-             ['Power', 'Power_(physics)', 'Velocity'],
-             ['Power', 'Exponentiation', 'Mathematics', 'Calculus'],
-             ['Power', 'Power_(physics)', 'Acceleration']]
-    WR= WikiRotion(nodes)
+    nodes = [['acceleration', 'velocity']]
+    WR = WikiRotion(nodes)
     WR.get_rocation()
-
-    '''
-    nodes = [#['Force', 'Acceleration', 'Gravity'],
-             ['Force', 'Acceleration'],
-             ['Force', 'Mass'],
-             ['Force', 'Inertia'],
-             #['Gravity', 'Force'],
-             ['Gravity', 'Acceleration'],
-             #['Gravity', 'Mass'],
-             #['Gravity', 'Acceleration', 'Inertia'],
-             ['Acceleration', 'Force'],
-             ['Acceleration', 'Gravity'],
-             ['Acceleration', 'Mass'],
-             #['Acceleration', 'Inertia'],
-             ['Mass', 'Force'],
-             #['Mass', 'Acceleration', 'Gravity'],
-             ['Mass', 'Acceleration'],
-             ['Mass', 'Inertia'],
-             ['Inertia', 'Force'],
-             ['Inertia', 'Gravity'],
-             #['Inertia', 'Angular_momentum', 'Acceleration'],
-             ['Inertia', 'Mass']]
-        '''
 
 if __name__ == "__main__":
     main()
