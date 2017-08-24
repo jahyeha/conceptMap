@@ -161,7 +161,7 @@ def main():
         print(conceptRelation)
 
         #그래프 시작
-        graphSource = makeGraph.py2json(Result[index], conceptRelation)
+        graphSource = makeGraph.py2json(Result[index], conceptRelation, All_degree)
         #sourceName = str(originURL)+"_index"+str(index)+".json"
         sourceLoc = os.path.join("./Web/conceptproto/play/static/play/data/" +sourceName)
         print(sourceLoc)

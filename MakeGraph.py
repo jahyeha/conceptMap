@@ -36,7 +36,7 @@ class MakeGraph:
         # file write  : ./con
         return source
 
-    def py2json(self, concept, conceptRelation):
+    def py2json(self, concept, conceptRelation, All_degree):
         out = dict()
         nodes = list()
         edges = list()
@@ -54,15 +54,29 @@ class MakeGraph:
                 # print("conceptRelation[j]", conceptRelation[j])
                 if (conceptRelation[i][j] == conceptRelation[j][i]):
                     # 다른 feature로 정의
+                    print("when 같을 때 ")
+                    if (conceptRelation[i][j] > conceptRelation[j][i]):
+                        if (conceptRelation[i][j] < resistDistnace):
+                            source = i
+                            target = j
+                            v = conceptRelation[j][i]
+                        else:
+                            continue
+                    else:
+                        if (conceptRelation[j][i] < resistDistnace):
+                            source = j
+                            target = i
+                            v = conceptRelation[i][j]
                     # print(i, j)
-                    edge = dict()
-                    edge['to'] = i
-                    edge['from'] = j
-                    edge['option'] = 'none'
-                    edge['value'] = conceptRelation[i][j]
-                    edges.append(edge)
-                    #print("\n")
-                    continue
+                    # edge = dict()
+                    # edge['to'] = i
+                    # edge['from'] = j
+                    # edge['option'] = 'none'
+                    # edge['value'] = conceptRelation[i][j]
+                    # edges.append(edge)
+                    # #print("\n")
+                    # continue
+
                 elif (conceptRelation[i][j] > conceptRelation[j][i]):
                     if(conceptRelation[i][j] < resistDistnace):
                         source = i

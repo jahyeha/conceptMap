@@ -29,7 +29,7 @@
         {
             "to": 3,
             "from": 4,
-            "option": "none",
+            "option": "direct",
             "value": 1
         },
         {
@@ -47,7 +47,7 @@
         {
             "to": 0,
             "from": 4,
-            "option": "none",
+            "option": "direct",
             "value": 1
         }
     ]

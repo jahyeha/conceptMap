@@ -35,19 +35,19 @@
         {
             "to": 2,
             "from": 5,
-            "option": "none",
+            "option": "direct",
             "value": 1
         },
         {
             "to": 1,
             "from": 5,
-            "option": "none",
+            "option": "direct",
             "value": 1
         },
         {
             "to": 0,
             "from": 5,
-            "option": "none",
+            "option": "direct",
             "value": 1
         },
         {

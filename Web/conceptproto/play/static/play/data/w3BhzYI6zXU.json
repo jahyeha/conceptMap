@@ -41,7 +41,7 @@
         {
             "to": 1,
             "from": 3,
-            "option": "none",
+            "option": "direct",
             "value": 2
         },
         {
