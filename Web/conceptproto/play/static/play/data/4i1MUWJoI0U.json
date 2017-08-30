@@ -2,23 +2,23 @@
     "nodes": [
         {
             "id": 0,
-            "label": "stress"
+            "label": "entropy"
         },
         {
             "id": 1,
-            "label": "torque"
+            "label": "heat"
         },
         {
             "id": 2,
-            "label": "force"
+            "label": "thermodynamics"
         },
         {
             "id": 3,
-            "label": "statics"
+            "label": "volume"
         },
         {
             "id": 4,
-            "label": "length"
+            "label": "temperature"
         },
         {
             "id": 5,
@@ -27,34 +27,31 @@
     ],
     "edges": [
         {
-            "to": 2,
-            "from": 5,
-            "option": "none",
-            "value": 1
-        },
-        {
-            "to": 2,
-            "from": 3,
-            "option": "none",
-            "value": 1
-        },
-        {
             "to": 3,
-            "from": 1,
-            "option": "direct",
+            "from": 5,
             "value": 1
         },
         {
-            "to": 4,
+            "to": 2,
             "from": 5,
-            "option": "none",
-            "value": 2
+            "middle": "none",
+            "value": 1
+        },
+        {
+            "to": 2,
+            "from": 4,
+            "middle": "none",
+            "value": 1
+        },
+        {
+            "to": 1,
+            "from": 4,
+            "value": 1
         },
         {
             "to": 0,
-            "from": 2,
-            "option": "direct",
-            "value": 2
+            "from": 5,
+            "value": 1
         }
     ]
 }

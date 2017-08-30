@@ -2,19 +2,19 @@
     "nodes": [
         {
             "id": 0,
-            "label": "stress"
+            "label": "light"
         },
         {
             "id": 1,
-            "label": "torque"
+            "label": "focus"
         },
         {
             "id": 2,
-            "label": "force"
+            "label": "diffraction"
         },
         {
             "id": 3,
-            "label": "statics"
+            "label": "wave"
         },
         {
             "id": 4,
@@ -22,38 +22,34 @@
         },
         {
             "id": 5,
-            "label": "pressure"
+            "label": "distance"
         }
     ],
     "edges": [
         {
-            "to": 2,
+            "to": 4,
             "from": 5,
-            "option": "none",
+            "middle": "none",
+            "value": 1
+        },
+        {
+            "to": 3,
+            "from": 5,
             "value": 1
         },
         {
             "to": 2,
             "from": 3,
-            "option": "none",
             "value": 1
-        },
-        {
-            "to": 3,
-            "from": 1,
-            "option": "direct",
-            "value": 1
-        },
-        {
-            "to": 4,
-            "from": 5,
-            "option": "none",
-            "value": 2
         },
         {
             "to": 0,
+            "from": 3,
+            "value": 1
+        },
+        {
+            "to": 1,
             "from": 2,
-            "option": "direct",
             "value": 2
         }
     ]

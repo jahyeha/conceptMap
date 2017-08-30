@@ -2,58 +2,54 @@
     "nodes": [
         {
             "id": 0,
-            "label": "stress"
+            "label": "voltage"
         },
         {
             "id": 1,
-            "label": "torque"
+            "label": "inductor"
         },
         {
             "id": 2,
-            "label": "force"
+            "label": "inductance"
         },
         {
             "id": 3,
-            "label": "statics"
+            "label": "flux"
         },
         {
             "id": 4,
-            "label": "length"
+            "label": "battery"
         },
         {
             "id": 5,
-            "label": "pressure"
+            "label": "resistor"
         }
     ],
     "edges": [
         {
-            "to": 2,
-            "from": 5,
-            "option": "none",
+            "to": 5,
+            "from": 2,
             "value": 1
         },
         {
-            "to": 2,
-            "from": 3,
-            "option": "none",
+            "to": 1,
+            "from": 5,
             "value": 1
         },
         {
             "to": 3,
             "from": 1,
-            "option": "direct",
+            "value": 1
+        },
+        {
+            "to": 0,
+            "from": 5,
+            "middle": "none",
             "value": 1
         },
         {
             "to": 4,
-            "from": 5,
-            "option": "none",
-            "value": 2
-        },
-        {
-            "to": 0,
             "from": 2,
-            "option": "direct",
             "value": 2
         }
     ]

@@ -85,12 +85,14 @@ play page
                 edges: edges
             };
               var options = {
+                  autoResize:true,
                 layout: {
                 randomSeed: undefined,
                 improvedLayout:true,
+
+
                 hierarchical: {
                   enabled:true,
-                  autoResize:true,
                   levelSeparation: 100,
                   nodeSpacing: 40,
                   treeSpacing: 100,
@@ -104,7 +106,15 @@ play page
             };
             // data와 option을 이용하여 container에 그래프 초기화
             var network = new vis.Network(container, data, options);
-            network.setOptions(options);
+            //network.setOptions(options);
+            network.on("click", function (params) {
+                params.event = "[original event]";
+                console.log('click event, getNodeAt returns: ' + this.getNodeAt(params.pointer.DOM));
+                console.log(nodes)
+                var keyword = nodes._data[this.getNodeAt(params.pointer.DOM)].label;
+                var url = "https://www.youtube.com/results?search_query="+keyword
+                window.open(url,'_blank');
+            });
             console.log("end");
             console.log("v"+ "{{video}}")
 

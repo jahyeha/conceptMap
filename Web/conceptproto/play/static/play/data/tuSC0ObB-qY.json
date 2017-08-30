@@ -19,7 +19,38 @@
         {
             "id": 4,
             "label": "radiation"
+        },
+        {
+            "id": 5,
+            "label": "energy"
         }
     ],
-    "edges": []
+    "edges": [
+        {
+            "to": 4,
+            "from": 5,
+            "value": 1
+        },
+        {
+            "to": 5,
+            "from": 1,
+            "value": 1
+        },
+        {
+            "to": 0,
+            "from": 5,
+            "middle": "none",
+            "value": 1
+        },
+        {
+            "to": 2,
+            "from": 0,
+            "value": 1
+        },
+        {
+            "to": 3,
+            "from": 1,
+            "value": 2
+        }
+    ]
 }

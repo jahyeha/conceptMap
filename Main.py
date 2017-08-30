@@ -11,14 +11,20 @@ import os
 
 def main():
     ##################Concept Extraction##################
+<<<<<<< HEAD
     originURL = "PL8dPuuaLjXtN0ge7yDk_UA0ldZJdhwkoV"
     playlistURL = 'https://www.youtube.com/playlist?list=' + originURL
     submitCode = "1503382656%7Ce5c72339e330f6814ae2fe97aa5c6301"
+=======
+    originURL = "PL8dPuuaLjXtN0ge7yDk_UA0ldZJdhwkoV"#playlist로 감  #:로마 역사  # "ZM8ECpBuQYE / PL8dPuuaLjXtN0ge7yDk_UA0ldZJdhwkoV" :물리학
+    playlist_url = 'https://www.youtube.com/playlist?list=' + originURL
+
+    submitCode = "1503584363%7C27ffbb267ba8d3522f0aee70b23c388d"
+>>>>>>> 1a18cc48cf1946ba4dc284ead7142a76adf91419
     defineConcept = DD.DefineDistance(submitCode)
     makeGraph = MG.MakeGraph()
 
     num_concept = 6
-    playlist_url = 'https://www.youtube.com/playlist?list=PL8dPuuaLjXtN0ge7yDk_UA0ldZJdhwkoV'
     Con = CE.ConceptExtraction(playlist_url)
     max_concept, max_weight = 5, 0.08  
     Result = Con._get_onlyConcepts(max_concept, max_weight)
@@ -33,6 +39,7 @@ def main():
     Output(URL) : https://en.wikipedia.org/wiki/Inertia
     """
     Cmap = CM.Mapping()
+<<<<<<< HEAD
 
     '''
     ###TEST###
@@ -49,10 +56,16 @@ def main():
     '''
 
     ##################Relation Extraction##################
+=======
+     #### NOTE ####
+    #### 임시로 밑에 getConceptRelation2 파라미터-> Result[1]으로 해놓았습니다.
+    #### Result[doc_num]   0 <= doc_num < 47
+    #print(Result)
+    #관계부분 시작
+>>>>>>> 1a18cc48cf1946ba4dc284ead7142a76adf91419
     print(len(origins))
     print(len(Result))
     for index in range(len(origins)):
-
         sourceName = origins[index].split("v=")[1].split("&")[0] + ".json"
         print(Result[index])
         print(sourceName)
@@ -60,7 +73,7 @@ def main():
         print(conceptRelation)
 
         #그래프 시작
-        graphSource = makeGraph.py2json(Result[index], conceptRelation)
+        graphSource = makeGraph.py2json(Result[index], conceptRelation, All_degree)
         #sourceName = str(originURL)+"_index"+str(index)+".json"
         sourceLoc = os.path.join("./Web/conceptproto/play/static/play/data/" +sourceName)
         print(sourceLoc)
@@ -88,6 +101,8 @@ def testFeature(concept):
         print("Outdegree 수 : ", Outdegree)
         print("LanguageNum 수 : ", LanguageNum)
         print("Categoriesdegree 수 : ", Categoriesdegree)
+
+
 
 def testGraph():
     originURL = "PLmhKTejvqnoOrQOcTY-pxN00BOZTGSWc3"#"PL8dPuuaLjXtN0ge7yDk_UA0ldZJdhwkoV" :물리학
@@ -125,6 +140,22 @@ def testGraph():
         with open(sourceLoc, "w") as f:
             f.write(graphSource)
 
+def testKruskal():
+    print("testKruskal")
+
+def testGetSubmitCode():
+    import requests
+    from bs4 import BeautifulSoup
+    url = "http://degreesofwikipedia.com/"
+    html = requests.get(url).text
+    print(html)
+    soup = BeautifulSoup(html, 'html.parser')
+    submit = soup.select(
+        'body > form > input[type = "hidden"]'
+    )
+    print(submit)
+
 if __name__ == "__main__":
     main()
     #testGraph()
+    #testGetSubmitCode()

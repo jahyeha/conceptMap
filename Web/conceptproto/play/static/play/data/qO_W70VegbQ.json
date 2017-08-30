@@ -2,58 +2,55 @@
     "nodes": [
         {
             "id": 0,
-            "label": "stress"
+            "label": "electron"
         },
         {
             "id": 1,
-            "label": "torque"
+            "label": "quantum"
         },
         {
             "id": 2,
-            "label": "force"
+            "label": "probability"
         },
         {
             "id": 3,
-            "label": "statics"
+            "label": "momentum"
         },
         {
             "id": 4,
-            "label": "length"
+            "label": "wavelength"
         },
         {
             "id": 5,
-            "label": "pressure"
+            "label": "wave"
         }
     ],
     "edges": [
         {
-            "to": 2,
+            "to": 4,
             "from": 5,
-            "option": "none",
+            "middle": "none",
             "value": 1
         },
         {
-            "to": 2,
+            "to": 5,
             "from": 3,
-            "option": "none",
-            "value": 1
-        },
-        {
-            "to": 3,
-            "from": 1,
-            "option": "direct",
             "value": 1
         },
         {
             "to": 4,
-            "from": 5,
-            "option": "none",
-            "value": 2
+            "from": 0,
+            "value": 1
         },
         {
-            "to": 0,
-            "from": 2,
-            "option": "direct",
+            "to": 1,
+            "from": 0,
+            "value": 1
+        },
+        {
+            "to": 2,
+            "from": 5,
+            "middle": "none",
             "value": 2
         }
     ]

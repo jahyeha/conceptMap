@@ -4,11 +4,43 @@ import json
 class MakeGraph:
     def __init__(self):
         self.parisent = []
-    def py2json(self, concept, conceptRelation):
+    def testCruskal(self, sorted_edge, nodes):
+        print("sorted",sorted_edge)
+        node_size = len(nodes)
+        edge_size = len(sorted_edge) - 1
+
+        self.parent = [-1 for _ in range(node_size)]
+
+        treeEdges = list()
+        while(node_size != 0 ):
+            print(node_size,edge_size)
+            a = sorted_edge[edge_size]['to']
+            b = sorted_edge[edge_size]['from']
+            if(self.is_cycle(a, b)):
+                print("cycle!")
+            else:
+                print(a, b)
+                treeEdges.append(sorted_edge[edge_size])
+                node_size -= 1
+                if(node_size == 0):
+                    break
+            edge_size -= 1
+        out = dict()
+        out['nodes'] = nodes
+        out['edges'] = treeEdges
+        #print("dic")
+        #print(out)
+
+        source = json.dumps(out, indent=4)
+        #print(source)
+        # file write  : ./con
+        return source
+
+    def py2json(self, concept, conceptRelation, All_degree):
         out = dict()
         nodes = list()
         edges = list()
-        resistDistnace = 3
+        resistDistnace = 10
         # print(concept, conceptRelation)
 
         for i, ci in enumerate(concept):
@@ -22,15 +54,29 @@ class MakeGraph:
                 # print("conceptRelation[j]", conceptRelation[j])
                 if (conceptRelation[i][j] == conceptRelation[j][i]):
                     # 다른 feature로 정의
+                    print("when 같을 때 ")
+                    if (conceptRelation[i][j] > conceptRelation[j][i]):
+                        if (conceptRelation[i][j] < resistDistnace):
+                            source = i
+                            target = j
+                            v = conceptRelation[j][i]
+                        else:
+                            continue
+                    else:
+                        if (conceptRelation[j][i] < resistDistnace):
+                            source = j
+                            target = i
+                            v = conceptRelation[i][j]
                     # print(i, j)
-                    edge = dict()
-                    edge['to'] = i
-                    edge['from'] = j
-                    edge['option'] = 'none'
-                    edge['value'] = conceptRelation[i][j]
-                    edges.append(edge)
-                    #print("\n")
-                    continue
+                    # edge = dict()
+                    # edge['to'] = i
+                    # edge['from'] = j
+                    # edge['option'] = 'none'
+                    # edge['value'] = conceptRelation[i][j]
+                    # edges.append(edge)
+                    # #print("\n")
+                    # continue
+
                 elif (conceptRelation[i][j] > conceptRelation[j][i]):
                     if(conceptRelation[i][j] < resistDistnace):
                         source = i
@@ -53,26 +99,28 @@ class MakeGraph:
                 edges.append(edge)
         #tree
         sorted_edge = sorted(edges, key = lambda k:k['value'],reverse=True)
-        print(sorted_edge)
+        print("sorted",sorted_edge)
         node_size = len(nodes)
-        edge_size = len(sorted_edge)-1
+        edge_size = len(sorted_edge) - 1
+
         self.parent = [-1 for _ in range(node_size)]
 
         treeEdges = list()
-        while(node_size - 1 != 0):
+        while(node_size != 0):
+            print(node_size,edge_size)
             a = sorted_edge[edge_size]['to']
             b = sorted_edge[edge_size]['from']
-            #print(a,b)
             if(self.is_cycle(a, b)):
                 print("cycle!")
             else:
                 print(a, b)
                 treeEdges.append(sorted_edge[edge_size])
-                edge_size-=1
+                node_size -= 1
                 if(node_size == 0):
                     break
-            node_size -= 1
-
+            edge_size -= 1
+            if(edge_size == 0):
+                break
         out['nodes'] = nodes
         out['edges'] = treeEdges
         #print("dic")

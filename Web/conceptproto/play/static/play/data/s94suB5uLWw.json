@@ -2,53 +2,56 @@
     "nodes": [
         {
             "id": 0,
-            "label": "velocity"
+            "label": "force"
         },
         {
             "id": 1,
-            "label": "motion"
+            "label": "radiation"
         },
         {
             "id": 2,
-            "label": "circle"
+            "label": "vector"
         },
         {
             "id": 3,
-            "label": "acceleration"
+            "label": "magnetism"
         },
         {
             "id": 4,
-            "label": "frequency"
+            "label": "tesla"
         },
         {
             "id": 5,
-            "label": "ground"
+            "label": "length"
         }
     ],
     "edges": [
         {
-            "to": 3,
-            "from": 4,
-            "option": "direct",
-            "value": 1
-        },
-        {
             "to": 0,
             "from": 3,
-            "option": "none",
             "value": 1
         },
         {
-            "to": 0,
-            "from": 2,
-            "option": "direct",
-            "value": 1
+            "to": 3,
+            "from": 5,
+            "value": 2
+        },
+        {
+            "to": 2,
+            "from": 5,
+            "value": 2
         },
         {
             "to": 1,
             "from": 3,
-            "option": "direct",
+            "middle": "none",
             "value": 2
+        },
+        {
+            "to": 4,
+            "from": 5,
+            "middle": "none",
+            "value": 3
         }
     ]
 }

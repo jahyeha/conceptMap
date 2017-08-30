@@ -2,23 +2,23 @@
     "nodes": [
         {
             "id": 0,
-            "label": "stress"
+            "label": "engine"
         },
         {
             "id": 1,
-            "label": "torque"
+            "label": "heat"
         },
         {
             "id": 2,
-            "label": "force"
+            "label": "temperature"
         },
         {
             "id": 3,
-            "label": "statics"
+            "label": "work"
         },
         {
             "id": 4,
-            "label": "length"
+            "label": "volume"
         },
         {
             "id": 5,
@@ -27,33 +27,28 @@
     ],
     "edges": [
         {
-            "to": 2,
+            "to": 4,
             "from": 5,
-            "option": "none",
             "value": 1
         },
         {
-            "to": 2,
-            "from": 3,
-            "option": "none",
+            "to": 1,
+            "from": 2,
+            "value": 1
+        },
+        {
+            "to": 0,
+            "from": 5,
+            "value": 1
+        },
+        {
+            "to": 0,
+            "from": 2,
             "value": 1
         },
         {
             "to": 3,
             "from": 1,
-            "option": "direct",
-            "value": 1
-        },
-        {
-            "to": 4,
-            "from": 5,
-            "option": "none",
-            "value": 2
-        },
-        {
-            "to": 0,
-            "from": 2,
-            "option": "direct",
             "value": 2
         }
     ]

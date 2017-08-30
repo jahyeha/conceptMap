@@ -9,7 +9,13 @@ import requests
     e.g. inertia -> https://en.wikipedia.org/wiki/Inertia
     @sources: Glossary of Physics & Outline of Physics (wikipedia pages)"""
 class Mapping:
+<<<<<<< HEAD:ConceptExtraction/conceptMapping.py
 
+=======
+    """
+    @ linking each concept to its Wikipedia URL
+    """
+>>>>>>> 1a18cc48cf1946ba4dc284ead7142a76adf91419:ConceptExtraction/_conceptMapping_.py
     def __init__(self):
         self.dictionary = self._makeCompelteDict()
 

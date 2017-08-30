@@ -2,58 +2,55 @@
     "nodes": [
         {
             "id": 0,
-            "label": "stress"
+            "label": "universe"
         },
         {
             "id": 1,
-            "label": "torque"
+            "label": "radiation"
         },
         {
             "id": 2,
-            "label": "force"
+            "label": "light"
         },
         {
             "id": 3,
-            "label": "statics"
+            "label": "redshift"
         },
         {
             "id": 4,
-            "label": "length"
+            "label": "plasma"
         },
         {
             "id": 5,
-            "label": "pressure"
+            "label": "matter"
         }
     ],
     "edges": [
         {
             "to": 2,
             "from": 5,
-            "option": "none",
-            "value": 1
-        },
-        {
-            "to": 2,
-            "from": 3,
-            "option": "none",
+            "middle": "none",
             "value": 1
         },
         {
             "to": 3,
-            "from": 1,
-            "option": "direct",
+            "from": 2,
             "value": 1
         },
         {
-            "to": 4,
+            "to": 0,
             "from": 5,
-            "option": "none",
-            "value": 2
+            "value": 1
         },
         {
             "to": 0,
-            "from": 2,
-            "option": "direct",
+            "from": 1,
+            "middle": "none",
+            "value": 1
+        },
+        {
+            "to": 5,
+            "from": 4,
             "value": 2
         }
     ]

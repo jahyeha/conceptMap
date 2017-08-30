@@ -29,27 +29,31 @@
         {
             "to": 5,
             "from": 4,
+            "option": "direct",
             "value": 1
         },
         {
             "to": 5,
             "from": 0,
+            "option": "direct",
             "value": 1
         },
         {
             "to": 0,
             "from": 1,
-            "middle": "none",
+            "option": "direct",
             "value": 1
         },
         {
             "to": 3,
             "from": 5,
+            "option": "direct",
             "value": 2
         },
         {
             "to": 2,
             "from": 1,
+            "option": "direct",
             "value": 2
         }
     ]
