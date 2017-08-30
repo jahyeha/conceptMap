@@ -1,6 +1,6 @@
 #import ExtractConcept as EX
-from ConceptExtraction import _conceptExtraction_ as CE
-from ConceptExtraction import _conceptMapping_ as CM
+from ConceptExtraction import conceptExtraction as CE
+from ConceptExtraction import conceptMapping as CM
 
 import DefineDistanceByConcept as DD
 import GetWikiFeature as GF
@@ -11,7 +11,7 @@ import os
 
 def main():
     ##################Concept Extraction##################
-    originURL = "PL8dPuuaLjXtN0ge7yDk_UA0ldZJdhwkoV"#playlist로 감  #:로마 역사  # "ZM8ECpBuQYE / PL8dPuuaLjXtN0ge7yDk_UA0ldZJdhwkoV" :물리학
+    originURL = "PL8dPuuaLjXtN0ge7yDk_UA0ldZJdhwkoV"
     playlistURL = 'https://www.youtube.com/playlist?list=' + originURL
     submitCode = "1503382656%7Ce5c72339e330f6814ae2fe97aa5c6301"
     defineConcept = DD.DefineDistance(submitCode)
@@ -20,122 +20,9 @@ def main():
     num_concept = 6
     playlist_url = 'https://www.youtube.com/playlist?list=PL8dPuuaLjXtN0ge7yDk_UA0ldZJdhwkoV'
     Con = CE.ConceptExtraction(playlist_url)
-    Result = Con.get_Kconcept(num_concept)
-    print(Result)
-
-    """NOTE 08-24 15:20 가중치를 정해서 컨셉추출할 때 사용합니다.
-    일괄적으로 강의별 k개 씩 컨셉추출을 하면 가중치가 낮은 의미 없을 수 있는 단어까지 주요 개념으로 추출
-    -> but 가중치를 정해서 추출하면 정말 중요한 단어만 추출할 수 있습니다.
-    
-    parameter: max_concept 최대 컨셉 수, max_weight 가중치 커트라인
-    
-    #####여기부터#####
-    playlist_url = 'https://www.youtube.com/playlist?list=PL8dPuuaLjXtN0ge7yDk_UA0ldZJdhwkoV'
-    Con = CE.ConceptExtraction(playlist_url)
     max_concept, max_weight = 5, 0.08  
-    Result = Con.get_only_concepts(max_concept, max_weight)
-    print(Result) #가중치 적용 결과 (밑에 결과 적어놨어요)
-    """
-
-    #######################################################
-    """NOTE 위의 결과 비교 <일괄적 K개 컨셉추출 vs 가중치적용하여 컨셉추출>
-    1. K=5 결과(기존)
-        ['acceleration', 'velocity', 'displacement', 'motion', 'light']
-        ['derivative', 'velocity', 'calculus', 'acceleration', 'power']
-        ['integral', 'derivative', 'acceleration', 'velocity', 'displacement']
-        ['vector', 'machine', 'velocity', 'dimension', 'motion']
-        ['force', 'gravity', 'acceleration', 'mass', 'inertia']
-        ['force', 'gravity', 'acceleration', 'trigonometry', 'sound']
-        ['circle', 'acceleration', 'motion', 'speed', 'velocity']
-        ['acceleration', 'gravity', 'mass', 'force', 'ground']
-        ['energy', 'pendulum', 'work', 'force', 'distance']
-        ['momentum', 'mass', 'pendulum', 'velocity', 'energy']
-        ['velocity', 'motion', 'circle', 'acceleration', 'frequency']
-        ['inertia', 'torque', 'mass', 'energy', 'momentum']
-        ['stress', 'torque', 'force', 'statics', 'length']
-        ['pressure', 'fluid', 'density', 'volume', 'force']
-        ['fluid', 'density', 'pressure', 'viscosity', 'volume']
-        ['amplitude', 'motion', 'energy', 'frequency', 'velocity']
-        ['wave', 'pulse', 'amplitude', 'crest', 'sound']
-        ['sound', 'wave', 'watt', 'pressure', 'decibel']
-        ['wave', 'wavelength', 'frequency', 'sound', 'length']
-        ['temperature', 'volume', 'pressure', 'kelvin', 'length']
-        ['temperature', 'liquid', 'pressure', 'kelvin', 'speed']
-        ['heat', 'temperature', 'convection', 'phase', 'radiation']
-        ['entropy', 'heat', 'thermodynamics', 'volume', 'temperature']
-        ['engine', 'heat', 'temperature', 'work', 'volume']
-        ['coulomb', 'electron', 'atom', 'force', 'ground']
-        ['coulomb', 'force', 'density', 'point', 'electromagnetism']
-        ['capacitor', 'capacitance', 'voltage', 'energy', 'dielectric']
-        ['voltage', 'ohm', 'battery', 'power', 'light']
-        ['voltage', 'battery', 'ohm', 'resistor', 'light']
-        ['resistor', 'ohm', 'voltage', 'voltmeter', 'ammeter']
-        ['voltage', 'capacitor', 'capacitance', 'battery', 'resistor']
-        ['force', 'radiation', 'vector', 'magnetism', 'tesla']
-        ['circle', 'integral', 'ampere', 'torque', 'force']
-        ['flux', 'electromagnet', 'length', 'drag', 'magnetism']
-        ['voltage', 'transformer', 'electricity', 'inductance', 'flux']
-        ['voltage', 'inductor', 'inductance', 'flux', 'battery']
-        ['flux', 'wave', 'permittivity', 'density', 'energy']
-        ['refraction', 'light', 'reflection', 'length', 'distance']
-        ['wave', 'light', 'diffraction', 'interference', 'wavelength']
-        ['light', 'interference', 'wave', 'diffraction', 'phase']
-        ['light', 'focus', 'diffraction', 'wave', 'length']
-        ['light', 'speed', 'length', 'spacetime', 'distance']
-        ['light', 'photon', 'wave', 'energy', 'frequency']
-        ['electron', 'quantum', 'probability', 'momentum', 'wavelength']
-        ['mass', 'atom', 'energy', 'proton', 'electron']
-        ['universe', 'radiation', 'light', 'redshift', 'plasma']
-    
-    2. 가중치 적용 (w=0.08)
-        1번 강의의 컨셉(3개) :  ['acceleration', 'velocity', 'displacement']
-        2번 강의의 컨셉(4개) :  ['derivative', 'velocity', 'calculus', 'acceleration']
-        3번 강의의 컨셉(4개) :  ['integral', 'derivative', 'acceleration', 'velocity']
-        4번 강의의 컨셉(4개) :  ['vector', 'machine', 'velocity', 'dimension']
-        5번 강의의 컨셉(5개) :  ['force', 'gravity', 'acceleration', 'mass', 'inertia']
-        6번 강의의 컨셉(3개) :  ['force', 'gravity', 'acceleration']
-        7번 강의의 컨셉(2개) :  ['circle', 'acceleration']
-        8번 강의의 컨셉(4개) :  ['acceleration', 'gravity', 'mass', 'force']
-        9번 강의의 컨셉(2개) :  ['energy', 'pendulum']
-        10번 강의의 컨셉(3개) :  ['momentum', 'mass', 'pendulum']
-        11번 강의의 컨셉(4개) :  ['velocity', 'motion', 'circle', 'acceleration']
-        12번 강의의 컨셉(5개) :  ['inertia', 'torque', 'mass', 'energy', 'momentum']
-        13번 강의의 컨셉(5개) :  ['stress', 'torque', 'force', 'statics', 'length']
-        14번 강의의 컨셉(5개) :  ['pressure', 'fluid', 'density', 'volume', 'force']
-        15번 강의의 컨셉(5개) :  ['fluid', 'density', 'pressure', 'viscosity', 'volume']
-        16번 강의의 컨셉(4개) :  ['amplitude', 'motion', 'energy', 'frequency']
-        17번 강의의 컨셉(5개) :  ['wave', 'pulse', 'amplitude', 'crest', 'sound']
-        18번 강의의 컨셉(5개) :  ['sound', 'wave', 'watt', 'pressure', 'decibel']
-        19번 강의의 컨셉(4개) :  ['wave', 'wavelength', 'frequency', 'sound']
-        20번 강의의 컨셉(5개) :  ['temperature', 'volume', 'pressure', 'kelvin', 'length']
-        21번 강의의 컨셉(4개) :  ['temperature', 'liquid', 'pressure', 'kelvin']
-        22번 강의의 컨셉(5개) :  ['heat', 'temperature', 'convection', 'phase', 'radiation']
-        23번 강의의 컨셉(5개) :  ['entropy', 'heat', 'thermodynamics', 'volume', 'temperature']
-        24번 강의의 컨셉(3개) :  ['engine', 'heat', 'temperature']
-        25번 강의의 컨셉(5개) :  ['coulomb', 'electron', 'atom', 'force', 'ground']
-        26번 강의의 컨셉(2개) :  ['coulomb', 'force']
-        27번 강의의 컨셉(5개) :  ['capacitor', 'capacitance', 'voltage', 'energy', 'dielectric']
-        28번 강의의 컨셉(5개) :  ['voltage', 'ohm', 'battery', 'power', 'light']
-        29번 강의의 컨셉(5개) :  ['voltage', 'battery', 'ohm', 'resistor', 'light']
-        30번 강의의 컨셉(4개) :  ['resistor', 'ohm', 'voltage', 'voltmeter']
-        31번 강의의 컨셉(5개) :  ['voltage', 'capacitor', 'capacitance', 'battery', 'resistor']
-        32번 강의의 컨셉(5개) :  ['force', 'radiation', 'vector', 'magnetism', 'tesla']
-        33번 강의의 컨셉(3개) :  ['circle', 'integral', 'ampere']
-        34번 강의의 컨셉(1개) :  ['flux']
-        35번 강의의 컨셉(5개) :  ['voltage', 'transformer', 'electricity', 'inductance', 'flux']
-        36번 강의의 컨셉(4개) :  ['voltage', 'inductor', 'inductance', 'flux']
-        37번 강의의 컨셉(5개) :  ['flux', 'wave', 'permittivity', 'density', 'energy']
-        38번 강의의 컨셉(4개) :  ['refraction', 'light', 'reflection', 'length']
-        39번 강의의 컨셉(5개) :  ['wave', 'light', 'diffraction', 'interference', 'wavelength']
-        40번 강의의 컨셉(5개) :  ['light', 'interference', 'wave', 'diffraction', 'phase']
-        41번 강의의 컨셉(3개) :  ['light', 'focus', 'diffraction']
-        42번 강의의 컨셉(3개) :  ['light', 'speed', 'length']
-        43번 강의의 컨셉(5개) :  ['light', 'photon', 'wave', 'energy', 'frequency']
-        44번 강의의 컨셉(5개) :  ['electron', 'quantum', 'probability', 'momentum', 'wavelength']
-        45번 강의의 컨셉(5개) :  ['mass', 'atom', 'energy', 'proton', 'electron']
-        46번 강의의 컨셉(5개) :  ['universe', 'radiation', 'light', 'redshift', 'plasma']
-        """
-
+    Result = Con._get_onlyConcepts(max_concept, max_weight)
+    print(Result) #가중치 적용 결과
     origins = Con.Pre.get_all_URLs()
     print(Con.Pre.get_all_URLs())
 
@@ -146,8 +33,9 @@ def main():
     Output(URL) : https://en.wikipedia.org/wiki/Inertia
     """
     Cmap = CM.Mapping()
+
     '''
-    ##TEST##
+    ###TEST###
     print('[첫 번째 문서(강의)에 대한 컨셉-위키피디아 URL 매핑 결과]')
     for concept in Result[0]:
         URL = Cmap.maping_Concept2Wiki(concept)
@@ -158,14 +46,9 @@ def main():
         URL = Cmap.maping_Concept2Wiki(concept)
         idx = URL.find('/wiki/') + 6
         print('\t{}의 위키피디아 URL> '.format(URL[idx:]), URL)
-    ##################################################
     '''
 
-    #### NOTE ####
-    #### 임시로 밑에 getConceptRelation2 파라미터-> Result[1]으로 해놓았습니다.
-    #### Result[doc_num]   0 <= doc_num < 47
-    #print(Result)
-    #관계부분 시작
+    ##################Relation Extraction##################
     print(len(origins))
     print(len(Result))
     for index in range(len(origins)):
@@ -184,7 +67,7 @@ def main():
         with open(sourceLoc, "w") as f:
             f.write(graphSource)
 
-    #관계 두번째 알고리즘
+    # 관계 두번째 알고리즘
     # Rocation_Algo2 = WR.WikiRotion(All_degree)
     # Rocation_Algo2.get_rocation()
     # testFeature(Result[index])
