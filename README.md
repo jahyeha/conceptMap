@@ -9,10 +9,10 @@
 
 ## Team Members/ Role
 - Seongwook Na/ Relation Extraction
-- YeongHak Seo/ Relation Extraction& Web Developement
-- OnGyeol Lee/ Web Developement
+- Yeonghak Seo/ Relation Extraction& Web Developement
+- Ongyeol Lee/ Web Developement
 - Jahye Ha/ Concept Extraction& Wikipedia Mapping
-- HyeonGyu Shin/ T.A.
+- Hyeongyu Shin/ T.A.
 
 
 ## References
