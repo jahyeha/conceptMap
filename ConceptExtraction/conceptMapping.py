@@ -4,18 +4,13 @@
 from bs4 import BeautifulSoup
 import requests
 
-""" NOTE
-    Mapping(Linking) Class that links each concept to its Wikipedia page 
-    e.g. inertia -> https://en.wikipedia.org/wiki/Inertia
-    @sources: Glossary of Physics & Outline of Physics (wikipedia pages)"""
-class Mapping:
-<<<<<<< HEAD:ConceptExtraction/conceptMapping.py
+""" 
+Mapping(Linking) Class that links each concept to its Wikipedia page 
+e.g. inertia -> https://en.wikipedia.org/wiki/Inertia
+@sources: Glossary of Physics & Outline of Physics (wikipedia pages)
+"""
 
-=======
-    """
-    @ linking each concept to its Wikipedia URL
-    """
->>>>>>> 1a18cc48cf1946ba4dc284ead7142a76adf91419:ConceptExtraction/_conceptMapping_.py
+class Mapping:
     def __init__(self):
         self.dictionary = self._makeCompelteDict()
 

@@ -19,13 +19,15 @@ from nltk.tokenize import RegexpTokenizer
 from ConceptExtraction import conceptMapping as CM
 
 
-""" NOTE
-  @ Document Preprocessing for Concept Extraction
-    1. Get all video URLs& IDs from an Education YouTube Channel(for Physics).
-    2. Crawl and parse all video subtitles(documents).
-    3. Clean up the documents by tokenizing and removing stop words.
-    4. Use the Physics Dictionary from my module "conceptMapping" to not only easily map each concept to its Wikipedia page
-        but to precisely distinguish which word is meaningful concept for Physics."""
+"""
+@ Document Preprocessing for Concept Extraction
+1. Get all video URLs& IDs from an Education YouTube Channel(for Physics).
+2. Crawl and parse all video subtitles(documents).
+3. Clean up the documents by tokenizing and removing stop words.
+4. Use the Physics Dictionary from my module "conceptMapping" to not only easily map each concept to its Wikipedia page
+   but to precisely distinguish which word is meaningful concept for Physics.
+"""
+
 class Preprocessor:
 
     def __init__(self, playlist_url):

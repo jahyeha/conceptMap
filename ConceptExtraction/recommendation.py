@@ -4,9 +4,11 @@
 from clustering import HClustering
 from ConceptExtraction import conceptExtraction as CE
 
-""" NOTE
-    Step 1. Extract concepts from each cluster    
-    Step 2. Recommend lectures based on weights """
+"""
+Step 1. Extract concepts from each cluster    
+Step 2. Recommend lectures based on weights 
+"""
+
 class Recommendation:
     def __init__(self):
         self.url = 'https://www.youtube.com/playlist?list=PL8dPuuaLjXtN0ge7yDk_UA0ldZJdhwkoV'

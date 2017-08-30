@@ -11,16 +11,14 @@ import os
 
 def main():
     ##################Concept Extraction##################
-<<<<<<< HEAD
     originURL = "PL8dPuuaLjXtN0ge7yDk_UA0ldZJdhwkoV"
     playlistURL = 'https://www.youtube.com/playlist?list=' + originURL
     submitCode = "1503382656%7Ce5c72339e330f6814ae2fe97aa5c6301"
-=======
-    originURL = "PL8dPuuaLjXtN0ge7yDk_UA0ldZJdhwkoV"#playlist로 감  #:로마 역사  # "ZM8ECpBuQYE / PL8dPuuaLjXtN0ge7yDk_UA0ldZJdhwkoV" :물리학
+
+    originURL = "PL8dPuuaLjXtN0ge7yDk_UA0ldZJdhwkoV"
     playlist_url = 'https://www.youtube.com/playlist?list=' + originURL
 
     submitCode = "1503584363%7C27ffbb267ba8d3522f0aee70b23c388d"
->>>>>>> 1a18cc48cf1946ba4dc284ead7142a76adf91419
     defineConcept = DD.DefineDistance(submitCode)
     makeGraph = MG.MakeGraph()
 
@@ -39,7 +37,6 @@ def main():
     Output(URL) : https://en.wikipedia.org/wiki/Inertia
     """
     Cmap = CM.Mapping()
-<<<<<<< HEAD
 
     '''
     ###TEST###
@@ -56,13 +53,12 @@ def main():
     '''
 
     ##################Relation Extraction##################
-=======
-     #### NOTE ####
+    #### NOTE ####
     #### 임시로 밑에 getConceptRelation2 파라미터-> Result[1]으로 해놓았습니다.
     #### Result[doc_num]   0 <= doc_num < 47
     #print(Result)
     #관계부분 시작
->>>>>>> 1a18cc48cf1946ba4dc284ead7142a76adf91419
+
     print(len(origins))
     print(len(Result))
     for index in range(len(origins)):
