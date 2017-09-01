@@ -2,7 +2,7 @@
 ![][1]
 ## How to create a Concept Map
 - Extract Concepts from Video Subtitles of an Educational Youtube channel(for Physics)
-  using TF-IDF(Term Frequency-Inverse Document Frequency) and Hirarchical Clustering
+  using TF-IDF(Term Frequency-Inverse Document Frequency) and Hierarchical Clustering
 - Define relationships between concepts through rank-based structures using Wikipedia links 
 - Create a Concept Map in a Website -using Django framework 
 
