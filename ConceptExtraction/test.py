@@ -41,10 +41,14 @@ docs = Pre._getDocuments(ids)
 bows = Pre._adv_tokenizer(docs)
 
 print('\n\n1. Preprocessing 결과..')
-print(urls)
-print(ids)
-print(docs)
-print(bows)
+# 1)urls
+print('\n1) urls>\n', urls)
+# 2)ids
+print('\n2) ids>\n', ids)
+# 3)docs
+print('\n3) docs>\n', docs[0])
+# 4)bows
+print('\n4) bows>\n', bows[0])
 
 
 #### 2.Concept Extraction ####
@@ -65,9 +69,12 @@ tfidf = Con._runTfIdf(bowSet)
 getConcept = Con._get_conceptWeight(bowSet, lecMaxConcept, lecMaxWeight)
 
 print('\n\n2. Concept Extraction 결과..')
-print(dictSet)
-print(tfidf)
-print(getConcept)
+# 1)dicSet
+print('\n1) dicSet>\n', dictSet[0])
+# 2)tfidf
+print('\n2) tfidf>\n', tfidf[0])
+# 3)getConcept
+print('\n1) getConcept>\n', getConcept[0])
 
 
 #### 3.Clustering(Categorizing) ####
@@ -86,17 +93,20 @@ Z, labels = H._Hclustering(cos, num_cluster=5)
 plot = H._plotClusters(Z, labels)
 
 print('\n\n3. Clustering(Categorization) 결과..')
-print(cos)
-print(Z)
-print(labels)
-print(plot)
+# 1)cos
+print('\n1) cos>\n', cos)
+# 2)Z
+print('\n2) Z>\n', Z)
+# 3)labels
+print('\n3) labels>\n', labels)
+#print(plot)
 
 
 #### 4.Recommendation ####
 '''
 parameters
     1) clusterVideos: 각 군집에 속하는 강의들의 집합
-    2) clusterConcept: 카테고리에서 개념추출(군집 또는 카테고리를 대표하는 개념)
+    2) clusterConcepts: 카테고리에서 개념추출(군집 또는 카테고리를 대표하는 개념)
     3) *recommendLec: 모르는 개념에 대한 정보제공
                     (해당 개념의 위키피디아 페이지& 가중치를 기반으로 해당 개념과 가장 유사한 강의추천)
 '''
@@ -110,6 +120,9 @@ conceptName = "integral"
 recommendLec = R._recommendLec(cluMaxConcept, cluMaxWeight, conceptName)
 
 print('\n\n4. Recommendation 결과..')
-print(clusterVideos)
-print(clusterConcepts)
-print(recommendLec)
+# 1) clusterVideos
+print('\n1) clusterVideos>\n', clusterVideos)
+# 2) clusterConcepts
+print('\n2) clusterConcepts>\n', clusterConcepts)
+# 3) recommendLec
+print('\n3) recommendLec>\n', recommendLec)
