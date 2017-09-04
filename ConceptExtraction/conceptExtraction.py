@@ -21,37 +21,41 @@ from ConceptExtraction import conceptMapping as CM
 
 """
 @ Document Preprocessing for Concept Extraction
-1. Get all video URLs& IDs from an Education YouTube Channel(for Physics).
-2. Crawl and parse all video subtitles(documents).
-3. Clean up the documents by tokenizing and removing stop words.
-4. Use the Physics Dictionary from my module "conceptMapping" to not only easily map each concept to its Wikipedia page
-   but to precisely distinguish which word is meaningful concept for Physics.
+    1. Get all video URLs& IDs from an Education YouTube Channel(for Physics).
+        ` Crash Course : https://www.youtube.com/playlist?list=PL8dPuuaLjXtN0ge7yDk_UA0ldZJdhwkoV
+    2. Crawl and parse all video subtitles(documents).
+    3. Clean up the documents by tokenizing and removing stop words.
+    4. Use the Physics Dictionary from my module "conceptMapping" to not only easily map each concept to its Wikipedia page
+       but to precisely distinguish which word is meaningful concept for Physics.
 """
 
 class Preprocessor:
 
     def __init__(self, playlist_url):
-        self.playlist_url = playlist_url
-        ## Import 'conceptMapping' Class(module) to get my Physics dictionary
+        self.playlistUrl = playlist_url
+        self.allUrls = self._get_allURLs()
         self.Cmap = CM.Mapping()
         self.physicsDict = self.Cmap._makeCompelteDict()
-        # this list below contains all possible topics(concepts) of Physics based on Wikipedia
+        # This list below contains all possible topics(concepts) of Physics based on Wikipedia
         self.physicsConcepts = list(self.physicsDict.keys())
 
+    ## Get the result of Preprocessing
     def _getResult(self):
-        video_IDs, titles = self._get_videoID_titles()
-        doc_set = self._getDocuments(video_IDs)
-        bow_set = self._tokenizer(doc_set, self.physicsConcepts)
+        video_IDs, titles = self._get_videoID_titles() #1#
+        doc_set = self._getDocuments(video_IDs) #2#
+        #bow_set = self._tokenizer(doc_set) - previous result
+        bow_set = self._adv_tokenizer(doc_set) #3,4#
         return bow_set
 
     def _get_videoID_titles(self):
-        playlist_url = self.playlist_url
         URLs = self._get_allURLs()
         video_IDs = self._getVideoIDs(URLs)
-        video_titles = self._get_videotitles(URLs)
+        video_titles = self._get_videotitles()
         return video_IDs, video_titles
+    #############################################################
 
-    def _get_videotitles(self, URLs):
+    def _get_videotitles(self):
+        URLs = self.allUrls
         video_titles = []
         for singleUrl in URLs:
             youtube = etree.HTML(urlopen(singleUrl).read())
@@ -63,18 +67,18 @@ class Preprocessor:
             else:
                 video_titles.append(title)
         return video_titles
-    #####################################################################
 
     def _get_allURLs(self):
-        page = requests.get(self.playlist_url)
+        page = requests.get(self.playlistUrl)
         text = str(BeautifulSoup(page.content, 'html.parser'))
         URLs = []
-        unique = '<td class="pl-video-title">'
+        start_unique = '<td class="pl-video-title">'
+        left_unique = 'href="'
         right = 0
 
         while True:
-            start = text.find(unique, right)
-            left = text.find('href="', start) + 6
+            start = text.find(start_unique, right)
+            left = text.find(left_unique, start) + len(left_unique)
             right = text.find('"', left)
 
             if left >= 6 and right > left:
@@ -95,7 +99,6 @@ class Preprocessor:
 
     def _getDocuments(self, videoIDs):
         doc_set = []
-        # Importing & cleaning my documents
         for ID in videoIDs:
             video_sub_url = 'http://video.google.com/timedtext?lang=en&v=' + ID
             page = requests.get(video_sub_url)
@@ -105,11 +108,78 @@ class Preprocessor:
             doc_set.append(doc)
         return doc_set
 
-    def _tokenizer(self, docSet, physics_glossary):
-        # Tokenizing& removing stopwords
+
+    ## NEW 2017-09-04 (복합명사 처리) ##
+    """ Summary
+        1. physics_glossary의 모든 단어들을 "singular noun"(단일명사)와 "compound noun"("2개 단어" 복합명사)로 나누기
+            (physics_glossary: 위키피디아 페이지가 존재하는 Physics(물리학)의 단어 총 집합)
+        2. 모든 문서(자막)에 대하여, 
+            1) 토큰화 2) 모든 토큰들의 품사를 태깅 e.g.('apple', NN)
+        3. 형태소 분석을 통한 심화 개념추출(기존: 단일명사만 취급, 현재: 단일& 복합명사)
+    """
+    def _adv_tokenizer(self, docSet):
+        physics_glossary = self.physicsConcepts
+        #1#
+        one, two = [], []
+        for word in physics_glossary:
+            splitted = word.split()
+            if len(splitted) == 1:
+                one.append(word)
+            elif len(splitted) == 2:
+                two.append(word)
+        #2#
+        tagged_set = []
+        for doc in docSet:
+            tokenized = nltk.tokenize.word_tokenize(doc)
+            tagged = nltk.pos_tag(tokenized)
+            tagged_set.append(tagged)
+        #3#
+        concept_set = []
+        for taggedDoc in tagged_set:
+            concept_list = []
+
+            for i in range(len(taggedDoc)-1):
+                nowWord, nextWord = taggedDoc[i][0], taggedDoc[i+1][0]
+                nowPos, nextPos = taggedDoc[i][1], taggedDoc[i+1][1]
+
+                if (nowPos[0] == "J") and (nextPos[0] == "N"): ## Adj + N
+                    candidate = nowWord + " " + nextWord
+                    if nextPos == "NNS": # Plural Noun(-s, -es)
+                        if candidate[:-2] in two:
+                            concept_list.append(candidate[:-2])
+                        elif candidate[:-1] in two:
+                            concept_list.append(candidate[:-1])
+                    elif candidate in two:  # Singular Noun
+                        concept_list.append(candidate)
+
+                elif (nowPos[0] == "N") and (nextPos[0] == "N"):  ## N + N
+                    candidate = nowWord + " " + nextWord
+                    if nextPos == "NNS":  # N + NNS
+                        if candidate[:-2] in two:
+                            concept_list.append(candidate[:-2])
+                        elif candidate[:-1] in two:
+                            concept_list.append(candidate[:-1])
+                    elif candidate in two:  # N + N
+                        concept_list.append(candidate)
+
+                elif nowPos[0] == "N":
+                    if nowPos == "NNS":
+                        if candidate[:-2] in one:
+                            concept_list.append(candidate[:-2])
+                        elif candidate[:-1] in one:
+                            concept_list.append(candidate[:-1])
+                    elif nowWord in one:
+                        concept_list.append(nowWord)
+            concept_set.append(concept_list)
+
+        return concept_set
+
+    def _tokenizer(self, docSet): #previous tokenizer
         tokenizer = RegexpTokenizer(r'\w+')
-        bow_set = []
+        physics_glossary = self.physicsConcepts
         stop = set(stopwords.words('english'))
+        bow_set = []
+
         for doc in docSet:
             tokens = tokenizer.tokenize(doc)
             stopped_tokens = [i for i in tokens if not i in stop and len(i) > 1]
@@ -132,8 +202,9 @@ class ConceptExtraction:
         self.bowSet = self.Pre._getResult()
         self.Tfidf_result = self._runTfIdf()
 
+    ## Get the Result of Concept Extraction
+        #  Get concept names without their weights
     def _get_onlyConcepts(self, max_concept, max_weight):
-        #### ONLY GET CONCEPT NAMES without their weights ####
         candidate_set = self._get_conceptWeight(max_concept, max_weight)
         result = []
         for lst in candidate_set:
@@ -141,15 +212,9 @@ class ConceptExtraction:
             for word in lst:
                 temp.append(word[0])
             result.append(temp)
-
-            """result (e.g.)
-            [['acceleration', 'velocity', 'displacement', 'motion', 'light'], 
-             ['derivative', 'velocity', 'calculus', 'acceleration', 'power'], 
-             ['integral', 'derivative', 'acceleration', 'velocity', 'displacement'], 
-             ['vector', 'machine', 'velocity', 'dimension', 'motion'], 
-             ['force', 'gravity', 'acceleration', 'mass', 'inertia'],...]"""
         return result
 
+    ## Get concept names with their weights
     def _get_conceptWeight(self, max_concept, max_weight):
         candidate_set = []
         tfidf = self.Tfidf_result
@@ -162,30 +227,21 @@ class ConceptExtraction:
 
             candidate = sorted(candidate.items(), key=operator.itemgetter(1), reverse=True)
             candidate_set.append(candidate[:max_concept])
-
-        """candidate_set(e.g.) : concept name with its weight
-        [[('acceleration', 0.2855), ('velocity', 0.15526), ('displacement', 0.15062), ('motion', 0.0354), ('light', 0.03002)],
-         [('derivative', 0.54908), ('velocity', 0.12148), ('calculus', 0.11439), ('acceleration', 0.11037), ('power', 0.05717)],
-         [('integral', 0.41838), ('derivative', 0.26713), ('acceleration', 0.23131), ('velocity', 0.11552), ('displacement', 0.0523)]..]
-        """
         return candidate_set
+    #############################################################
 
-    ################################################################################
-    """ NOTE
-      @ Computing TF-IDF
-        1. Get ready to compute tf-idf
-         : Convert tokenized(&cleaned) BOWs into numbers by creating vectors of all possible words,
-           and for each document how many times each word appears.
-        2. Compute tf*idf
-          2-1) Compute tf(w) = (Number of times the word appears in a document) / (Total number of words in the document)
-          2-2) Compute idf(w) = log(Number of documents / Number of documents that contain word w)
-    """
+    """ @ Computing TF-IDF
+        1. Get ready to compute tf-idf : Convert tokenized(&cleaned) BOWs into numbers 
+           by creating vectors of all possible words, and for each document how many times each word appears.
+        2. Compute tf(w) = (Number of times the word appears in a document) / (Total number of words in the document)
+        3. Compute idf(w) = log(Number of documents / Number of documents that contain word w)
+        4. Compute TF*IDF """
 
     def _runTfIdf(self):
-        dict_set = self._createDictSet()
-        tf = self._computeTf(dict_set, self.bowSet)
-        idf = self._computeIdf(dict_set)
-        result = self._computeTfIdf(tf, idf)
+        dict_set = self._createDictSet()  #1
+        tf = self._computeTf(dict_set, self.bowSet) #2
+        idf = self._computeIdf(dict_set) #3
+        result = self._computeTfIdf(tf, idf) #4
         return result
 
     def _createDictSet(self):
@@ -245,6 +301,27 @@ class ConceptExtraction:
 if __name__ == "__main__":
     playlistURL = "https://www.youtube.com/playlist?list=PL8dPuuaLjXtN0ge7yDk_UA0ldZJdhwkoV"
     Pre = Preprocessor(playlistURL)
-    URLs = Pre._get_allURLs()
-    # print(URLs)
-    print(Pre._get_videotitles(URLs))
+    Con = ConceptExtraction(playlistURL)
+    video_titles = Pre._get_videotitles()
+
+    ############ TEST : Preprocessor ############
+    pre_result = Pre._getResult()
+    print('> 전처리 결과(문서추출& 토큰화& 불용어 제거)\n')
+    for i in range(len(pre_result)):
+        print('\t{}강 강의: {}'.format(i+1, video_titles[i]),'\n\t',pre_result[i],'\n')
+
+    ############ TEST : ConceptExtraction #######
+    max_concept, max_weight = 5, 0.07
+    ce_tfidf_result = Con._runTfIdf()
+    print('\n> TF-IDF 결과 (가중치 내림차순)\n')
+    #print(ce_tfidf_result,'\n')
+    for i in range(len(ce_tfidf_result)):
+        sorted_dict = sorted(ce_tfidf_result[i].items(), key=operator.itemgetter(1),reverse=True)
+        print('\t{}강 강의: {}'.format(i+1, video_titles[i]),'\n\t', sorted_dict,'\n')
+
+    ce_result = Con._get_conceptWeight(max_concept, max_weight)
+    print('\n> 개념추출 결과(TF-IDF 결과를 기반으로 추출된 개념)')
+    print('\t - 조건: 가중치 0.07 이상, 강의 당 최대 개념 수 5개\n')
+    for i in range(len(ce_result)):
+        print('\t{}강 강의: {} (개념 수: {}개)'.format(i+1, video_titles[i], len(ce_result[i])),'\n\t',ce_result[i],'\n')
+
