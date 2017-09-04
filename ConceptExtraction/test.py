@@ -20,10 +20,11 @@ from ConceptExtraction import recommendation as RC
     4. Recommendation : 카테고리에서 개념추출& 강의추천
         - 3번 군집화 결과를 기반, 군집(카테고리)별로 개념추출& 모르는 개념에 대한 정보제공"""
 
+
 #### Base Information (YouTube Crash Course -"Physics")
 playlist_url = "https://www.youtube.com/playlist?list=PL8dPuuaLjXtN0ge7yDk_UA0ldZJdhwkoV"
 
-"""
+
 #### 1.Preprocessing ####
 '''
 parameters
@@ -40,9 +41,9 @@ docs = Pre._getDocuments(ids)
 bows = Pre._adv_tokenizer(docs)
 
 print('\n\n1. Preprocessing 결과..')
-#print(urls)
-#print(ids)
-#print(docs)
+print(urls)
+print(ids)
+print(docs)
 print(bows)
 
 
@@ -64,8 +65,8 @@ tfidf = Con._runTfIdf(bowSet)
 getConcept = Con._get_conceptWeight(bowSet, lecMaxConcept, lecMaxWeight)
 
 print('\n\n2. Concept Extraction 결과..')
-#print(dictSet)
-#print(tfidf)
+print(dictSet)
+print(tfidf)
 print(getConcept)
 
 
@@ -85,11 +86,11 @@ Z, labels = H._Hclustering(cos, num_cluster=5)
 plot = H._plotClusters(Z, labels)
 
 print('\n\n3. Clustering(Categorization) 결과..')
-#print(cos)
-#print(Z)
-#print(labels)
+print(cos)
+print(Z)
+print(labels)
 print(plot)
-"""
+
 
 #### 4.Recommendation ####
 '''
