@@ -111,7 +111,7 @@ class Preprocessor:
 
     ## NEW 2017-09-04 (복합명사 처리) ##
     """ Summary
-        1. physics_glossary의 모든 단어들을 "singular noun"(단일명사)와 "compound noun"("2개 단어" 복합명사)로 나누기
+        1. physics_glossary의 모든 단어들을 "noun"(단일명사)와 "compound noun"("2개 단어" 복합명사)로 나누기
             (physics_glossary: 위키피디아 페이지가 존재하는 Physics(물리학)의 단어 총 집합)
         2. 모든 문서(자막)에 대하여, 
             1) 토큰화 2) 모든 토큰들의 품사를 태깅 e.g.('apple', NN)
@@ -200,12 +200,25 @@ class ConceptExtraction:
     def __init__(self, playlist_url):
         self.Pre = Preprocessor(playlist_url)
         self.bowSet = self.Pre._getResult()
-        self.Tfidf_result = self._runTfIdf()
+        self.Tfidf_result = self._runTfIdf(self.bowSet)
+
+    ## NEW 2017-09-05 (_test)
+        # Compare the result of Concept Extraction(Nouns only vs +Compound Nouns)
+    def _test(self):
+        ids, titles = Pre._get_videoID_titles()
+        doc_set = Pre._getDocuments(ids)
+        prev_bowSet = Pre._tokenizer(doc_set)
+        new_bowSet = Pre._adv_tokenizer(doc_set)
+
+        max_concept, max_weight = 5, 0.07
+        prev_result = self._get_conceptWeight(prev_bowSet, max_concept, max_weight)
+        new_result = self._get_conceptWeight(new_bowSet, max_concept, max_weight)
+        return prev_result, new_result
 
     ## Get the Result of Concept Extraction
         #  Get concept names without their weights
-    def _get_onlyConcepts(self, max_concept, max_weight):
-        candidate_set = self._get_conceptWeight(max_concept, max_weight)
+    def _get_onlyConcepts(self, bowSet, max_concept, max_weight):
+        candidate_set = self._get_conceptWeight(bowSet, max_concept, max_weight)
         result = []
         for lst in candidate_set:
             temp = []
@@ -215,9 +228,10 @@ class ConceptExtraction:
         return result
 
     ## Get concept names with their weights
-    def _get_conceptWeight(self, max_concept, max_weight):
+    def _get_conceptWeight(self, bowSet, max_concept, max_weight):
         candidate_set = []
-        tfidf = self.Tfidf_result
+        #tfidf = self.Tfidf_result
+        tfidf = self._runTfIdf(bowSet)
 
         for dic in tfidf:
             candidate = {}
@@ -237,23 +251,23 @@ class ConceptExtraction:
         3. Compute idf(w) = log(Number of documents / Number of documents that contain word w)
         4. Compute TF*IDF """
 
-    def _runTfIdf(self):
-        dict_set = self._createDictSet()  #1
-        tf = self._computeTf(dict_set, self.bowSet) #2
+    def _runTfIdf(self, bowSet):
+        dict_set = self._createDictSet(bowSet)  #1
+        tf = self._computeTf(dict_set, bowSet) #2
         idf = self._computeIdf(dict_set) #3
         result = self._computeTfIdf(tf, idf) #4
         return result
 
-    def _createDictSet(self):
+    def _createDictSet(self, bowSet):
         all_words = []
-        for bow in self.bowSet:
+        for bow in bowSet:
             all_words += bow
         word_set = set(all_words)
 
         dict_set = []
-        for i in range(len(self.bowSet)):
+        for i in range(len(bowSet)):
             word_dict = dict.fromkeys(word_set, 0)
-            for bow in self.bowSet[i]:
+            for bow in bowSet[i]:
                 if bow in word_dict:
                     word_dict[bow] += 1
             dict_set.append(word_dict)
@@ -304,6 +318,18 @@ if __name__ == "__main__":
     Con = ConceptExtraction(playlistURL)
     video_titles = Pre._get_videotitles()
 
+""" 컨셉추출 결과 비교(단일명사 추출-이전 vs 단일&복합명사 추출-현재) 
+    prev, new = Con._test()
+    print("> 개념추출 결과 비교(단일명사 추출 vs 단일명사+복합명사 추출")
+    print('\t - 조건: 가중치 0.07 이상, 강의 당 최대 개념 수 5개\n')
+
+    for i in range(len(prev)):
+        print('\t{}강 강의: {}'.format(i+1, video_titles[i]))
+        print('\t\t', prev[i], ' ({}개)'.format(len(prev[i])))
+        print('\t\t', new[i], ' ({}개)'.format(len(new[i])), '\n')
+"""
+
+"""
     ############ TEST : Preprocessor ############
     pre_result = Pre._getResult()
     print('> 전처리 결과(문서추출& 토큰화& 불용어 제거)\n')
@@ -312,16 +338,15 @@ if __name__ == "__main__":
 
     ############ TEST : ConceptExtraction #######
     max_concept, max_weight = 5, 0.07
-    ce_tfidf_result = Con._runTfIdf()
+    ce_tfidf_result = Con._runTfIdf(pre_result)
     print('\n> TF-IDF 결과 (가중치 내림차순)\n')
-    #print(ce_tfidf_result,'\n')
     for i in range(len(ce_tfidf_result)):
         sorted_dict = sorted(ce_tfidf_result[i].items(), key=operator.itemgetter(1),reverse=True)
         print('\t{}강 강의: {}'.format(i+1, video_titles[i]),'\n\t', sorted_dict,'\n')
 
-    ce_result = Con._get_conceptWeight(max_concept, max_weight)
+    ce_result = Con._get_conceptWeight(pre_result, max_concept, max_weight)
     print('\n> 개념추출 결과(TF-IDF 결과를 기반으로 추출된 개념)')
     print('\t - 조건: 가중치 0.07 이상, 강의 당 최대 개념 수 5개\n')
     for i in range(len(ce_result)):
         print('\t{}강 강의: {} (개념 수: {}개)'.format(i+1, video_titles[i], len(ce_result[i])),'\n\t',ce_result[i],'\n')
-
+    """

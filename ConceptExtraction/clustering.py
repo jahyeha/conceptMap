@@ -15,11 +15,10 @@ class HClustering:
     def __init__(self, playlistURL):
         self.playlist_url = playlistURL
         self.Pre = CE.Preprocessor(self.playlist_url)      #module1
-        self.all_urls = self.Pre._get_allURLs()
-        self.video_titles = self.Pre._get_videotitles(self.all_urls)
-
+        self.video_titles = self.Pre._get_videotitles()
         self.Con = CE.ConceptExtraction(self.playlist_url) #module2
-        self.dict_set = self.Con._createDictSet()
+        self.bowSet = self.Pre._getResult()
+        self.dict_set = self.Con._createDictSet(self.bowSet)
 
     def _Hclustering(self, cos, num_cluster):
         dist = 1 - cos
@@ -30,18 +29,15 @@ class HClustering:
 
     def _getCosMatrix(self):
         num_concept = 5
-        tfidf_dicSet = self._getTfidfResult(num_concept)
+        tfidf_dicSet = self._getTfidfResult(num_concept, self.bowSet)
         cosine = self._cosineSimilarity(tfidf_dicSet)
         return cosine
         ##########################################################################
 
-    def _getTfidfResult(self, num_concept):
+    def _getTfidfResult(self, num_concept, bowSet):
         sorted_dictSet = [sorted(dic.items(), key=operator.itemgetter(1), reverse=True) for dic in self.dict_set]
         BOW_result = [dic[:num_concept] for dic in sorted_dictSet]
-        #BOW_result = [[('acceleration',30), ('velocity',28),..],['pressure',41),.."num_concept" 만큼],..]
-        Tfidf_dicSet = self.Con._runTfIdf()
-        #Tfidf_dictSet = [{'motion':0.0, 'capacitor':0.15, 'mass':0.0},
-        #                 {'motion':0.35, 'capacitor':0.0, 'mass':0.01}..]
+        Tfidf_dicSet = self.Con._runTfIdf(bowSet)
         return Tfidf_dicSet
 
     def _cosineSimilarity(self,Tfidf_dicSet):
@@ -82,10 +78,3 @@ class HClustering:
         plt.tight_layout()
         plt.savefig('ward_clusters.png', dpi=200)
         plt.show()
-
-if __name__ == "__main__":
-    url = "https://www.youtube.com/playlist?list=PL8dPuuaLjXtN0ge7yDk_UA0ldZJdhwkoV"
-    H = HClustering(url)
-    cos = H._getCosMatrix()
-    Z, labels = H._Hclustering(cos,num_cluster=5)
-    print(H._plotClusters(Z, labels))
