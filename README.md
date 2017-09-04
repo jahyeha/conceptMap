@@ -1,11 +1,11 @@
 # ConceptMap
 ![][1]
 ## How to create a Concept Map
-- Concept Extraction: Extract Concepts from Video Subtitles of the Educational Youtube channel "Crash Course" (for Physics)
-  `Main Algorith : TF-IDF(Term Frequency-Inverse Document Frequency) and Hierarchical Clustering`
-  For more detail: https://github.com/eliceio/conceptMap/tree/master/ConceptExtraction
-- Relation Extraction: Define relationships between concepts through rank-based structures using Wikipedia links 
-- Web Developement: Create a Concept Map in a Website using Django framework 
+- `Concept Extraction`: Extract Concepts from Video Subtitles of the Educational Youtube channel "Crash Course" (for Physics)
+   Main Algorith : TF-IDF(Term Frequency-Inverse Document Frequency) and Hierarchical Clustering
+   For more detail: https://github.com/eliceio/conceptMap/tree/master/ConceptExtraction
+- `Relation Extraction`: Define relationships between concepts through rank-based structures using Wikipedia links 
+- `Web Developement`: Create a Concept Map in a Website using Django framework 
 
 
 ## Team Members/ Role
@@ -22,4 +22,6 @@
 
 
 [1]: https://github.com/eliceio/conceptMap/blob/master/ConceptExtraction/note/proto.png
+
+
 
