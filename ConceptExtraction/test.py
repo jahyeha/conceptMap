@@ -5,7 +5,7 @@ from ConceptExtraction import recommendation as RC
 
 # TEST #
 
-""" STEP
+""" Process
     1. Preprocessing(전처리)
         - 필요한 문서(강의 자막)추출, 문서의 토큰화& 형태소 분석 및 불용어제거
 

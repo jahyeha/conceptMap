@@ -3,7 +3,8 @@
   # 개념추출 결과 비교
     단일명사 추출(위)-이전  vs  단일명사+복합명사 추출(아래)-현재
     조건: 가중치 0.07 이상, 강의(문서)당 최대 개념 수 5개
-  # 참고 : https://github.com/eliceio/conceptMap/blob/master/ConceptExtraction/conceptExtraction.py, line 112~195
+  # 참고 : https://github.com/eliceio/conceptMap/blob/master/ConceptExtraction/conceptExtraction.py
+           line 112 ~ 195, line 321 ~
 ------------------------------------------------------------------
 
 
