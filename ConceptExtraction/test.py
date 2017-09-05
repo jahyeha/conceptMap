@@ -46,9 +46,9 @@ print('\n1) urls>\n', urls)
 # 2)ids
 print('\n2) ids>\n', ids)
 # 3)docs
-print('\n3) docs>\n', docs[0])
+print('\n3) docs[0]>\n', docs[0])
 # 4)bows
-print('\n4) bows>\n', bows[0])
+print('\n4) bows[0]>\n', bows[0])
 
 
 #### 2.Concept Extraction ####
@@ -70,11 +70,11 @@ getConcept = Con._get_conceptWeight(bowSet, lecMaxConcept, lecMaxWeight)
 
 print('\n\n2. Concept Extraction 결과..')
 # 1)dicSet
-print('\n1) dicSet>\n', dictSet[0])
+print('\n1) dicSet[0]>\n', dictSet[0])
 # 2)tfidf
-print('\n2) tfidf>\n', tfidf[0])
+print('\n2) tfidf[0]>\n', tfidf[0])
 # 3)getConcept
-print('\n1) getConcept>\n', getConcept[0])
+print('\n1) getConcept[0]>\n', getConcept[0])
 
 
 #### 3.Clustering(Categorizing) ####
