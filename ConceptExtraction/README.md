@@ -1,18 +1,19 @@
 # Concept Extraction
 ![][1]
 
-## Description (Details)
-1. **Preprocessing & Concept Extraction**
-  - [link](https://github.com/eliceio/conceptMap/blob/master/ConceptExtraction/conceptExtraction.py)
+## 1. Description (Details)
+**1. Preprocessing & Concept Extraction**
+>- [link to Concept Extraction](https://github.com/eliceio/conceptMap/blob/master/ConceptExtraction/conceptExtraction.py)
 
-2. **Categorization(Clustering)**
-  - [link](https://github.com/eliceio/conceptMap/blob/master/ConceptExtraction/clustering.py)
+**2. Categorization(Clustering)**
+>- [link to Clustering](https://github.com/eliceio/conceptMap/blob/master/ConceptExtraction/clustering.py)
 
-3. **Recommendation(& Wikipedia Mapping; linking concept to its wiki-page)**
-  - [link to Recommendation](https://github.com/eliceio/conceptMap/blob/master/ConceptExtraction/recommendation.py)
-  - [link to Wikipedia Mapping](https://github.com/eliceio/conceptMap/blob/master/ConceptExtraction/conceptMapping.py)
+**3. Recommendation(& Wikipedia Mapping; linking concept to its wiki-page)**
+>- [link to Recommendation](https://github.com/eliceio/conceptMap/blob/master/ConceptExtraction/recommendation.py)
+>- [link to Wikipedia Mapping](https://github.com/eliceio/conceptMap/blob/master/ConceptExtraction/conceptMapping.py)
 
-## Process& Result for each step
+
+## 2. Process& Result for each step
 ![][2]
 ![][3]
 ![][4]
