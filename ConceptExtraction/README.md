@@ -24,3 +24,7 @@
 [1]:https://github.com/eliceio/conceptMap/blob/master/ConceptExtraction/note/slide/슬라이드2.PNG
 [2]:https://github.com/eliceio/conceptMap/blob/master/ConceptExtraction/note/slide/슬라이드3.PNG
 [3]:https://github.com/eliceio/conceptMap/blob/master/ConceptExtraction/note/slide/슬라이드4.PNG
+[4]:https://github.com/eliceio/conceptMap/blob/master/ConceptExtraction/note/slide/슬라이드5.PNG
+[5]:https://github.com/eliceio/conceptMap/blob/master/ConceptExtraction/note/slide/슬라이드6.PNG
+[6]:https://github.com/eliceio/conceptMap/blob/master/ConceptExtraction/note/slide/슬라이드7.PNG
+[7]:https://github.com/eliceio/conceptMap/blob/master/ConceptExtraction/note/slide/슬라이드8.PNG
