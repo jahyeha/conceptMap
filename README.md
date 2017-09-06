@@ -2,17 +2,17 @@
 ![][1]
 ## How to create a Concept Map
 **1. Concept Extraction**
-    - Extract Concepts from Video Subtitles of the Educational Youtube channel "Crash Course" (for Physics)
-    - Main Algorithm : TF-IDF(Term Frequency-Inverse Document Frequency) and Hierarchical Clustering
-    - [link to Concept Extraction](https://github.com/eliceio/conceptMap/tree/master/ConceptExtraction)
+>- Extract Concepts from Video Subtitles of the Educational Youtube channel "Crash Course" (for Physics)
+>- Main Algorithm : TF-IDF(Term Frequency-Inverse Document Frequency) and Hierarchical Clustering
+>- [link to Concept Extraction](https://github.com/eliceio/conceptMap/tree/master/ConceptExtraction)
 
 **2. Relation Extraction**
-    - Define relationships between concepts through rank-based structures using Wikipedia links
-    - [link to Relation Extraction](https://github.com/eliceio/conceptMap/tree/master/RelationExtraction)
+>- Define relationships between concepts through rank-based structures using Wikipedia links
+>- [link to Relation Extraction](https://github.com/eliceio/conceptMap/tree/master/RelationExtraction)
 
 **3. Web Developement**
-    - Create a Concept Map in a Website using Django framework
-    - [link to Web Developement](https://github.com/eliceio/conceptMap/tree/master/WebDevelopement)
+>- Create a Concept Map in a Website using Django framework
+>- [link to Web Developement](https://github.com/eliceio/conceptMap/tree/master/WebDevelopement)
 
 
 ## Team Members/ Role
@@ -26,12 +26,12 @@
 ## Requirements
 Initial requirements are as follows.
 ```
-  Python 3.6.0
-  Django 1.11.4
-  NLTK 3.2.4
-  Numpy 1.13.1
-  BeautifulSoup 4.5.3
-  * You can see more details in each sub project directory.
+ Python 3.6.0
+ Django 1.11.4
+ NLTK 3.2.4
+ Numpy 1.13.1
+ BeautifulSoup 4.5.3
+ * You can see more details in each sub project directory.
 ```
 
 ## References

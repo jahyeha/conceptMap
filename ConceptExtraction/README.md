@@ -2,25 +2,25 @@
 ![][1]
 
 ## Description (Details)
-**- Preprocessing & Concept Extraction**: [link to Concept Extraction](https://github.com/eliceio/conceptMap/blob/master/ConceptExtraction/conceptExtraction.py)
+**1. Preprocessing & Concept Extraction**: [Link to Concept Extraction](https://github.com/eliceio/conceptMap/blob/master/ConceptExtraction/conceptExtraction.py)
 
-**- Categorization(Clustering)**: [link to Clustering](https://github.com/eliceio/conceptMap/blob/master/ConceptExtraction/clustering.py)
+**2. Categorization(Clustering)**: [Link to Clustering](https://github.com/eliceio/conceptMap/blob/master/ConceptExtraction/clustering.py)
 
-**- Recommendation(& Wikipedia Mapping; linking concept to its wiki-page)**
-    * [link to Recommendation](https://github.com/eliceio/conceptMap/blob/master/ConceptExtraction/recommendation.py)
-    * [link to Wikipedia Mapping](https://github.com/eliceio/conceptMap/blob/master/ConceptExtraction/conceptMapping.py)
+**3. Recommendation(& Wikipedia Mapping; linking concept to its wiki-page)**
+>-[Link to Recommendation](https://github.com/eliceio/conceptMap/blob/master/ConceptExtraction/recommendation.py)
+>- [Link to Wikipedia Mapping](https://github.com/eliceio/conceptMap/blob/master/ConceptExtraction/conceptMapping.py)
 
-**- Test**: [link to Test](https://github.com/eliceio/conceptMap/blob/master/ConceptExtraction/test.py)
-    - Requirements
+**Test**: [Link to Test](https://github.com/eliceio/conceptMap/blob/master/ConceptExtraction/test.py)
+>- Requirements
 ```
-    NLTK 3.2.4
-    Numpy 1.13.1
-    BeautifulSoup 4.5.3
-    Lxml 3.8.0
-    Scikit-learn 0.19.0
-    Urllib3 1.22
-    Sklearn 0.0
-    Scipy 0.19.1
+ NLTK 3.2.4
+ Numpy 1.13.1
+ BeautifulSoup 4.5.3
+ Lxml 3.8.0
+ Scikit-learn 0.19.0
+ Urllib3 1.22
+ Sklearn 0.0
+ Scipy 0.19.1
 ```
 
 ## 2Process& Result for each step
