@@ -5,8 +5,8 @@ from ConceptExtraction import recommendation as RC
 
 # TEST #
 
-""" 
-Process
+##################################################################################
+'''<Process>
 1. Preprocessing(전처리)
     - 필요한 문서(강의 자막)추출, 문서의 토큰화& 형태소 분석 및 불용어제거
 
@@ -19,8 +19,8 @@ Process
     - 알고리즘 : Hierarchical Clustering
   
 4. Recommendation : 카테고리에서 개념추출& 강의추천
-    - 3번 군집화 결과를 기반, 군집(카테고리)별로 개념추출& 모르는 개념에 대한 정보제공
-"""
+    - 3번 군집화 결과를 기반, 군집(카테고리)별로 개념추출& 모르는 개념에 대한 정보제공'''
+##################################################################################
 
 
 #### Base Information (YouTube Crash Course -"Physics")
