@@ -1,0 +1,59 @@
+{
+    "nodes": [
+        {
+            "id": 0,
+            "label": "refraction"
+        },
+        {
+            "id": 1,
+            "label": "light"
+        },
+        {
+            "id": 2,
+            "label": "reflection"
+        },
+        {
+            "id": 3,
+            "label": "length"
+        },
+        {
+            "id": 4,
+            "label": "distance"
+        },
+        {
+            "id": 5,
+            "label": "optics"
+        }
+    ],
+    "edges": [
+        {
+            "to": 3,
+            "from": 4,
+            "middle": "none",
+            "value": 1
+        },
+        {
+            "to": 1,
+            "from": 5,
+            "middle": "none",
+            "value": 1
+        },
+        {
+            "to": 0,
+            "from": 5,
+            "middle": "none",
+            "value": 1
+        },
+        {
+            "to": 4,
+            "from": 5,
+            "middle": "none",
+            "value": 2
+        },
+        {
+            "to": 2,
+            "from": 5,
+            "value": 2
+        }
+    ]
+}

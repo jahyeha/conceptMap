@@ -1,0 +1,54 @@
+{
+    "nodes": [
+        {
+            "id": 0,
+            "label": "vector"
+        },
+        {
+            "id": 1,
+            "label": "machine"
+        },
+        {
+            "id": 2,
+            "label": "velocity"
+        },
+        {
+            "id": 3,
+            "label": "dimension"
+        },
+        {
+            "id": 4,
+            "label": "motion"
+        },
+        {
+            "id": 5,
+            "label": "ground"
+        }
+    ],
+    "edges": [
+        {
+            "to": 4,
+            "from": 2,
+            "option": "direct",
+            "value": 2
+        },
+        {
+            "to": 3,
+            "from": 2,
+            "option": "direct",
+            "value": 2
+        },
+        {
+            "to": 1,
+            "from": 3,
+            "option": "direct",
+            "value": 2
+        },
+        {
+            "to": 0,
+            "from": 3,
+            "option": "direct",
+            "value": 2
+        }
+    ]
+}

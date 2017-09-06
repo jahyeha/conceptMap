@@ -1,0 +1,59 @@
+{
+    "nodes": [
+        {
+            "id": 0,
+            "label": "circle"
+        },
+        {
+            "id": 1,
+            "label": "integral"
+        },
+        {
+            "id": 2,
+            "label": "ampere"
+        },
+        {
+            "id": 3,
+            "label": "torque"
+        },
+        {
+            "id": 4,
+            "label": "force"
+        },
+        {
+            "id": 5,
+            "label": "point"
+        }
+    ],
+    "edges": [
+        {
+            "to": 3,
+            "from": 4,
+            "middle": "none",
+            "value": 1
+        },
+        {
+            "to": 2,
+            "from": 4,
+            "middle": "none",
+            "value": 2
+        },
+        {
+            "to": 1,
+            "from": 4,
+            "middle": "none",
+            "value": 2
+        },
+        {
+            "to": 0,
+            "from": 4,
+            "middle": "none",
+            "value": 2
+        },
+        {
+            "to": 5,
+            "from": 4,
+            "value": 3
+        }
+    ]
+}

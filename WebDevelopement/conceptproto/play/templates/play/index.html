@@ -1,0 +1,26 @@
+{% extends "play/layout.html" %}
+{% block title %}
+main page
+{% endblock %}
+{% block content %}
+
+  <div class="ui center aligned text container">
+    <br />
+    <h1 class="ui header">
+      Draw video concept map
+    </h1>
+    <h2>
+      input Lecture Playlist URL( 동영상 링크를 입력하세요 ) {{video.id}}
+    </h2>
+    <br />
+    <form class="ui form" action="/video/" method="get">
+      <div class="ui huge fluid action input">
+        <input name="v" type="text" placeholder="동영상 링크를 입력하세요" autocomplete="v" autofocus="autofocus">
+
+        <button type="submit" class="ui red button">Search</button>
+      </div>
+    </form>
+
+  </div>
+
+{% endblock %}

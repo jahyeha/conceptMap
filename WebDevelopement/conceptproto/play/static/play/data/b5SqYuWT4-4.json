@@ -1,0 +1,60 @@
+{
+    "nodes": [
+        {
+            "id": 0,
+            "label": "pressure"
+        },
+        {
+            "id": 1,
+            "label": "fluid"
+        },
+        {
+            "id": 2,
+            "label": "density"
+        },
+        {
+            "id": 3,
+            "label": "volume"
+        },
+        {
+            "id": 4,
+            "label": "force"
+        },
+        {
+            "id": 5,
+            "label": "gravity"
+        }
+    ],
+    "edges": [
+        {
+            "to": 5,
+            "from": 4,
+            "option": "direct",
+            "value": 1
+        },
+        {
+            "to": 2,
+            "from": 3,
+            "option": "none",
+            "value": 1
+        },
+        {
+            "to": 4,
+            "from": 1,
+            "option": "direct",
+            "value": 1
+        },
+        {
+            "to": 0,
+            "from": 4,
+            "option": "none",
+            "value": 1
+        },
+        {
+            "to": 3,
+            "from": 0,
+            "option": "direct",
+            "value": 1
+        }
+    ]
+}

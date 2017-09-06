@@ -1,0 +1,83 @@
+{
+    "nodes": [
+        {
+            "id": 0,
+            "label": "Synapse"
+        },
+        {
+            "id": 1,
+            "label": "Neuron"
+        },
+        {
+            "id": 2,
+            "label": "Artificial_neural_network"
+        },
+        {
+            "id": 3,
+            "label": "Deep_learning"
+        },
+        {
+            "id": 4,
+            "label": "Sigmoid_function"
+        },
+        {
+            "id": 5,
+            "label": "Machine_learning"
+        },
+        {
+            "id": 6,
+            "label": "Activation_function"
+        },
+        {
+            "id": 7,
+            "label": "Classification"
+        },
+        {
+            "id": 8,
+            "label": "Supervised_learning"
+        },
+		{
+			"id": 9,
+            "label": "Supervised"
+        
+		}
+    ],
+    "edges": [
+        {
+            "from": 0,
+            "to": 2
+        },
+        {
+            "from": 1,
+            "to": 2
+        },
+        {
+            "from": 2,
+            "to": 3
+        },
+        {
+            "from": 4,
+            "to": 6
+        },
+        {
+            "from": 6,
+            "to": 3
+        },
+        {
+            "from": 5,
+            "to": 7
+        },
+        {
+            "from": 5,
+            "to": 8
+        },
+        {
+            "from": 5,
+            "to": 3
+        },
+		{
+			"from": 9,
+			"to": 3
+		}
+    ]
+}

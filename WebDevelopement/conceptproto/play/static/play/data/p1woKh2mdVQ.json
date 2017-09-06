@@ -1,0 +1,55 @@
+{
+    "nodes": [
+        {
+            "id": 0,
+            "label": "engine"
+        },
+        {
+            "id": 1,
+            "label": "heat"
+        },
+        {
+            "id": 2,
+            "label": "temperature"
+        },
+        {
+            "id": 3,
+            "label": "work"
+        },
+        {
+            "id": 4,
+            "label": "volume"
+        },
+        {
+            "id": 5,
+            "label": "pressure"
+        }
+    ],
+    "edges": [
+        {
+            "to": 4,
+            "from": 5,
+            "value": 1
+        },
+        {
+            "to": 1,
+            "from": 2,
+            "value": 1
+        },
+        {
+            "to": 0,
+            "from": 5,
+            "value": 1
+        },
+        {
+            "to": 0,
+            "from": 2,
+            "value": 1
+        },
+        {
+            "to": 3,
+            "from": 1,
+            "value": 2
+        }
+    ]
+}

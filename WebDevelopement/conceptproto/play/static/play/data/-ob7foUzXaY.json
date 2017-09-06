@@ -1,0 +1,58 @@
+{
+    "nodes": [
+        {
+            "id": 0,
+            "label": "light"
+        },
+        {
+            "id": 1,
+            "label": "interference"
+        },
+        {
+            "id": 2,
+            "label": "wave"
+        },
+        {
+            "id": 3,
+            "label": "diffraction"
+        },
+        {
+            "id": 4,
+            "label": "phase"
+        },
+        {
+            "id": 5,
+            "label": "wavelength"
+        }
+    ],
+    "edges": [
+        {
+            "to": 3,
+            "from": 5,
+            "middle": "none",
+            "value": 1
+        },
+        {
+            "to": 2,
+            "from": 5,
+            "middle": "none",
+            "value": 1
+        },
+        {
+            "to": 0,
+            "from": 5,
+            "middle": "none",
+            "value": 1
+        },
+        {
+            "to": 4,
+            "from": 2,
+            "value": 2
+        },
+        {
+            "to": 1,
+            "from": 5,
+            "value": 2
+        }
+    ]
+}

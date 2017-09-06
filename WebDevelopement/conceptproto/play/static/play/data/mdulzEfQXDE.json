@@ -1,0 +1,58 @@
+{
+    "nodes": [
+        {
+            "id": 0,
+            "label": "coulomb"
+        },
+        {
+            "id": 1,
+            "label": "force"
+        },
+        {
+            "id": 2,
+            "label": "density"
+        },
+        {
+            "id": 3,
+            "label": "point"
+        },
+        {
+            "id": 4,
+            "label": "electromagnetism"
+        },
+        {
+            "id": 5,
+            "label": "capacitor"
+        }
+    ],
+    "edges": [
+        {
+            "to": 0,
+            "from": 5,
+            "middle": "none",
+            "value": 1
+        },
+        {
+            "to": 4,
+            "from": 0,
+            "value": 1
+        },
+        {
+            "to": 2,
+            "from": 4,
+            "middle": "none",
+            "value": 2
+        },
+        {
+            "to": 1,
+            "from": 5,
+            "middle": "none",
+            "value": 2
+        },
+        {
+            "to": 3,
+            "from": 5,
+            "value": 3
+        }
+    ]
+}

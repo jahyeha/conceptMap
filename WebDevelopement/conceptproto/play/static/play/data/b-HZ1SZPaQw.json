@@ -1,0 +1,60 @@
+{
+    "nodes": [
+        {
+            "id": 0,
+            "label": "inertia"
+        },
+        {
+            "id": 1,
+            "label": "torque"
+        },
+        {
+            "id": 2,
+            "label": "mass"
+        },
+        {
+            "id": 3,
+            "label": "energy"
+        },
+        {
+            "id": 4,
+            "label": "momentum"
+        },
+        {
+            "id": 5,
+            "label": "motion"
+        }
+    ],
+    "edges": [
+        {
+            "to": 3,
+            "from": 4,
+            "option": "direct",
+            "value": 1
+        },
+        {
+            "to": 4,
+            "from": 2,
+            "option": "direct",
+            "value": 1
+        },
+        {
+            "to": 0,
+            "from": 4,
+            "option": "direct",
+            "value": 1
+        },
+        {
+            "to": 0,
+            "from": 1,
+            "option": "direct",
+            "value": 1
+        },
+        {
+            "to": 5,
+            "from": 4,
+            "option": "direct",
+            "value": 2
+        }
+    ]
+}

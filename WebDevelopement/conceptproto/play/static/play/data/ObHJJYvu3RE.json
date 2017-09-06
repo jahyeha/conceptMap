@@ -1,0 +1,60 @@
+{
+    "nodes": [
+        {
+            "id": 0,
+            "label": "derivative"
+        },
+        {
+            "id": 1,
+            "label": "velocity"
+        },
+        {
+            "id": 2,
+            "label": "calculus"
+        },
+        {
+            "id": 3,
+            "label": "acceleration"
+        },
+        {
+            "id": 4,
+            "label": "power"
+        },
+        {
+            "id": 5,
+            "label": "mathematics"
+        }
+    ],
+    "edges": [
+        {
+            "to": 2,
+            "from": 5,
+            "option": "direct",
+            "value": 1
+        },
+        {
+            "to": 2,
+            "from": 3,
+            "option": "direct",
+            "value": 1
+        },
+        {
+            "to": 1,
+            "from": 3,
+            "option": "direct",
+            "value": 1
+        },
+        {
+            "to": 0,
+            "from": 3,
+            "option": "direct",
+            "value": 1
+        },
+        {
+            "to": 4,
+            "from": 5,
+            "option": "direct",
+            "value": 2
+        }
+    ]
+}

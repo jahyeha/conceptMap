@@ -1,0 +1,54 @@
+{
+    "nodes": [
+        {
+            "id": 0,
+            "label": "energy"
+        },
+        {
+            "id": 1,
+            "label": "pendulum"
+        },
+        {
+            "id": 2,
+            "label": "work"
+        },
+        {
+            "id": 3,
+            "label": "force"
+        },
+        {
+            "id": 4,
+            "label": "distance"
+        },
+        {
+            "id": 5,
+            "label": "ground"
+        }
+    ],
+    "edges": [
+        {
+            "to": 0,
+            "from": 3,
+            "option": "direct",
+            "value": 1
+        },
+        {
+            "to": 0,
+            "from": 1,
+            "option": "direct",
+            "value": 1
+        },
+        {
+            "to": 3,
+            "from": 4,
+            "option": "none",
+            "value": 2
+        },
+        {
+            "to": 2,
+            "from": 4,
+            "option": "direct",
+            "value": 2
+        }
+    ]
+}

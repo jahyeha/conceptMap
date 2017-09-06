@@ -2,9 +2,9 @@ import os
 
 from ConceptExtraction import conceptExtraction as CE
 from ConceptExtraction import conceptMapping as CM
-import DefineDistanceByConcept as DD
-import GetWikiFeature as GF
-import MakeGraph as MG
+import RelationExtraction.DefineDistanceByConcept as DD
+import RelationExtraction.GetWikiFeature as GF
+import RelationExtraction.MakeGraph as MG
 
 
 def main():

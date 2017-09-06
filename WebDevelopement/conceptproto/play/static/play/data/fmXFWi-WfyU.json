@@ -1,0 +1,54 @@
+{
+    "nodes": [
+        {
+            "id": 0,
+            "label": "velocity"
+        },
+        {
+            "id": 1,
+            "label": "motion"
+        },
+        {
+            "id": 2,
+            "label": "circle"
+        },
+        {
+            "id": 3,
+            "label": "acceleration"
+        },
+        {
+            "id": 4,
+            "label": "frequency"
+        },
+        {
+            "id": 5,
+            "label": "ground"
+        }
+    ],
+    "edges": [
+        {
+            "to": 3,
+            "from": 4,
+            "option": "direct",
+            "value": 1
+        },
+        {
+            "to": 0,
+            "from": 3,
+            "option": "none",
+            "value": 1
+        },
+        {
+            "to": 0,
+            "from": 2,
+            "option": "direct",
+            "value": 1
+        },
+        {
+            "to": 1,
+            "from": 3,
+            "option": "direct",
+            "value": 2
+        }
+    ]
+}

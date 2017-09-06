@@ -1,0 +1,58 @@
+{
+    "nodes": [
+        {
+            "id": 0,
+            "label": "temperature"
+        },
+        {
+            "id": 1,
+            "label": "liquid"
+        },
+        {
+            "id": 2,
+            "label": "pressure"
+        },
+        {
+            "id": 3,
+            "label": "kelvin"
+        },
+        {
+            "id": 4,
+            "label": "speed"
+        },
+        {
+            "id": 5,
+            "label": "phase"
+        }
+    ],
+    "edges": [
+        {
+            "to": 1,
+            "from": 2,
+            "middle": "none",
+            "value": 1
+        },
+        {
+            "to": 0,
+            "from": 4,
+            "value": 1
+        },
+        {
+            "to": 0,
+            "from": 3,
+            "middle": "none",
+            "value": 1
+        },
+        {
+            "to": 0,
+            "from": 1,
+            "middle": "none",
+            "value": 1
+        },
+        {
+            "to": 5,
+            "from": 3,
+            "value": 2
+        }
+    ]
+}

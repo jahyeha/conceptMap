@@ -1,0 +1,56 @@
+{
+    "nodes": [
+        {
+            "id": 0,
+            "label": "coulomb"
+        },
+        {
+            "id": 1,
+            "label": "electron"
+        },
+        {
+            "id": 2,
+            "label": "atom"
+        },
+        {
+            "id": 3,
+            "label": "force"
+        },
+        {
+            "id": 4,
+            "label": "ground"
+        },
+        {
+            "id": 5,
+            "label": "electricity"
+        }
+    ],
+    "edges": [
+        {
+            "to": 5,
+            "from": 3,
+            "value": 1
+        },
+        {
+            "to": 5,
+            "from": 2,
+            "value": 1
+        },
+        {
+            "to": 1,
+            "from": 5,
+            "middle": "none",
+            "value": 1
+        },
+        {
+            "to": 5,
+            "from": 0,
+            "value": 1
+        },
+        {
+            "to": 4,
+            "from": 5,
+            "value": 3
+        }
+    ]
+}
