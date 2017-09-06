@@ -23,7 +23,7 @@
  Scipy 0.19.1
 ```
 
-## 2Process& Result for each step
+## Process& Result for each step
 ![][2]
 ![][3]
 ![][4]
