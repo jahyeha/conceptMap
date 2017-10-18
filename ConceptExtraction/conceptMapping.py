@@ -4,8 +4,8 @@
 from bs4 import BeautifulSoup
 import requests
 
-""" 
-Mapping(Linking) Class that links each concept to its Wikipedia page 
+"""
+Mapping(Linking) Class that links each concept to its Wikipedia page
 e.g. inertia -> https://en.wikipedia.org/wiki/Inertia
 @sources: Glossary of Physics & Outline of Physics (wikipedia pages)
 """
@@ -114,22 +114,7 @@ class Mapping:
                 break
         return wiki_dict
 
-    """ for other subjects(Astronomy, economics, etc.)
-    def _tempGetDict(self, subject_name):
-        # pos = {페이지 특징 이름 : [start, end]}
-        pos = {'glossary': ['<h2><span class="mw-headline" id="A">', '<h2><span class="mw-headline" id="See_also">'],
-               'outline': ['<table class="wikitable">', '<h3><span class="mw-headline" id="Concepts_by_field">'],
-               'other': ['<h2><span class="mw-headline" id="Motion_and_forces">',
-                         '<h2><span class="mw-headline" id="See_also">']}
-
-        base_url = 'https://en.wikipedia.org/wiki/'
-        subject_url = {'astronomy': base_url + 'Glossary_of_astronomy',
-                       'economics': base_url + 'Glossary_of_economics'}
-        url = subject_url[subject_name]
-        base_info_dict = {url: pos['glossary']}
-        return base_info_dict
-    """
-
+"""
 if __name__ == "__main__":
     print('Running..')
     ##################TEST##################
@@ -137,3 +122,4 @@ if __name__ == "__main__":
     concept_name = input('Concept Name>')
     print(map._mapingConcept2Wiki(concept_name))
     ########################################
+"""

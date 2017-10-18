@@ -32,7 +32,6 @@ class HClustering:
         tfidf_dicSet = self._getTfidfResult(num_concept, self.bowSet)
         cosine = self._cosineSimilarity(tfidf_dicSet)
         return cosine
-        ##########################################################################
 
     def _getTfidfResult(self, num_concept, bowSet):
         sorted_dictSet = [sorted(dic.items(), key=operator.itemgetter(1), reverse=True) for dic in self.dict_set]

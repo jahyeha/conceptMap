@@ -52,7 +52,7 @@ class Preprocessor:
         video_IDs = self._getVideoIDs(URLs)
         video_titles = self._get_videotitles()
         return video_IDs, video_titles
-    #############################################################
+
 
     def _get_videotitles(self):
         URLs = self.allUrls
@@ -108,18 +108,9 @@ class Preprocessor:
             doc_set.append(doc)
         return doc_set
 
-
-    ## NEW 2017-09-04 (복합명사 처리) ##
-    """ Summary
-        1. physics_glossary의 모든 단어들을 "noun"(단일명사)와 "compound noun"("2개 단어" 복합명사)로 나누기
-            (physics_glossary: 위키피디아 페이지가 존재하는 Physics(물리학)의 단어 총 집합)
-        2. 모든 문서(자막)에 대하여, 
-            1) 토큰화 2) 모든 토큰들의 품사를 태깅 e.g.('apple', NN)
-        3. 형태소 분석을 통한 심화 개념추출(기존: 단일명사만 취급, 현재: 단일& 복합명사)
-    """
+    # Morphological analysis
     def _adv_tokenizer(self, docSet):
         physics_glossary = self.physicsConcepts
-        #1#
         one, two = [], []
         for word in physics_glossary:
             splitted = word.split()
@@ -127,13 +118,13 @@ class Preprocessor:
                 one.append(word)
             elif len(splitted) == 2:
                 two.append(word)
-        #2#
+
         tagged_set = []
         for doc in docSet:
             tokenized = nltk.tokenize.word_tokenize(doc)
             tagged = nltk.pos_tag(tokenized)
             tagged_set.append(tagged)
-        #3#
+
         concept_set = []
         for taggedDoc in tagged_set:
             concept_list = []
@@ -174,7 +165,8 @@ class Preprocessor:
 
         return concept_set
 
-    def _tokenizer(self, docSet): #previous tokenizer
+    """previous tokenizer
+    def _tokenizer(self, docSet):
         tokenizer = RegexpTokenizer(r'\w+')
         physics_glossary = self.physicsConcepts
         stop = set(stopwords.words('english'))
@@ -193,6 +185,7 @@ class Preprocessor:
                     temp.append(item)
             filtered_bowSet.append(temp)
         return filtered_bowSet
+    """
 
 
 class ConceptExtraction:
@@ -202,8 +195,6 @@ class ConceptExtraction:
         self.bowSet = self.Pre._getResult()
         self.Tfidf_result = self._runTfIdf(self.bowSet)
 
-    ## NEW 2017-09-05 (_test)
-        # Compare the result of Concept Extraction(Nouns only vs +Compound Nouns)
     def _test(self):
         ids, titles = Pre._get_videoID_titles()
         doc_set = Pre._getDocuments(ids)
@@ -242,14 +233,15 @@ class ConceptExtraction:
             candidate = sorted(candidate.items(), key=operator.itemgetter(1), reverse=True)
             candidate_set.append(candidate[:max_concept])
         return candidate_set
-    #############################################################
 
-    """ @ Computing TF-IDF
-        1. Get ready to compute tf-idf : Convert tokenized(&cleaned) BOWs into numbers 
+
+    """ Computing TF-IDF
+        1. Get ready to compute tf-idf : Convert tokenized(&cleaned) BOWs into numbers
            by creating vectors of all possible words, and for each document how many times each word appears.
         2. Compute tf(w) = (Number of times the word appears in a document) / (Total number of words in the document)
         3. Compute idf(w) = log(Number of documents / Number of documents that contain word w)
-        4. Compute TF*IDF """
+        4. Compute TF*IDF
+    """
 
     def _runTfIdf(self, bowSet):
         dict_set = self._createDictSet(bowSet)  #1
@@ -311,42 +303,3 @@ class ConceptExtraction:
             tfidf_set.append(tfidf)
         return tfidf_set
 
-
-if __name__ == "__main__":
-    playlistURL = "https://www.youtube.com/playlist?list=PL8dPuuaLjXtN0ge7yDk_UA0ldZJdhwkoV"
-    Pre = Preprocessor(playlistURL)
-    Con = ConceptExtraction(playlistURL)
-    video_titles = Pre._get_videotitles()
-
-""" 컨셉추출 결과 비교(단일명사 추출-이전 vs 단일&복합명사 추출-현재) 
-    prev, new = Con._test()
-    print("> 개념추출 결과 비교(단일명사 추출 vs 단일명사+복합명사 추출")
-    print('\t - 조건: 가중치 0.07 이상, 강의 당 최대 개념 수 5개\n')
-
-    for i in range(len(prev)):
-        print('\t{}강 강의: {}'.format(i+1, video_titles[i]))
-        print('\t\t', prev[i], ' ({}개)'.format(len(prev[i])))
-        print('\t\t', new[i], ' ({}개)'.format(len(new[i])), '\n')
-"""
-
-"""
-    ############ TEST : Preprocessor ############
-    pre_result = Pre._getResult()
-    print('> 전처리 결과(문서추출& 토큰화& 불용어 제거)\n')
-    for i in range(len(pre_result)):
-        print('\t{}강 강의: {}'.format(i+1, video_titles[i]),'\n\t',pre_result[i],'\n')
-
-    ############ TEST : ConceptExtraction #######
-    max_concept, max_weight = 5, 0.07
-    ce_tfidf_result = Con._runTfIdf(pre_result)
-    print('\n> TF-IDF 결과 (가중치 내림차순)\n')
-    for i in range(len(ce_tfidf_result)):
-        sorted_dict = sorted(ce_tfidf_result[i].items(), key=operator.itemgetter(1),reverse=True)
-        print('\t{}강 강의: {}'.format(i+1, video_titles[i]),'\n\t', sorted_dict,'\n')
-
-    ce_result = Con._get_conceptWeight(pre_result, max_concept, max_weight)
-    print('\n> 개념추출 결과(TF-IDF 결과를 기반으로 추출된 개념)')
-    print('\t - 조건: 가중치 0.07 이상, 강의 당 최대 개념 수 5개\n')
-    for i in range(len(ce_result)):
-        print('\t{}강 강의: {} (개념 수: {}개)'.format(i+1, video_titles[i], len(ce_result[i])),'\n\t',ce_result[i],'\n')
-    """
