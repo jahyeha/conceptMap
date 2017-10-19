@@ -33,7 +33,6 @@ class Recommendation:
 
         return result
 
-
     def _linkWord2Lec(self, max_concept, max_weight, bowSet):
         playlistURL = "https://www.youtube.com/playlist?list=PL8dPuuaLjXtN0ge7yDk_UA0ldZJdhwkoV"
         Con = CE.ConceptExtraction(playlistURL)
@@ -55,7 +54,6 @@ class Recommendation:
                     ConceptToLec[word] = [(val, (i+1, lec_title[i+1]))]
         return ConceptToLec
 
-
     def _getCluVideos(self):
         cluster_videos = {}
         cos = self.Clu._getCosMatrix()
@@ -71,9 +69,8 @@ class Recommendation:
                 cluster_videos[labels[i]].append((i+1, titles[i]))
         return cluster_videos
 
-
     def _cluMainConcepts(self, max_concept, max_weight):
-        # 카테고리(클러스터)별 주요 개념 추출
+        # Concept Extraction from each Cluster(Category)
         # e.g. clu_main_concepts == {1: ['voltmeter','resistor',..], 2: [], 3: [],..}
         main_concepts = {}
         cluster_videos = self._getCluVideos()
@@ -86,9 +83,8 @@ class Recommendation:
             main_concepts[i] = list(set(tempForSet))
         return main_concepts
 
-
     def _lecMainConcepts(self, max_concept, max_weight):
-        # 강의(lecture)별 주요 개념 추출, 총 46개 강의
+        # Concept Extraction from each Lecture(total 46 lectures)
         only_concepts = self.Con._get_onlyConcepts(self.bowSet, max_concept, max_weight)
         lec_conceptDic = {}
         for i in range(len(self.titles)):
