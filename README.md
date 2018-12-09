@@ -31,7 +31,6 @@ Initial requirements are as follows.
  NLTK 3.2.4
  Numpy 1.13.1
  BeautifulSoup 4.5.3
- * You can see more details in each sub project directory.
 ```
 
 ## References
