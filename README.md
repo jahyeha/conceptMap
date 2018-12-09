@@ -19,7 +19,7 @@
 - Seongwook Na/ Relation Extraction
 - Yeonghak Seo/ Relation Extraction& Web Developement
 - Ongyeol Lee/ Web Developement
-- Jahye Ha/ Concept Extraction& Wikipedia Mapping
+- [Jahye Ha](https://github.com/jahyeha)/ [Concept Extraction& Wikipedia Mapping](https://github.com/eliceio/conceptMap/tree/master/ConceptExtraction)
 - Hyeongyu Shin/ T.A.
 
 
